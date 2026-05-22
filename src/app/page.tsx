@@ -6,10 +6,10 @@ import Footer from "@/components/layout/Footer";
 import Carousel, { type Slide } from "@/components/ui/Carousel";
 import Reveal from "@/components/ui/Reveal";
 import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/FeaturedCarousel";
-import ProductTileGrid from "@/components/catalogue/ProductTileGrid";
+import CategoryGrid from "@/components/catalogue/CategoryGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
 import ComingSoon from "@/components/sections/ComingSoon";
-import { getFeatured, getAllProducts } from "@/data/products";
+import { getFeatured } from "@/data/products";
 import { blurFor } from "@/data/blur";
 import { STORE_MAPS_URL } from "@/data/site";
 
@@ -18,7 +18,6 @@ export default async function HomePage() {
   const tStatus = await getTranslations("status");
 
   const featured = getFeatured();
-  const tiles = getAllProducts().slice(0, 6);
 
   const heroSlides: Slide[] = featured
     .slice(0, 4)
@@ -176,8 +175,13 @@ export default async function HomePage() {
           />
         </Reveal>
 
-        <Reveal delay={120}>
-          <ProductTileGrid products={tiles} />
+        <Reveal delay={120} style={{ marginBottom: 24 }}>
+          <h3 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 200, letterSpacing: "-0.01em" }}>
+            {t("categoriesTitle")}
+          </h3>
+        </Reveal>
+        <Reveal delay={160}>
+          <CategoryGrid />
         </Reveal>
       </section>
 

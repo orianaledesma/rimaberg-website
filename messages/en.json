@@ -17,7 +17,8 @@
     "rings": "Rings",
     "pendants": "Pendants",
     "bracelets": "Bracelets",
-    "engagement": "Engagement"
+    "engagement": "Engagement",
+    "other": "Other"
   },
   "status": {
     "onRequest": "On request",
@@ -37,6 +38,7 @@
     "catVisit": "Visit us in Kaunas →",
     "allPieces": "All pieces →",
     "catViewMore": "View more",
+    "categoriesTitle": "Categories",
     "atelierEyebrow": "Atelier · Kaunas",
     "atelierTitle": "The hand that makes the stone speak.",
     "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",

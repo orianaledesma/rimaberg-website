@@ -17,7 +17,8 @@
     "rings": "Žiedai",
     "pendants": "Pakabukai",
     "bracelets": "Apyrankės",
-    "engagement": "Sužadėtuvių"
+    "engagement": "Sužadėtuvių",
+    "other": "Kita"
   },
   "status": {
     "onRequest": "Pagal užklausą",
@@ -37,6 +38,7 @@
     "catVisit": "Aplankykite mus Kaune →",
     "allPieces": "Visos piezos →",
     "catViewMore": "Plačiau",
+    "categoriesTitle": "Kategorijos",
     "atelierEyebrow": "Studija · Kaunas",
     "atelierTitle": "Ranka, priverčianti akmenį prabilti.",
     "atelierText": "Du dešimtmečius Rima pati lieja ir kalsto savo piezas — granuliuoti paviršiai, safyrai iš studijos stalčiaus, rankomis sušildyti rausvo aukso rėmeliai.",

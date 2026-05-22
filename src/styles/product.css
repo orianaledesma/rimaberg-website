@@ -141,6 +141,66 @@
   }
 }
 
+/* ── Category showcase grid (home) ──────────────────────────────────────── */
+.rb-catcard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 2vw, 20px);
+}
+@media (max-width: 860px) {
+  .rb-catcard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+.rb-catcard {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--rb-paper-2);
+}
+.rb-catcard-img {
+  object-fit: cover;
+  transition: transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  will-change: transform;
+}
+.rb-catcard:hover .rb-catcard-img {
+  transform: scale(1.05);
+}
+/* Darken the top so the label stays legible over any photo. */
+.rb-catcard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.05) 38%,
+    transparent 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+/* Category name on a translucent rule across the top of the tile. */
+.rb-catcard-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(14px, 1.8vw, 20px);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  transition: border-color 0.3s;
+}
+.rb-catcard:hover .rb-catcard-label {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
 /* ── Horizontal product carousel (mobile scroll-snap strip) ─────────────── */
 .rb-hcar {
   position: relative;
