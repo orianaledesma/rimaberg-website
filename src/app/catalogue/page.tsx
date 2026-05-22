@@ -1,12 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import CategoryNav from "@/components/CategoryNav";
-import Footer from "@/components/Footer";
-import Cursor from "@/components/Cursor";
-import Reveal from "@/components/Reveal";
-import FeaturedCarousel, { type CarouselItem } from "@/components/FeaturedCarousel";
-import ProductTileGrid from "@/components/ProductTileGrid";
+import Header from "@/components/layout/Header";
+import CategoryNav from "@/components/layout/CategoryNav";
+import Footer from "@/components/layout/Footer";
+import Reveal from "@/components/ui/Reveal";
+import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/FeaturedCarousel";
+import ProductTileGrid from "@/components/catalogue/ProductTileGrid";
 import {
   getAllProducts,
   getByCategory,
@@ -60,7 +59,6 @@ export default async function CataloguePage({
 
   return (
     <div className="rb-screen" data-hover="reveal">
-      <Cursor>
         <Header tone="light" />
         <CategoryNav active={isAll ? "all" : category} />
 
@@ -124,7 +122,6 @@ export default async function CataloguePage({
         </section>
 
         <Footer />
-      </Cursor>
     </div>
   );
 }

@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Animations — scroll reveal, ken-burns, and the reduced-motion opt-out
+   ========================================================================== */
+
+/* Reveal on scroll (IntersectionObserver-driven). */
+.rb-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 1.15s cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 1.25s cubic-bezier(0.2, 0.6, 0.2, 1);
+  will-change: opacity, transform;
+}
+.rb-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.rb-reveal--mask {
+  clip-path: inset(0 0 100% 0);
+  opacity: 1;
+  transform: none;
+  transition: clip-path 1.4s cubic-bezier(0.6, 0.05, 0.15, 1);
+}
+.rb-reveal--mask.is-in {
+  clip-path: inset(0 0 0% 0);
+}
+
+/* Ken-Burns slow zoom for hero / detail images. */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.02) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate(-1.4%, -1.2%);
+  }
+}
+.rb-kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+/* Honour users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .rb-reveal,
+  .rb-carousel-slide,
+  .rb-kenburns,
+  .rb-tile-img,
+  .rb-hcar-media img {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

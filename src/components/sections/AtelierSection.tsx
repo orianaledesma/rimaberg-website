@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import Carousel, { type Slide } from "./Carousel";
-import Reveal from "./Reveal";
+import Carousel, { type Slide } from "@/components/ui/Carousel";
+import Reveal from "@/components/ui/Reveal";
 import { getFeatured } from "@/data/products";
 import { blurFor } from "@/data/blur";
 

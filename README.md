@@ -46,22 +46,34 @@ Requires Node 18.18+ (developed on 18.19).
 ```
 src/
 ├── app/
-│   ├── layout.tsx              # fonts, SEO metadata, NextIntlClientProvider
-│   ├── page.tsx                # Home (hero carousel + teaser grid)
+│   ├── layout.tsx              # fonts, SEO metadata, provider, style imports
+│   ├── page.tsx                # Home (hero · featured carousel · tile grid · atelier)
 │   ├── catalogue/
 │   │   ├── page.tsx            # Catalogue (filter by ?category=)
 │   │   └── [id]/page.tsx       # Product detail (SSG)
 │   ├── about/page.tsx          # About + Contact
-│   └── globals.css             # tokens + rb-* animation classes
-├── components/                 # Header, CategoryNav, Footer, Carousel,
-│                               # ProductCard, Reveal, Cursor, Logo, LocaleSwitcher
+│   ├── not-found.tsx           # branded 404
+│   └── globals.css             # Tailwind layers only
+├── components/
+│   ├── layout/                 # Header, Footer, CategoryNav, LocaleSwitcher, Logo
+│   ├── catalogue/              # ProductCard, ProductTileGrid, FeaturedCarousel
+│   ├── ui/                     # Carousel, Reveal (generic primitives)
+│   └── sections/               # AtelierSection (composed page section)
 ├── data/
 │   ├── products.ts             # typed catalogue (seed data — see below)
-│   └── categories.ts           # category definitions + nav order
-└── i18n/                       # locales, request config, setLocale action
+│   ├── categories.ts           # category definitions + nav order
+│   └── blur.ts                 # generated LCP blur placeholders
+├── i18n/                       # locales, request config, setLocale action
+└── styles/                     # tokens · base · animations · navigation ·
+                                # carousel · product · layout (imported in layout.tsx)
 messages/                       # en.json, lt.json
 public/products/                # ~128 studio photos
 ```
+
+Styling: brand colours are CSS custom properties in `styles/tokens.css`; the
+reusable `rb-*` classes are split into themed partials under `styles/` and
+imported once from the root layout. Components compose those classes with
+inline layout values — they never hardcode brand colours.
 
 ## Content TODO (for Rima)
 

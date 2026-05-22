@@ -1,0 +1,16 @@
+/* ==========================================================================
+   RIMA BERG — brand tokens (Direction C)
+   Single source of truth for the palette. Never hardcode these hex values in
+   components; reference the custom properties (or the Tailwind aliases).
+   Fonts are injected by next/font as CSS variables in layout.tsx.
+   ========================================================================== */
+:root {
+  --rb-bg: #fafaf8;        /* warm off-white paper */
+  --rb-ink: #0a0a0a;       /* near-black text */
+  --rb-noir: #0a0a0a;      /* dark sections / hero */
+  --rb-noir-2: #161616;    /* dark surface (thumbnails) */
+  --rb-paper-2: #f4f3f0;   /* product card background */
+  --rb-line: rgba(0, 0, 0, 0.08);
+  --rb-line-dark: rgba(255, 255, 255, 0.08);
+  --rb-accent: #c96442;    /* terracotta — focus ring (visible on paper and noir) */
+}

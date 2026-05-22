@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Category navigation — tracked uppercase links with active underline.
+   Becomes a horizontal scroller with 44px tap targets on small screens.
+   ========================================================================== */
+.rb-cat-nav {
+  display: flex;
+  gap: 32px;
+}
+.rb-cat-nav a,
+.rb-cat-nav button {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 8px 0;
+  position: relative;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.rb-cat-nav a.is-active,
+.rb-cat-nav a:hover,
+.rb-cat-nav button.is-active,
+.rb-cat-nav button:hover {
+  opacity: 1;
+}
+.rb-cat-nav a.is-active::after,
+.rb-cat-nav button.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 760px) {
+  .rb-cat-nav {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rb-cat-nav::-webkit-scrollbar {
+    display: none;
+  }
+  /* Larger tap targets on touch screens (≈44px). */
+  .rb-cat-nav a,
+  .rb-cat-nav button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

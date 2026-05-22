@@ -2,11 +2,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import Header from "@/components/Header";
-import CategoryNav from "@/components/CategoryNav";
-import Cursor from "@/components/Cursor";
-import Reveal from "@/components/Reveal";
-import ProductCard from "@/components/ProductCard";
+import Header from "@/components/layout/Header";
+import CategoryNav from "@/components/layout/CategoryNav";
+import Reveal from "@/components/ui/Reveal";
+import ProductCard from "@/components/catalogue/ProductCard";
 import { getAllProducts, getProductById, getRelated } from "@/data/products";
 import { blurFor } from "@/data/blur";
 import type { Locale } from "@/i18n/locales";
@@ -50,7 +49,6 @@ export default async function ProductDetailPage({
 
   return (
     <div className="rb-screen">
-      <Cursor>
         <Header tone="light" />
         <CategoryNav active={product.category} />
 
@@ -165,7 +163,6 @@ export default async function ProductDetailPage({
             ))}
           </div>
         </section>
-      </Cursor>
     </div>
   );
 }

@@ -1,11 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import Header from "@/components/Header";
-import CategoryNav from "@/components/CategoryNav";
-import Cursor from "@/components/Cursor";
-import Reveal from "@/components/Reveal";
-import Carousel, { type Slide } from "@/components/Carousel";
+import Header from "@/components/layout/Header";
+import CategoryNav from "@/components/layout/CategoryNav";
+import Reveal from "@/components/ui/Reveal";
+import Carousel, { type Slide } from "@/components/ui/Carousel";
 import { getFeatured } from "@/data/products";
 import { blurFor } from "@/data/blur";
 
@@ -27,7 +26,6 @@ export default async function AboutPage() {
 
   return (
     <div className="rb-screen">
-      <Cursor>
         <Header tone="light" />
         <CategoryNav active="all" />
 
@@ -155,7 +153,6 @@ export default async function AboutPage() {
             </p>
           </Reveal>
         </section>
-      </Cursor>
     </div>
   );
 }

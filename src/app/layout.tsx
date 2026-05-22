@@ -3,6 +3,13 @@ import { Hanken_Grotesk, JetBrains_Mono, Allison } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
+import "@/styles/tokens.css";
+import "@/styles/base.css";
+import "@/styles/animations.css";
+import "@/styles/navigation.css";
+import "@/styles/carousel.css";
+import "@/styles/product.css";
+import "@/styles/layout.css";
 
 const sans = Hanken_Grotesk({
   subsets: ["latin"],

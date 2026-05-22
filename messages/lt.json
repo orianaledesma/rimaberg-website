@@ -35,6 +35,7 @@
     "catTitle": "Katalogas",
     "catLead": "Veikiantis piezų, šiuo metu laikomų studijos stalčiuje, sąrašas. Kai kurios unikalios, kai kurios gaminamos pagal užsakymą. Parašykite mums dėl bet kurios.",
     "allPieces": "Visos piezos →",
+    "catViewMore": "Plačiau",
     "atelierEyebrow": "Studija · Vilnius",
     "atelierTitle": "Ranka, priverčianti akmenį prabilti.",
     "atelierText": "Du dešimtmečius Rima pati lieja ir kalsto savo piezas — granuliuoti paviršiai, safyrai iš studijos stalčiaus, rankomis sušildyti rausvo aukso rėmeliai.",
@@ -46,7 +47,6 @@
     "allTitle": "Katalogas",
     "pieces": "{count} piezos",
     "empty": "Šioje kategorijoje piezų dar nėra.",
-    "viewAll": "Žiūrėti visas piezas",
     "featuredMark": "— Atrinkta",
     "featuredTitle": "Studijos atranka",
     "viewMore": "Plačiau"

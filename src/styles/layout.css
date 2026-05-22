@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Cross-cutting layout helpers and their responsive overrides
+   ========================================================================== */
+
+/* Two-column splits that collapse to a single column on small screens. */
+@media (max-width: 760px) {
+  .rb-collapse {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Product-detail info column flows normally instead of sticking. */
+  .rb-detail-aside {
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* Hero: title sits bottom-right on mobile (matches the mobile handoff). */
+  .rb-hero-overlay {
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    text-align: right;
+  }
+  .rb-hero-head {
+    max-width: 280px !important;
+  }
+  .rb-hero-foot {
+    display: none !important;
+  }
+}

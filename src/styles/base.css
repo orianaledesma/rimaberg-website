@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Base — document defaults, focus, skip link, type helpers, placeholders
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--rb-bg);
+  color: var(--rb-ink);
+  font-family: var(--font-sans), "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: 0.01em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Visible keyboard focus (restored after dropping the custom cursor). */
+:focus-visible {
+  outline: 2px solid var(--rb-accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+#main:focus {
+  outline: none;
+}
+
+/* Skip-to-content link — hidden until focused. */
+.rb-skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+  padding: 10px 16px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.rb-skip:focus {
+  transform: translateY(0);
+}
+
+/* Reset link defaults inside the prototype surfaces. */
+.rb-screen a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Type helpers ------------------------------------------------------------- */
+.rb-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.rb-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+.rb-script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Placeholder image (when a real photo is missing) ------------------------ */
+.rb-placeholder {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--ph-bg, #ececec) 0 8px,
+    var(--ph-bg2, #e3e3e3) 8px 16px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ph-fg, #999);
+  text-transform: uppercase;
+}
+.rb-placeholder.dark {
+  --ph-bg: #0e0e0e;
+  --ph-bg2: #161616;
+  --ph-fg: #555;
+}
