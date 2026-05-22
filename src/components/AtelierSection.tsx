@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import Carousel, { type Slide } from "./Carousel";
 import Reveal from "./Reveal";
 import { getFeatured } from "@/data/products";
+import { blurFor } from "@/data/blur";
 
 /**
  * Dark "Atelier" band for the home page: studio copy on the left, an
@@ -13,7 +14,7 @@ export default async function AtelierSection() {
   const t = await getTranslations("home");
   const slides: Slide[] = getFeatured()
     .slice(0, 4)
-    .map((p, i) => ({ src: p.images[0], caption: `fig. 0${i + 1}` }));
+    .map((p, i) => ({ src: p.images[0], caption: `fig. 0${i + 1}`, blurDataURL: blurFor(p.images[0]) }));
 
   return (
     <section

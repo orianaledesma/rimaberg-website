@@ -9,13 +9,16 @@ import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import AtelierSection from "@/components/AtelierSection";
 import { getFeatured, getAllProducts } from "@/data/products";
+import { blurFor } from "@/data/blur";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
   const featured = getFeatured();
   const grid = getAllProducts().slice(0, 5);
 
-  const heroSlides: Slide[] = featured.slice(0, 4).map((p) => ({ src: p.images[0] }));
+  const heroSlides: Slide[] = featured
+    .slice(0, 4)
+    .map((p) => ({ src: p.images[0], blurDataURL: blurFor(p.images[0]) }));
 
   return (
     <div className="rb-screen" data-hover="reveal">
@@ -43,6 +46,7 @@ export default async function HomePage() {
             }}
           />
           <div
+            className="rb-hero-overlay"
             style={{
               position: "absolute",
               inset: 0,
@@ -53,7 +57,7 @@ export default async function HomePage() {
               pointerEvents: "none",
             }}
           >
-            <Reveal style={{ maxWidth: 720 }}>
+            <Reveal className="rb-hero-head" style={{ maxWidth: 720 }}>
               <div className="rb-eyebrow" style={{ opacity: 0.75 }}>
                 {t("heroEyebrow")}
               </div>
@@ -75,6 +79,7 @@ export default async function HomePage() {
             </Reveal>
             <Reveal
               delay={200}
+              className="rb-hero-foot"
               style={{
                 display: "flex",
                 justifyContent: "space-between",

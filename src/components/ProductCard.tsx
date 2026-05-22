@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Product } from "@/data/products";
 import type { Locale } from "@/i18n/locales";
+import { blurFor } from "@/data/blur";
 
 /**
  * Catalogue tile. Base photo + (optional) hover-swap photo, an overlay with
@@ -37,6 +38,8 @@ export default async function ProductCard({
           fill
           sizes="(max-width: 768px) 50vw, 33vw"
           className="rb-prod-img rb-prod-img--base"
+          placeholder={blurFor(product.images[0]) ? "blur" : "empty"}
+          blurDataURL={blurFor(product.images[0])}
           style={{ objectFit: "cover" }}
         />
         {swap && (

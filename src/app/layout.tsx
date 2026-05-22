@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, JetBrains_Mono, Allison } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
 
 const sans = Hanken_Grotesk({
@@ -67,6 +67,7 @@ export default async function RootLayout({
 }) {
   const locale = await getLocale();
   const messages = await getMessages();
+  const t = await getTranslations("a11y");
 
   return (
     <html
@@ -75,7 +76,12 @@ export default async function RootLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <a href="#main" className="rb-skip">
+            {t("skip")}
+          </a>
+          <main id="main" tabIndex={-1}>
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>

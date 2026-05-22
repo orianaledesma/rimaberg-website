@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skip": "Pereiti prie turinio"
+  },
   "header": {
     "atelier": "Studija"
   },

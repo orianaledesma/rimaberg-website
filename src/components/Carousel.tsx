@@ -7,6 +7,7 @@ export interface Slide {
   src?: string;
   caption?: string;
   placeholder?: string;
+  blurDataURL?: string;
 }
 
 /**
@@ -61,6 +62,8 @@ export default function Carousel({
               fill
               sizes="100vw"
               priority={priority && idx === 0}
+              placeholder={s.blurDataURL ? "blur" : "empty"}
+              blurDataURL={s.blurDataURL}
               style={{ objectFit: "cover" }}
             />
           ) : (

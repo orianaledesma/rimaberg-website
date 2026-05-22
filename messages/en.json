@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skip": "Skip to content"
+  },
   "header": {
     "atelier": "Atelier"
   },

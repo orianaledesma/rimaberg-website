@@ -7,6 +7,7 @@ import Cursor from "@/components/Cursor";
 import Reveal from "@/components/Reveal";
 import Carousel, { type Slide } from "@/components/Carousel";
 import { getFeatured } from "@/data/products";
+import { blurFor } from "@/data/blur";
 
 export const metadata: Metadata = { title: "About + Contact" };
 
@@ -20,6 +21,7 @@ export default async function AboutPage() {
   const atelierSlides: Slide[] = featured.slice(0, 4).map((p, i) => ({
     src: p.images[0],
     caption: `fig. 0${i + 1}`,
+    blurDataURL: blurFor(p.images[0]),
   }));
   const portrait = featured[0]?.images[0] ?? "/products/ADDI7571.JPG";
 
@@ -98,7 +100,15 @@ export default async function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={140} style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden", background: "var(--rb-paper-2)" }}>
-            <Image src={portrait} alt={t("artistTitle")} fill sizes="(max-width: 760px) 100vw, 45vw" style={{ objectFit: "cover" }} />
+            <Image
+              src={portrait}
+              alt={t("artistTitle")}
+              fill
+              sizes="(max-width: 760px) 100vw, 45vw"
+              placeholder={blurFor(portrait) ? "blur" : "empty"}
+              blurDataURL={blurFor(portrait)}
+              style={{ objectFit: "cover" }}
+            />
           </Reveal>
         </section>
 

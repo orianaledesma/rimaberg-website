@@ -8,6 +8,7 @@ import Cursor from "@/components/Cursor";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import { getAllProducts, getProductById, getRelated } from "@/data/products";
+import { blurFor } from "@/data/blur";
 import type { Locale } from "@/i18n/locales";
 
 export function generateStaticParams() {
@@ -79,6 +80,8 @@ export default async function ProductDetailPage({
                 fill
                 sizes="(max-width: 760px) 100vw, 55vw"
                 className="rb-kenburns"
+                placeholder={blurFor(product.images[0]) ? "blur" : "empty"}
+                blurDataURL={blurFor(product.images[0])}
                 style={{ objectFit: "cover" }}
                 priority
               />

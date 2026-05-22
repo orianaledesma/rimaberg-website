@@ -31,6 +31,28 @@
   outline: none;
 }
 
+/* Skip-to-content link — hidden until focused. */
+.rb-skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+  padding: 10px 16px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.rb-skip:focus {
+  transform: translateY(0);
+}
+#main:focus {
+  outline: none;
+}
+
 html,
 body {
   margin: 0;
@@ -386,6 +408,19 @@ img {
   .rb-detail-aside {
     position: static !important;
     top: auto !important;
+  }
+
+  /* Hero: title sits bottom-right on mobile (matches the mobile handoff). */
+  .rb-hero-overlay {
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    text-align: right;
+  }
+  .rb-hero-head {
+    max-width: 280px !important;
+  }
+  .rb-hero-foot {
+    display: none !important;
   }
 }
 
