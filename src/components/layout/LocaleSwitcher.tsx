@@ -12,7 +12,8 @@ import { LOCALES, LOCALE_SHORT, type Locale } from "@/i18n/locales";
 export default function LocaleSwitcher({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const active = useLocale() as Locale;
   const [pending, startTransition] = useTransition();
-  const color = tone === "dark" ? "var(--rb-ink)" : "#fafafa";
+  // tone = background tone: dark bg → light text, light bg → dark ink.
+  const color = tone === "dark" ? "#fafafa" : "var(--rb-ink)";
 
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "center", color, opacity: pending ? 0.5 : 1 }}>

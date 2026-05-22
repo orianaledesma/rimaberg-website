@@ -41,13 +41,16 @@ export default async function CataloguePage({
   const catKey = category === "new" ? "whatsNew" : category;
   const heading = isAll ? t("allTitle") : tCat(catKey);
 
-  // Curated strip — featured pieces, falling back to new / first few.
+  // Curated strip, tied to the active category nav: on "all" it highlights the
+  // featured set; on a category it highlights that category's featured pieces,
+  // falling back to all pieces in scope so the strip always mirrors the grid.
   const carouselSource = (() => {
-    const featured = getFeatured();
-    if (featured.length > 1) return featured;
-    const fresh = getNew();
-    if (fresh.length > 1) return fresh;
-    return getAllProducts().slice(0, 8);
+    if (isAll) {
+      const featured = getFeatured();
+      return featured.length > 1 ? featured : getAllProducts().slice(0, 8);
+    }
+    const featuredInCategory = items.filter((p) => p.featured);
+    return featuredInCategory.length > 0 ? featuredInCategory : items;
   })();
   const carouselItems: CarouselItem[] = carouselSource.map((p) => ({
     id: p.id,
