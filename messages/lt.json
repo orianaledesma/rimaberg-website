@@ -46,7 +46,10 @@
     "allTitle": "Katalogas",
     "pieces": "{count} piezos",
     "empty": "Šioje kategorijoje piezų dar nėra.",
-    "viewAll": "Žiūrėti visas piezas"
+    "viewAll": "Žiūrėti visas piezas",
+    "featuredMark": "— Atrinkta",
+    "featuredTitle": "Studijos atranka",
+    "viewMore": "Plačiau"
   },
   "detail": {
     "breadcrumbHome": "Katalogas",

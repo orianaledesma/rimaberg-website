@@ -46,7 +46,10 @@
     "allTitle": "The catalogue",
     "pieces": "{count} pieces",
     "empty": "No pieces in this category yet.",
-    "viewAll": "View all pieces"
+    "viewAll": "View all pieces",
+    "featuredMark": "— Selected",
+    "featuredTitle": "Studio selection",
+    "viewMore": "View more"
   },
   "detail": {
     "breadcrumbHome": "Catalogue",
