@@ -29,14 +29,15 @@
     "heroLine1": "A garden,",
     "heroEm": "cast",
     "heroLine2": "in silver.",
-    "heroLead": "Each piece is hand-textured and stone-set in Vilnius — slow studio practice, no two alike.",
+    "heroLead": "Each piece is hand-textured and stone-set in Kaunas — slow studio practice, no two alike.",
     "heroCta": "Discover the collection",
     "catMark": "— § II",
     "catTitle": "The catalogue",
-    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order. Write to us for any of them.",
+    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order.",
+    "catVisit": "Visit us in Kaunas →",
     "allPieces": "All pieces →",
     "catViewMore": "View more",
-    "atelierEyebrow": "Atelier · Vilnius",
+    "atelierEyebrow": "Atelier · Kaunas",
     "atelierTitle": "The hand that makes the stone speak.",
     "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",
     "aboutCta": "About Rima →",
@@ -69,8 +70,8 @@
     "titleLine1": "A studio practice",
     "titleLine2In": "in",
     "titleEm": "cast silver",
-    "p1": "Rima Berg has been working with silver for two decades — first apprenticed at the Lithuanian Art Academy, then in her own studio on Vilniaus street since 2008. Each piece is hand-cast, textured with her own tools, and stone-set one at a time.",
-    "p2": "No collection is reproduced. When a piece sells, the maquette goes back into the drawer. What we keep is the language — granulation, rose-gold bezels, sapphires the colour of Vilnius rain.",
+    "p1": "Rima Berg has been working with silver for two decades — first apprenticed at the Lithuanian Art Academy, then in her own studio in Kaunas since 2008. Each piece is hand-cast, textured with her own tools, and stone-set one at a time.",
+    "p2": "No collection is reproduced. When a piece sells, the maquette goes back into the drawer. What we keep is the language — granulation, rose-gold bezels, sapphires the colour of Kaunas rain.",
     "artistEyebrow": "The artist",
     "artistTitle": "A face for the hand.",
     "artistText": "Rima photographed at the bench."
@@ -81,15 +82,21 @@
     "hoursLabel": "Hours",
     "email": "studio@rimaberg.lt",
     "phone": "+370 600 12 345",
-    "addressLine1": "Vilniaus g. 22-4",
-    "addressLine2": "LT-01402 Vilnius",
+    "addressLine1": "Laisvės al. 50",
+    "addressLine2": "LT-44001 Kaunas",
     "hoursLine1": "By appointment",
     "hoursLine2": "Tue–Sat · 11–18"
   },
   "footer": {
-    "copyright": "© 2026 RIMA BERG · Vilnius, LT",
+    "copyright": "© 2026 RIMA BERG · Kaunas, LT",
     "instagram": "Instagram",
     "facebook": "Facebook",
     "contact": "Contact"
+  },
+  "comingSoon": {
+    "eyebrow": "Coming soon",
+    "title": "A space in central Kaunas",
+    "text": "We're opening a studio-store in the heart of Kaunas — a place to see the pieces in person and be fitted. Follow along for the opening date.",
+    "cta": "See the location →"
   }
 }

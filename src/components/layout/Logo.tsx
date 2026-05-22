@@ -21,7 +21,7 @@ export default function Logo({ tone = "dark", size = 14 }: { tone?: Tone; size?:
         RIMA BERG
       </div>
       <div style={{ fontSize: 9, letterSpacing: "0.32em", opacity: 0.55, paddingLeft: "0.32em" }}>
-        JEWELLERY · VILNIUS
+        JEWELLERY · KAUNAS
       </div>
     </div>
   );

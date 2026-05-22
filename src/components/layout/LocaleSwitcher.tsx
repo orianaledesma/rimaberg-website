@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { setLocale } from "@/i18n/actions";
 import { LOCALES, LOCALE_SHORT, type Locale } from "@/i18n/locales";
@@ -11,9 +12,16 @@ import { LOCALES, LOCALE_SHORT, type Locale } from "@/i18n/locales";
  */
 export default function LocaleSwitcher({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const active = useLocale() as Locale;
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
   // tone = background tone: dark bg → light text, light bg → dark ink.
   const color = tone === "dark" ? "#fafafa" : "var(--rb-ink)";
+
+  const change = (loc: Locale) =>
+    startTransition(async () => {
+      await setLocale(loc);
+      router.refresh();
+    });
 
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "center", color, opacity: pending ? 0.5 : 1 }}>
@@ -23,7 +31,7 @@ export default function LocaleSwitcher({ tone = "dark" }: { tone?: "dark" | "lig
           type="button"
           className="rb-eyebrow"
           aria-pressed={loc === active}
-          onClick={() => startTransition(() => setLocale(loc))}
+          onClick={() => change(loc)}
           style={{
             fontSize: 10,
             background: "none",

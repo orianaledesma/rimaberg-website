@@ -8,8 +8,10 @@ import Reveal from "@/components/ui/Reveal";
 import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/FeaturedCarousel";
 import ProductTileGrid from "@/components/catalogue/ProductTileGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
+import ComingSoon from "@/components/sections/ComingSoon";
 import { getFeatured, getAllProducts } from "@/data/products";
 import { blurFor } from "@/data/blur";
+import { STORE_MAPS_URL } from "@/data/site";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
@@ -140,9 +142,18 @@ export default async function HomePage() {
               {t("catTitle")}
             </h2>
           </div>
-          <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.7, maxWidth: 520, alignSelf: "center" }}>
-            {t("catLead")}
-          </p>
+          <div style={{ alignSelf: "center", maxWidth: 520 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.7 }}>{t("catLead")}</p>
+            <a
+              href={STORE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rb-eyebrow"
+              style={{ display: "inline-block", marginTop: 16, borderBottom: "1px solid var(--rb-ink)", paddingBottom: 6 }}
+            >
+              {t("catVisit")}
+            </a>
+          </div>
           <Link
             href="/catalogue"
             className="rb-eyebrow"
@@ -171,6 +182,8 @@ export default async function HomePage() {
       </section>
 
       <AtelierSection />
+
+      <ComingSoon />
 
       <Footer />
     </div>

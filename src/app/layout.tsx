@@ -34,9 +34,9 @@ const script = Allison({
 
 const SITE_URL = "https://rimaberg.lt";
 const SITE_NAME = "Rima Berg";
-const TAGLINE = "Jewellery · Vilnius";
+const TAGLINE = "Jewellery · Kaunas";
 const DESCRIPTION =
-  "Hand-cast silver jewellery from the Rima Berg atelier in Vilnius. Granulated textures, rose-gold bezels and coloured stones — slow studio practice, no two pieces alike.";
+  "Hand-cast silver jewellery from the Rima Berg atelier in Kaunas. Granulated textures, rose-gold bezels and coloured stones — slow studio practice, no two pieces alike.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,12 +48,12 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   keywords: [
     "Rima Berg",
-    "jewellery Vilnius",
+    "jewellery Kaunas",
     "handmade silver jewellery",
     "cast silver rings",
     "Lithuanian jewellery",
     "artisan jewellery",
-    "engagement rings Vilnius",
+    "engagement rings Kaunas",
   ],
   authors: [{ name: SITE_NAME }],
   alternates: { canonical: "/" },
