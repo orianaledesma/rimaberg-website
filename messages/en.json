@@ -1,7 +1,11 @@
 {
   "header": {
-    "search": "Search",
-    "menu": "Menu"
+    "atelier": "Atelier"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The piece you're looking for may have returned to the studio drawer.",
+    "back": "Back to the catalogue"
   },
   "categories": {
     "all": "All",
@@ -45,7 +49,6 @@
     "breadcrumbHome": "Catalogue",
     "related": "Related, by hand",
     "enquire": "Enquire about this piece",
-    "save": "Ring-size guide",
     "labels": {
       "status": "Status",
       "metal": "Metal",

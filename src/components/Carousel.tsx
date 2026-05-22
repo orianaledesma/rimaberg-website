@@ -44,8 +44,13 @@ export default function Carousel({
     <div
       className="rb-carousel"
       style={{ height }}
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="Atelier gallery"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
     >
       {slides.map((s, idx) => (
         <div key={idx} className={"rb-carousel-slide " + (idx === i ? "is-active" : "")}>

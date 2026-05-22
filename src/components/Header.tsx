@@ -29,19 +29,9 @@ export default async function Header({ tone = "light" }: { tone?: "light" | "dar
       }}
     >
       <div style={{ display: "flex", gap: 24, alignItems: "center", minWidth: 80 }}>
-        <button
-          type="button"
-          aria-label={t("search")}
-          style={{ display: "flex", alignItems: "center", gap: 8, color: ink, opacity: 0.7, background: "none", border: "none", cursor: "pointer" }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="6" cy="6" r="4.5" stroke="currentColor" />
-            <path d="M9.5 9.5l3 3" stroke="currentColor" strokeLinecap="round" />
-          </svg>
-          <span className="rb-eyebrow" style={{ fontSize: 10 }}>
-            {t("search")}
-          </span>
-        </button>
+        <Link href="/about" className="rb-eyebrow" style={{ fontSize: 10, color: ink, opacity: 0.7 }}>
+          {t("atelier")}
+        </Link>
       </div>
 
       <Link href="/" aria-label="Rima Berg — home">

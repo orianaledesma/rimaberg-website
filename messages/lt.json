@@ -1,7 +1,11 @@
 {
   "header": {
-    "search": "Paieška",
-    "menu": "Meniu"
+    "atelier": "Studija"
+  },
+  "notFound": {
+    "title": "Puslapis nerastas",
+    "lead": "Ieškoma pieza galbūt grįžo į studijos stalčių.",
+    "back": "Atgal į katalogą"
   },
   "categories": {
     "all": "Visi",
@@ -45,7 +49,6 @@
     "breadcrumbHome": "Katalogas",
     "related": "Susiję, rankų darbo",
     "enquire": "Teirautis dėl šios piezos",
-    "save": "Žiedo dydžio gidas",
     "labels": {
       "status": "Būsena",
       "metal": "Metalas",

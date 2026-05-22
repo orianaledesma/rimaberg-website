@@ -15,8 +15,20 @@
   --rb-paper-2: #f4f3f0;   /* product card background */
   --rb-line: rgba(0, 0, 0, 0.08);
   --rb-line-dark: rgba(255, 255, 255, 0.08);
+  --rb-accent: #c96442; /* terracotta — focus ring (visible on paper and noir) */
 
   /* fonts are injected by next/font as CSS variables in layout.tsx */
+}
+
+/* Visible keyboard focus — restored after dropping the custom cursor. */
+:focus-visible {
+  outline: 2px solid var(--rb-accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+/* Don't show the ring for mouse/touch activation. */
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 html,
@@ -361,6 +373,13 @@ img {
   }
   .rb-cat-nav::-webkit-scrollbar {
     display: none;
+  }
+  /* Larger tap targets on touch screens (≈44px). */
+  .rb-cat-nav a,
+  .rb-cat-nav button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 
   /* Product-detail info column flows normally instead of sticking. */

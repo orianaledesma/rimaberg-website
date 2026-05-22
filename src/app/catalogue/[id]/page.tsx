@@ -146,20 +146,6 @@ export default async function ProductDetailPage({
             >
               {t("enquire")}
             </a>
-            <button
-              style={{
-                padding: "14px 24px",
-                fontSize: 11,
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                opacity: 0.65,
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              {t("save")}
-            </button>
           </aside>
         </section>
 
