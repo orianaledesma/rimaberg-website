@@ -350,6 +350,24 @@ img {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
   }
+
+  /* Category nav becomes a horizontal scroller (matches the mobile design). */
+  .rb-cat-nav {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rb-cat-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Product-detail info column flows normally instead of sticking. */
+  .rb-detail-aside {
+    position: static !important;
+    top: auto !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

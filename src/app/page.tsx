@@ -7,12 +7,13 @@ import Cursor from "@/components/Cursor";
 import Carousel, { type Slide } from "@/components/Carousel";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
+import AtelierSection from "@/components/AtelierSection";
 import { getFeatured, getAllProducts } from "@/data/products";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
   const featured = getFeatured();
-  const grid = getAllProducts().slice(0, 8);
+  const grid = getAllProducts().slice(0, 5);
 
   const heroSlides: Slide[] = featured.slice(0, 4).map((p) => ({ src: p.images[0] }));
 
@@ -112,7 +113,7 @@ export default async function HomePage() {
             className="rb-collapse"
             style={{
               display: "grid",
-              gridTemplateColumns: "minmax(180px, 280px) 1fr",
+              gridTemplateColumns: "minmax(180px, 280px) 1fr auto",
               gap: 64,
               marginBottom: 64,
             }}
@@ -128,6 +129,18 @@ export default async function HomePage() {
             <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.7, maxWidth: 520, alignSelf: "center" }}>
               {t("catLead")}
             </p>
+            <Link
+              href="/catalogue"
+              className="rb-eyebrow"
+              style={{
+                alignSelf: "end",
+                whiteSpace: "nowrap",
+                borderBottom: "1px solid var(--rb-ink)",
+                paddingBottom: 6,
+              }}
+            >
+              {t("allPieces")}
+            </Link>
           </Reveal>
 
           <div className="rb-grid-12">
@@ -146,17 +159,10 @@ export default async function HomePage() {
             <Reveal delay={200} style={{ gridColumn: "span 3" }}>
               <ProductCard product={grid[4]} height={270} />
             </Reveal>
-            <Reveal style={{ gridColumn: "span 4" }}>
-              <ProductCard product={grid[5]} height={340} />
-            </Reveal>
-            <Reveal delay={80} style={{ gridColumn: "span 4" }}>
-              <ProductCard product={grid[6]} height={340} />
-            </Reveal>
-            <Reveal delay={160} style={{ gridColumn: "span 4" }}>
-              <ProductCard product={grid[7]} height={340} />
-            </Reveal>
           </div>
         </section>
+
+        <AtelierSection />
 
         <Footer />
       </Cursor>

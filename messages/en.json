@@ -26,7 +26,13 @@
     "heroCta": "Discover the collection",
     "catMark": "— § II",
     "catTitle": "The catalogue",
-    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order. Write to us for any of them."
+    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order. Write to us for any of them.",
+    "allPieces": "All pieces →",
+    "atelierEyebrow": "Atelier · Vilnius",
+    "atelierTitle": "The hand that makes the stone speak.",
+    "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",
+    "aboutCta": "About Rima →",
+    "processCta": "The process"
   },
   "catalogue": {
     "indexMark": "— Index · {category}",

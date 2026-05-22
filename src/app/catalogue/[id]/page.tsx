@@ -96,7 +96,7 @@ export default async function ProductDetailPage({
           </div>
 
           {/* Detail aside */}
-          <aside style={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 20 }}>
+          <aside className="rb-detail-aside" style={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 20 }}>
             <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
               — {product.code}
             </div>
