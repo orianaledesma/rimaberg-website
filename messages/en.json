@@ -1,0 +1,82 @@
+{
+  "header": {
+    "search": "Search",
+    "menu": "Menu"
+  },
+  "categories": {
+    "all": "All",
+    "whatsNew": "What's New",
+    "earrings": "Earrings",
+    "rings": "Rings",
+    "pendants": "Pendants",
+    "bracelets": "Bracelets",
+    "engagement": "Engagement"
+  },
+  "status": {
+    "onRequest": "On request",
+    "preOrder": "Pre-order",
+    "madeToOrder": "Made to order"
+  },
+  "home": {
+    "heroEyebrow": "SS 26 · Žiedlapiai",
+    "heroLine1": "A garden,",
+    "heroEm": "cast",
+    "heroLine2": "in silver.",
+    "heroLead": "Each piece is hand-textured and stone-set in Vilnius — slow studio practice, no two alike.",
+    "heroCta": "Discover the collection",
+    "catMark": "— § II",
+    "catTitle": "The catalogue",
+    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order. Write to us for any of them."
+  },
+  "catalogue": {
+    "indexMark": "— Index · {category}",
+    "allTitle": "The catalogue",
+    "pieces": "{count} pieces",
+    "filter": "Filter",
+    "sort": "Sort: New",
+    "empty": "No pieces in this category yet.",
+    "viewAll": "View all pieces"
+  },
+  "detail": {
+    "breadcrumbHome": "Catalogue",
+    "related": "Related, by hand",
+    "enquire": "Enquire about this piece",
+    "save": "Ring-size guide",
+    "labels": {
+      "status": "Status",
+      "metal": "Metal",
+      "stones": "Stones",
+      "size": "Size",
+      "leadTime": "Lead time"
+    },
+    "enquireSubject": "Enquiry — {name} ({code})"
+  },
+  "about": {
+    "eyebrow": "About · Rima Berg",
+    "titleLine1": "A studio practice",
+    "titleLine2In": "in",
+    "titleEm": "cast silver",
+    "p1": "Rima Berg has been working with silver for two decades — first apprenticed at the Lithuanian Art Academy, then in her own studio on Vilniaus street since 2008. Each piece is hand-cast, textured with her own tools, and stone-set one at a time.",
+    "p2": "No collection is reproduced. When a piece sells, the maquette goes back into the drawer. What we keep is the language — granulation, rose-gold bezels, sapphires the colour of Vilnius rain.",
+    "artistEyebrow": "The artist",
+    "artistTitle": "A face for the hand.",
+    "artistText": "Rima photographed at the bench."
+  },
+  "contact": {
+    "contactLabel": "Contact",
+    "atelierLabel": "Atelier",
+    "hoursLabel": "Hours",
+    "email": "studio@rimaberg.lt",
+    "phone": "+370 600 12 345",
+    "addressLine1": "Vilniaus g. 22-4",
+    "addressLine2": "LT-01402 Vilnius",
+    "hoursLine1": "By appointment",
+    "hoursLine2": "Tue–Sat · 11–18"
+  },
+  "footer": {
+    "copyright": "© 2026 RIMA BERG · Vilnius, LT",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "contact": "Contact"
+  }
+}

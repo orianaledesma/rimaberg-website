@@ -1,0 +1,82 @@
+{
+  "header": {
+    "search": "Paieška",
+    "menu": "Meniu"
+  },
+  "categories": {
+    "all": "Visi",
+    "whatsNew": "Naujienos",
+    "earrings": "Auskarai",
+    "rings": "Žiedai",
+    "pendants": "Pakabukai",
+    "bracelets": "Apyrankės",
+    "engagement": "Sužadėtuvių"
+  },
+  "status": {
+    "onRequest": "Pagal užklausą",
+    "preOrder": "Išankstinis užsakymas",
+    "madeToOrder": "Gaminama pagal užsakymą"
+  },
+  "home": {
+    "heroEyebrow": "SS 26 · Žiedlapiai",
+    "heroLine1": "Sodas,",
+    "heroEm": "nulietas",
+    "heroLine2": "sidabre.",
+    "heroLead": "Kiekviena pieza rankomis faktūruojama ir akmenimis įsodinama Vilniuje — lėta studijos praktika, nė vienos vienodos.",
+    "heroCta": "Atrasti kolekciją",
+    "catMark": "— § II",
+    "catTitle": "Katalogas",
+    "catLead": "Veikiantis piezų, šiuo metu laikomų studijos stalčiuje, sąrašas. Kai kurios unikalios, kai kurios gaminamos pagal užsakymą. Parašykite mums dėl bet kurios."
+  },
+  "catalogue": {
+    "indexMark": "— Indeksas · {category}",
+    "allTitle": "Katalogas",
+    "pieces": "{count} piezos",
+    "filter": "Filtruoti",
+    "sort": "Rūšiuoti: Naujausi",
+    "empty": "Šioje kategorijoje piezų dar nėra.",
+    "viewAll": "Žiūrėti visas piezas"
+  },
+  "detail": {
+    "breadcrumbHome": "Katalogas",
+    "related": "Susiję, rankų darbo",
+    "enquire": "Teirautis dėl šios piezos",
+    "save": "Žiedo dydžio gidas",
+    "labels": {
+      "status": "Būsena",
+      "metal": "Metalas",
+      "stones": "Akmenys",
+      "size": "Dydis",
+      "leadTime": "Pagaminimo laikas"
+    },
+    "enquireSubject": "Užklausa — {name} ({code})"
+  },
+  "about": {
+    "eyebrow": "Apie · Rima Berg",
+    "titleLine1": "Studijos praktika",
+    "titleLine2In": "lietame",
+    "titleEm": "sidabre",
+    "p1": "Rima Berg su sidabru dirba du dešimtmečius — pirma mokėsi Lietuvos dailės akademijoje, o nuo 2008-ųjų turi savo studiją Vilniaus gatvėje. Kiekviena pieza liejama, faktūruojama jos pačios įrankiais ir įsodinama akmenimis po vieną.",
+    "p2": "Nė viena kolekcija nekartojama. Pardavus piezą, maketas grįžta į stalčių. Išlieka tik kalba — granuliacija, rausvo aukso rėmeliai ir safyrai Vilniaus lietaus spalvos.",
+    "artistEyebrow": "Menininkė",
+    "artistTitle": "Veidas rankai.",
+    "artistText": "Rima, nufotografuota prie darbastalio."
+  },
+  "contact": {
+    "contactLabel": "Kontaktai",
+    "atelierLabel": "Studija",
+    "hoursLabel": "Darbo laikas",
+    "email": "studio@rimaberg.lt",
+    "phone": "+370 600 12 345",
+    "addressLine1": "Vilniaus g. 22-4",
+    "addressLine2": "LT-01402 Vilnius",
+    "hoursLine1": "Pagal išankstinį susitarimą",
+    "hoursLine2": "Antr.–Šešt. · 11–18"
+  },
+  "footer": {
+    "copyright": "© 2026 RIMA BERG · Vilnius, LT",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "contact": "Kontaktai"
+  }
+}
