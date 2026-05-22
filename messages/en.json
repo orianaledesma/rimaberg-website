@@ -38,8 +38,6 @@
     "indexMark": "— Index · {category}",
     "allTitle": "The catalogue",
     "pieces": "{count} pieces",
-    "filter": "Filter",
-    "sort": "Sort: New",
     "empty": "No pieces in this category yet.",
     "viewAll": "View all pieces"
   },

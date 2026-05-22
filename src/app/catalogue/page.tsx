@@ -51,36 +51,31 @@ export default async function CataloguePage({
         <Header tone="light" />
         <CategoryNav active={isAll ? "all" : category} />
 
-        {/* Heading row */}
-        <section
-          className="rb-collapse"
-          style={{
-            padding: "clamp(40px, 6vw, 64px) clamp(20px, 5vw, 64px) 32px",
-            display: "grid",
-            gridTemplateColumns: "minmax(180px, 280px) 1fr minmax(180px, 280px)",
-            gap: 48,
-            alignItems: "end",
-          }}
-        >
+        {/* Heading */}
+        <section style={{ padding: "clamp(40px, 6vw, 64px) clamp(20px, 5vw, 64px) 32px" }}>
           <Reveal>
             <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
               {t("indexMark", { category: heading })}
             </div>
-            <h1 style={{ fontSize: "clamp(40px, 7vw, 64px)", fontWeight: 200, marginTop: 16, letterSpacing: "-0.02em", lineHeight: 1 }}>
+            <h1
+              style={{
+                fontSize: "clamp(40px, 7vw, 64px)",
+                fontWeight: 200,
+                marginTop: 16,
+                letterSpacing: "-0.02em",
+                lineHeight: 1,
+                display: "flex",
+                alignItems: "baseline",
+                gap: 14,
+                flexWrap: "wrap",
+              }}
+            >
               {heading}
+              <span className="rb-mono" style={{ fontSize: 12, opacity: 0.4, letterSpacing: "0.04em", fontWeight: 400 }}>
+                {t("pieces", { count: items.length })}
+              </span>
             </h1>
           </Reveal>
-          <div className="rb-mono" style={{ fontSize: 11, opacity: 0.5, textAlign: "center", paddingBottom: 12 }}>
-            — {t("pieces", { count: items.length })} —
-          </div>
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: 20, alignItems: "center", paddingBottom: 12 }}>
-            <button className="rb-eyebrow" style={{ opacity: 0.65, background: "none", border: "none", cursor: "pointer" }}>
-              {t("filter")} ⊕
-            </button>
-            <button className="rb-eyebrow" style={{ background: "none", border: "none", cursor: "pointer" }}>
-              {t("sort")} ↓
-            </button>
-          </div>
         </section>
 
         {/* Grid */}

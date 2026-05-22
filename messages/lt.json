@@ -38,8 +38,6 @@
     "indexMark": "— Indeksas · {category}",
     "allTitle": "Katalogas",
     "pieces": "{count} piezos",
-    "filter": "Filtruoti",
-    "sort": "Rūšiuoti: Naujausi",
     "empty": "Šioje kategorijoje piezų dar nėra.",
     "viewAll": "Žiūrėti visas piezas"
   },
