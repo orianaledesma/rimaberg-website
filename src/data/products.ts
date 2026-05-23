@@ -11,7 +11,7 @@ import { PRODUCTS } from "./products.generated";
  * read helpers the app uses.
  */
 
-export type PriceStatus = "onRequest" | "preOrder" | "madeToOrder";
+export type PriceStatus = "onRequest" | "preOrder" | "madeToOrder" | "soldOut";
 
 export interface LocalizedText {
   en: string;

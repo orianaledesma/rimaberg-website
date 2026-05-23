@@ -91,7 +91,14 @@ public/products/*      ──(npm run contact-sheet)──►   content/contact-
   onRequest·preOrder·madeToOrder.
 - **`npm run import:products`** validates the CSV and regenerates
   `src/data/products.generated.ts` (typed). Never edit the generated file or
-  hand-edit `products.ts`'s data — edit the CSV and re-run.
+  hand-edit `products.ts`'s data — edit the CSV and re-run. Rows with **no
+  images are treated as drafts**: kept in the CSV (and shown in the builder) but
+  skipped from the live data, so a piece only goes live once it has a photo.
+  `status` ∈ onRequest·preOrder·madeToOrder·soldOut.
+
+`content/products.csv` is pre-loaded with the **real catalogue (~73 pieces)**
+scraped from the old rimaberg.com — names, categories and status are filled;
+images and descriptions are blank, to be added via the builder.
 - **`npm run contact-sheet`** builds `content/contact-sheet.html`: every photo
   as a labelled thumbnail (✓ marks ones already in the CSV), with a filename
   filter — open it to map photos → pieces while filling the CSV.

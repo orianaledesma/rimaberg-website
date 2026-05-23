@@ -14,10 +14,10 @@ interface CategoryTile {
   image: string;
 }
 
-/** First photo of a category, with a graceful fallback to any piece. */
+/** First photo of a category, with a graceful fallback to any piece (or none). */
 function pickImage(category: CategorySlug): string {
-  const inCategory = getByCategory(category)[0];
-  return (inCategory ?? getAllProducts()[0]).images[0];
+  const piece = getByCategory(category)[0] ?? getAllProducts()[0];
+  return piece?.images[0] ?? "";
 }
 
 /**
@@ -39,16 +39,18 @@ export default async function CategoryGrid() {
     <div className="rb-catcard-grid">
       {tiles.map((tile) => (
         <Link key={tile.key} href={tile.href} className="rb-catcard" aria-label={tCat(tile.key)}>
-          <Image
-            src={tile.image}
-            alt=""
-            fill
-            sizes="(max-width: 860px) 50vw, 25vw"
-            placeholder={blurFor(tile.image) ? "blur" : "empty"}
-            blurDataURL={blurFor(tile.image)}
-            className="rb-catcard-img"
-            style={{ objectFit: "cover" }}
-          />
+          {tile.image && (
+            <Image
+              src={tile.image}
+              alt=""
+              fill
+              sizes="(max-width: 860px) 50vw, 25vw"
+              placeholder={blurFor(tile.image) ? "blur" : "empty"}
+              blurDataURL={blurFor(tile.image)}
+              className="rb-catcard-img"
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className="rb-catcard-label">
             <span className="rb-eyebrow">{tCat(tile.key)}</span>
             <span aria-hidden="true">→</span>

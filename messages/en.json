@@ -23,7 +23,8 @@
   "status": {
     "onRequest": "On request",
     "preOrder": "Pre-order",
-    "madeToOrder": "Made to order"
+    "madeToOrder": "Made to order",
+    "soldOut": "Sold out"
   },
   "home": {
     "heroEyebrow": "SS 26 · Žiedlapiai",

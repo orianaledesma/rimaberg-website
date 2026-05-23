@@ -19,7 +19,7 @@ const CSV = resolve(root, "content/products.csv");
 const OUT = resolve(root, "src/data/products.generated.ts");
 
 const CATEGORIES = ["earrings", "rings", "pendants", "bracelets", "engagement"];
-const STATUSES = ["onRequest", "preOrder", "madeToOrder"];
+const STATUSES = ["onRequest", "preOrder", "madeToOrder", "soldOut"];
 
 /** Minimal RFC-4180 CSV parser: handles quoted fields, commas and newlines. */
 function parseCSV(text) {
@@ -52,6 +52,7 @@ const idx = (name) => header.indexOf(name);
 const errors = [];
 const seen = new Set();
 const products = [];
+let drafts = 0;
 
 rows.forEach((cells, n) => {
   const line = n + 2; // header is line 1
@@ -66,7 +67,10 @@ rows.forEach((cells, n) => {
   seen.add(id);
   if (!CATEGORIES.includes(category)) errors.push(`L${line} (${id}): invalid category "${category}" — use ${CATEGORIES.join("|")}`);
   if (!STATUSES.includes(status)) errors.push(`L${line} (${id}): invalid status "${status}" — use ${STATUSES.join("|")}`);
-  if (images.length === 0) errors.push(`L${line} (${id}): at least one image is required`);
+
+  // Pieces with no photo yet are drafts: kept in the CSV for the builder but
+  // skipped from the live data (the app needs at least a primary image).
+  if (images.length === 0) { drafts++; return; }
 
   products.push({
     id,
@@ -125,4 +129,7 @@ ${body}
 `;
 
 writeFileSync(OUT, out, "utf-8");
-console.log(`✓ Imported ${products.length} pieces → src/data/products.generated.ts`);
+console.log(
+  `✓ Imported ${products.length} live pieces → src/data/products.generated.ts` +
+    (drafts ? ` (${drafts} draft${drafts > 1 ? "s" : ""} without photos skipped)` : "")
+);

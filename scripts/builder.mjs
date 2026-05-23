@@ -145,6 +145,7 @@ const html = String.raw`<!doctype html>
           <option value="onRequest">onRequest</option>
           <option value="preOrder">preOrder</option>
           <option value="madeToOrder">madeToOrder</option>
+          <option value="soldOut">soldOut</option>
         </select>
       </div>
     </div>

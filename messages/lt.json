@@ -23,7 +23,8 @@
   "status": {
     "onRequest": "Pagal užklausą",
     "preOrder": "Išankstinis užsakymas",
-    "madeToOrder": "Gaminama pagal užsakymą"
+    "madeToOrder": "Gaminama pagal užsakymą",
+    "soldOut": "Išparduota"
   },
   "home": {
     "heroEyebrow": "SS 26 · Žiedlapiai",
