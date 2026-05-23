@@ -95,6 +95,12 @@ public/products/*      ──(npm run contact-sheet)──►   content/contact-
 - **`npm run contact-sheet`** builds `content/contact-sheet.html`: every photo
   as a labelled thumbnail (✓ marks ones already in the CSV), with a filename
   filter — open it to map photos → pieces while filling the CSV.
+- **`npm run builder`** builds `content/builder.html`: an interactive tool to
+  group several photos into one piece (click photos → number = order, first =
+  primary), fill its fields (LT/EN) and **Export CSV** in the importer's schema.
+  Work is saved in the browser (localStorage); seeded with the current pieces.
+  Flow: build pieces → Export CSV → replace `content/products.csv` →
+  `npm run import:products`.
 
 ### Content TODO (Rima / Ori)
 The current 14 rows are placeholder built on real photos. To finish: open the
