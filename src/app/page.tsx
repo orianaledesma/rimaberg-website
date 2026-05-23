@@ -147,22 +147,13 @@ export default async function HomePage() {
               href={STORE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rb-eyebrow"
-              style={{ display: "inline-block", marginTop: 16, borderBottom: "1px solid var(--rb-ink)", paddingBottom: 6 }}
+              className="rb-btn"
+              style={{ marginTop: 18 }}
             >
               {t("catVisit")}
             </a>
           </div>
-          <Link
-            href="/catalogue"
-            className="rb-eyebrow"
-            style={{
-              alignSelf: "end",
-              whiteSpace: "nowrap",
-              borderBottom: "1px solid var(--rb-ink)",
-              paddingBottom: 6,
-            }}
-          >
+          <Link href="/catalogue" className="rb-btn" style={{ alignSelf: "end", whiteSpace: "nowrap" }}>
             {t("allPieces")}
           </Link>
         </Reveal>

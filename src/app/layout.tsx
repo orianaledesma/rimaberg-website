@@ -6,6 +6,7 @@ import "./globals.css";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
 import "@/styles/animations.css";
+import "@/styles/buttons.css";
 import "@/styles/navigation.css";
 import "@/styles/carousel.css";
 import "@/styles/product.css";
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — ${TAGLINE}`,
     description: DESCRIPTION,
-    locale: "en",
+    locale: "lt",
   },
 };
 

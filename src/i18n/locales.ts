@@ -1,6 +1,8 @@
-export const LOCALES = ["en", "lt"] as const;
+// LT is the primary locale (Lithuanian audience); EN is the secondary fallback.
+// Order also drives the header switch (LT shown first).
+export const LOCALES = ["lt", "en"] as const;
 export type Locale = (typeof LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = "en";
+export const DEFAULT_LOCALE: Locale = "lt";
 export const LOCALE_COOKIE = "rb-locale";
 
 export const LOCALE_LABELS: Record<Locale, string> = {

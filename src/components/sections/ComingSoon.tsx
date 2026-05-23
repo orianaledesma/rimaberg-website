@@ -44,8 +44,8 @@ export default async function ComingSoon() {
         href={STORE_MAPS_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="rb-eyebrow"
-        style={{ marginTop: 8, borderBottom: "1px solid var(--rb-ink)", paddingBottom: 6 }}
+        className="rb-btn"
+        style={{ marginTop: 12 }}
       >
         {t("cta")}
       </a>

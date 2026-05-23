@@ -49,28 +49,13 @@ export default async function AtelierSection() {
           {t("atelierText")}
         </p>
         <div style={{ marginTop: 44, display: "flex", gap: 32, alignItems: "center" }}>
-          <Link
-            href="/about"
-            style={{
-              color: "#fafafa",
-              fontSize: 11,
-              letterSpacing: "0.24em",
-              textTransform: "uppercase",
-              borderBottom: "1px solid #fafafa",
-              paddingBottom: 6,
-            }}
-          >
+          <Link href="/about" className="rb-btn rb-btn--on-dark">
             {t("aboutCta")}
           </Link>
           <Link
             href="/about"
-            style={{
-              color: "#fafafa",
-              opacity: 0.5,
-              fontSize: 11,
-              letterSpacing: "0.24em",
-              textTransform: "uppercase",
-            }}
+            className="rb-eyebrow"
+            style={{ color: "#fafafa", opacity: 0.5 }}
           >
             {t("processCta")}
           </Link>

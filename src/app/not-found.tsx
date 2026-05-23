@@ -28,11 +28,7 @@ export default async function NotFound() {
           {t("title")}
         </h1>
         <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.7, maxWidth: 380 }}>{t("lead")}</p>
-        <Link
-          href="/catalogue"
-          className="rb-eyebrow"
-          style={{ marginTop: 8, borderBottom: "1px solid var(--rb-ink)", paddingBottom: 6 }}
-        >
+        <Link href="/catalogue" className="rb-btn" style={{ marginTop: 8 }}>
           {t("back")}
         </Link>
       </section>

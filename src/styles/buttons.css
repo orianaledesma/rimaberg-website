@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Buttons / CTAs — one outline button with light, dark and solid variants.
+   Uses only existing brand tokens. 44px min height for touch + WCAG.
+   ========================================================================== */
+.rb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 26px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--rb-ink);
+  background: transparent;
+  border: 1px solid var(--rb-ink);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.rb-btn:hover {
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+}
+
+/* On the dark (noir) bands. */
+.rb-btn--on-dark {
+  color: #fafafa;
+  border-color: rgba(250, 250, 250, 0.5);
+}
+.rb-btn--on-dark:hover {
+  background: #fafafa;
+  color: var(--rb-ink);
+  border-color: #fafafa;
+}
+
+/* Primary, filled. */
+.rb-btn--solid {
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+  border-color: var(--rb-ink);
+}
+.rb-btn--solid:hover {
+  background: transparent;
+  color: var(--rb-ink);
+}
