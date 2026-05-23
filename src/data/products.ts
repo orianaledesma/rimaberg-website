@@ -21,9 +21,9 @@ export interface LocalizedText {
 export interface Product {
   /** URL slug + stable id. */
   id: string;
-  /** Proper name — same across locales. */
-  name: string;
-  /** Studio reference, e.g. "RB · 0427 · unique". */
+  /** Localized display name (LT primary, EN secondary). */
+  name: LocalizedText;
+  /** Studio hallmark/reference, e.g. "Au/0133". */
   code: string;
   category: CategorySlug;
   status: PriceStatus;

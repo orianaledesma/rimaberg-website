@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Product } from "@/data/products";
+import type { Locale } from "@/i18n/locales";
 import { blurFor } from "@/data/blur";
 
 /**
@@ -10,6 +11,7 @@ import { blurFor } from "@/data/blur";
  * Three-up on desktop, two-up on mobile. Server component.
  */
 export default async function ProductTileGrid({ products }: { products: Product[] }) {
+  const locale = (await getLocale()) as Locale;
   const tCat = await getTranslations("categories");
 
   return (
@@ -18,7 +20,7 @@ export default async function ProductTileGrid({ products }: { products: Product[
         <Link key={p.id} href={`/catalogue/${p.id}`} className="rb-tile">
           <Image
             src={p.images[0]}
-            alt={p.name}
+            alt={p.name[locale]}
             fill
             sizes="(max-width: 860px) 50vw, 33vw"
             placeholder={blurFor(p.images[0]) ? "blur" : "empty"}
@@ -28,7 +30,7 @@ export default async function ProductTileGrid({ products }: { products: Product[
           />
           <div className="rb-tile-label">
             <span className="rb-eyebrow rb-tile-cat">{tCat(p.category)}</span>
-            <span className="rb-tile-name">{p.name}</span>
+            <span className="rb-tile-name">{p.name[locale]}</span>
           </div>
         </Link>
       ))}

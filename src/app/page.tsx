@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import type { Locale } from "@/i18n/locales";
 import Header from "@/components/layout/Header";
 import CategoryNav from "@/components/layout/CategoryNav";
 import Footer from "@/components/layout/Footer";
@@ -16,6 +17,7 @@ import { STORE_MAPS_URL } from "@/data/site";
 export default async function HomePage() {
   const t = await getTranslations("home");
   const tStatus = await getTranslations("status");
+  const locale = (await getLocale()) as Locale;
 
   const featured = getFeatured();
 
@@ -25,7 +27,7 @@ export default async function HomePage() {
 
   const carouselItems: CarouselItem[] = featured.map((p) => ({
     id: p.id,
-    name: p.name,
+    name: p.name[locale],
     image: p.images[0],
     blurDataURL: blurFor(p.images[0]),
     statusLabel: tStatus(p.status),

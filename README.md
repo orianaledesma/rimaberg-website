@@ -97,8 +97,10 @@ public/products/*      ──(npm run contact-sheet)──►   content/contact-
   `status` ∈ onRequest·preOrder·madeToOrder·soldOut.
 
 `content/products.csv` is pre-loaded with the **real catalogue (~73 pieces)**
-scraped from the old rimaberg.com — names, categories and status are filled;
-images and descriptions are blank, to be added via the builder.
+scraped from the old rimaberg.com — bilingual names (`name_lt`/`name_en`),
+materials, stones, hallmark `code` and **LT + EN descriptions** are filled.
+Only `images` is blank: open the builder, assign photos to each piece, export,
+and import to publish. See `content/old-site-reference.md` for the source data.
 - **`npm run contact-sheet`** builds `content/contact-sheet.html`: every photo
   as a labelled thumbnail (✓ marks ones already in the CSV), with a filename
   filter — open it to map photos → pieces while filling the CSV.

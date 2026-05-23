@@ -1,5 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import type { Locale } from "@/i18n/locales";
 import Header from "@/components/layout/Header";
 import CategoryNav from "@/components/layout/CategoryNav";
 import Footer from "@/components/layout/Footer";
@@ -35,6 +36,7 @@ export default async function CataloguePage({
   const t = await getTranslations("catalogue");
   const tCat = await getTranslations("categories");
   const tStatus = await getTranslations("status");
+  const locale = (await getLocale()) as Locale;
 
   const items = resolveItems(category);
   const isAll = category === "all";
@@ -54,7 +56,7 @@ export default async function CataloguePage({
   })();
   const carouselItems: CarouselItem[] = carouselSource.map((p) => ({
     id: p.id,
-    name: p.name,
+    name: p.name[locale],
     image: p.images[0],
     blurDataURL: blurFor(p.images[0]),
     statusLabel: tStatus(p.status),

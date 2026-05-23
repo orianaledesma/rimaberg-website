@@ -127,8 +127,12 @@ const html = String.raw`<!doctype html>
     <div class="chips" id="chips"><span class="muted">none yet</span></div>
 
     <div class="row2">
-      <div><label>Name</label><input id="f_name" placeholder="Žinija"></div>
-      <div><label>id (slug)</label><input id="f_id" placeholder="auto from name"></div>
+      <div><label>Name LT</label><input id="f_name_lt" placeholder="Žinija"></div>
+      <div><label>Name EN</label><input id="f_name_en" placeholder="Knowledge"></div>
+    </div>
+    <div class="row2">
+      <div><label>id (slug)</label><input id="f_id" placeholder="auto from LT name"></div>
+      <div></div>
     </div>
     <div class="row2">
       <div><label>Category</label>
@@ -189,7 +193,7 @@ const html = String.raw`<!doctype html>
 <script>
 const PHOTOS = ${JSON.stringify(photos)};
 const SEED = ${JSON.stringify(seed)};
-const FIELDS = ["id","category","images","name","code","status","featured","new",
+const FIELDS = ["id","category","images","name_lt","name_en","code","status","featured","new",
   "material_lt","material_en","stones_lt","stones_en","sizes_lt","sizes_en",
   "leadtime_lt","leadtime_en","description_lt","description_en"];
 const KEY = "rb-builder-v1";
@@ -244,27 +248,26 @@ function renderList() {
   $("pcount").textContent = products.length;
   $("plist").innerHTML = products.map(p =>
     '<div class="pitem"><img src="../public/products/'+(p.images?.[0]||"")+'">'+
-    '<div class="sp"><b>'+(p.name||p.id)+'</b> <span class="muted">'+p.category+' · '+(p.images?.length||0)+' ph</span></div>'+
+    '<div class="sp"><b>'+(p.name_lt||p.name_en||p.id)+'</b> <span class="muted">'+p.category+' · '+(p.images?.length||0)+' ph</span></div>'+
     '<button class="ghost" data-edit="'+p.id+'">Edit</button>'+
     '<button class="danger" data-del="'+p.id+'">✕</button></div>'
   ).join("");
 }
 function renderAll() { renderPhotos(); renderChips(); renderForm(); renderList(); }
 
+const FORM_KEYS = ["name_lt","name_en","id","category","status","code",
+  "material_lt","material_en","stones_lt","stones_en","sizes_lt","sizes_en",
+  "leadtime_lt","leadtime_en","description_lt","description_en"];
 function readForm() {
   const o = { images: selected.slice() };
-  ["name","id","category","status","code","material_lt","material_en","stones_lt","stones_en",
-   "sizes_lt","sizes_en","leadtime_lt","leadtime_en","description_lt","description_en"]
-    .forEach(k => o[k] = $("f_"+k).value.trim());
+  FORM_KEYS.forEach(k => o[k] = $("f_"+k).value.trim());
   o.featured = $("f_featured").checked;
   o.new = $("f_new").checked;
-  if (!o.id) o.id = slugify(o.name);
+  if (!o.id) o.id = slugify(o.name_lt || o.name_en);
   return o;
 }
 function fillForm(p) {
-  ["name","id","category","status","code","material_lt","material_en","stones_lt","stones_en",
-   "sizes_lt","sizes_en","leadtime_lt","leadtime_en","description_lt","description_en"]
-    .forEach(k => $("f_"+k).value = p[k] || "");
+  FORM_KEYS.forEach(k => $("f_"+k).value = p[k] || "");
   $("f_featured").checked = !!p.featured;
   $("f_new").checked = !!p.new;
   selected = (p.images||[]).slice();

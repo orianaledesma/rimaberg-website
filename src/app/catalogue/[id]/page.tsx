@@ -22,7 +22,8 @@ export async function generateMetadata({
   const { id } = await params;
   const product = getProductById(id);
   if (!product) return { title: "Not found" };
-  return { title: product.name };
+  const locale = (await getLocale()) as Locale;
+  return { title: product.name[locale] };
 }
 
 export default async function ProductDetailPage({
@@ -44,7 +45,8 @@ export default async function ProductDetailPage({
   // related pieces to fill any gaps.
   const thumbs = [...product.images.slice(1), ...related.map((r) => r.images[0])].slice(0, 4);
 
-  const subject = t("enquireSubject", { name: product.name, code: product.code });
+  const name = product.name[locale];
+  const subject = t("enquireSubject", { name, code: product.code });
   const mailto = `mailto:studio@rimaberg.lt?subject=${encodeURIComponent(subject)}`;
 
   return (
@@ -56,7 +58,7 @@ export default async function ProductDetailPage({
           className="rb-mono"
           style={{ padding: "24px clamp(20px, 5vw, 64px) 0", fontSize: 11, opacity: 0.55, letterSpacing: "0.1em" }}
         >
-          {t("breadcrumbHome")} / {tCat(product.category)} / {product.name}
+          {t("breadcrumbHome")} / {tCat(product.category)} / {name}
         </div>
 
         <section
@@ -74,7 +76,7 @@ export default async function ProductDetailPage({
             <Reveal mask style={{ aspectRatio: "4/5", background: "var(--rb-noir)", overflow: "hidden", position: "relative" }}>
               <Image
                 src={product.images[0]}
-                alt={product.name}
+                alt={name}
                 fill
                 sizes="(max-width: 760px) 100vw, 55vw"
                 className="rb-kenburns"
@@ -102,7 +104,7 @@ export default async function ProductDetailPage({
               — {product.code}
             </div>
             <h1 style={{ fontSize: "clamp(40px, 6vw, 56px)", fontWeight: 200, lineHeight: 1, letterSpacing: "-0.02em" }}>
-              {product.name}
+              {name}
             </h1>
             <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.78, marginTop: 8 }}>
               {product.description[locale]}

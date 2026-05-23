@@ -25,6 +25,7 @@ export default async function ProductCard({
 
   const swap = product.images[1];
   const material = product.material[locale];
+  const name = product.name[locale];
 
   return (
     <Link href={`/catalogue/${product.id}`} style={{ display: "block" }}>
@@ -34,7 +35,7 @@ export default async function ProductCard({
       >
         <Image
           src={product.images[0]}
-          alt={product.name}
+          alt={name}
           fill
           sizes="(max-width: 768px) 50vw, 33vw"
           className="rb-prod-img rb-prod-img--base"
@@ -56,7 +57,7 @@ export default async function ProductCard({
           <div className="rb-eyebrow" style={{ opacity: 0.85 }}>
             {tCat(product.category)}
           </div>
-          <div style={{ fontSize: 18, fontWeight: 300, marginTop: 4 }}>{product.name}</div>
+          <div style={{ fontSize: 18, fontWeight: 300, marginTop: 4 }}>{name}</div>
           <div style={{ fontSize: 11, opacity: 0.7, marginTop: 6, letterSpacing: "0.05em" }}>
             {material}
           </div>
@@ -73,7 +74,7 @@ export default async function ProductCard({
             color: "var(--rb-ink)",
           }}
         >
-          <div style={{ fontSize: 13, fontWeight: 400 }}>{product.name}</div>
+          <div style={{ fontSize: 13, fontWeight: 400 }}>{name}</div>
           <div
             style={{
               fontSize: 11,
