@@ -75,19 +75,33 @@ reusable `rb-*` classes are split into themed partials under `styles/` and
 imported once from the root layout. Components compose those classes with
 inline layout values — they never hardcode brand colours.
 
-## Content TODO (for Rima)
+## Content pipeline
 
-The product data in `src/data/products.ts` is **placeholder built on real
-photos**. Names, prices/status, materials, stones, sizes and the EN/LT
-descriptions are plausible but unconfirmed. To finish:
+Piece data is authored in a spreadsheet, not in code. The flow:
 
-1. Edit the entries in `PRODUCTS` with the real piece data (keep or repoint the
-   `images` paths — there are ~128 photos in `public/products`).
-2. Add pieces by appending objects to `PRODUCTS`; filters, detail pages and
-   related items are derived automatically.
-3. Replace the atelier carousel photos and the portrait in `about/page.tsx`.
-4. Confirm the real contact details / opening hours in `messages/*.json`
-   (`contact` namespace), and the social links in `Footer.tsx`.
+```
+content/products.csv  ──(npm run import:products)──►  src/data/products.generated.ts
+public/products/*      ──(npm run contact-sheet)──►   content/contact-sheet.html
+```
+
+- **`content/products.csv`** is the source of truth — one row per piece, columns
+  are LT-first (`*_lt` then `*_en`). The `images` column lists filenames from
+  `public/products` separated by `|` (first = primary, second = hover swap).
+  `category` ∈ earrings·rings·pendants·bracelets·engagement; `status` ∈
+  onRequest·preOrder·madeToOrder.
+- **`npm run import:products`** validates the CSV and regenerates
+  `src/data/products.generated.ts` (typed). Never edit the generated file or
+  hand-edit `products.ts`'s data — edit the CSV and re-run.
+- **`npm run contact-sheet`** builds `content/contact-sheet.html`: every photo
+  as a labelled thumbnail (✓ marks ones already in the CSV), with a filename
+  filter — open it to map photos → pieces while filling the CSV.
+
+### Content TODO (Rima / Ori)
+The current 14 rows are placeholder built on real photos. To finish: open the
+contact sheet, add a CSV row per real piece (names, materials, stones, EN/LT
+descriptions), run the importer; replace the atelier/portrait photos in
+`about/page.tsx`; confirm contact details + the real store address/maps link in
+`messages/*.json` (`contact`) and `src/data/site.ts` (`STORE_MAPS_URL`).
 
 ## Trade-offs & decisions
 
