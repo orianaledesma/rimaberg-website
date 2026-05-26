@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import Carousel, { type Slide } from "@/components/ui/Carousel";
 import Reveal from "@/components/ui/Reveal";
-import { getFeatured } from "@/data/products";
+import { ATELIER_IMAGES } from "@/data/home";
 import { blurFor } from "@/data/blur";
 
 /**
@@ -12,9 +12,11 @@ import { blurFor } from "@/data/blur";
  */
 export default async function AtelierSection() {
   const t = await getTranslations("home");
-  const slides: Slide[] = getFeatured()
-    .slice(0, 4)
-    .map((p, i) => ({ src: p.images[0], caption: `fig. 0${i + 1}`, blurDataURL: blurFor(p.images[0]) }));
+  const slides: Slide[] = ATELIER_IMAGES.map((src, i) => ({
+    src,
+    caption: `fig. 0${i + 1}`,
+    blurDataURL: blurFor(src),
+  }));
 
   return (
     <section

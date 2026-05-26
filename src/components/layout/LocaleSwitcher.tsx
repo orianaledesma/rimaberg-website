@@ -24,27 +24,36 @@ export default function LocaleSwitcher({ tone = "dark" }: { tone?: "dark" | "lig
     });
 
   return (
-    <div style={{ display: "flex", gap: 12, alignItems: "center", color, opacity: pending ? 0.5 : 1 }}>
-      {LOCALES.map((loc) => (
-        <button
-          key={loc}
-          type="button"
-          className="rb-eyebrow"
-          aria-pressed={loc === active}
-          onClick={() => change(loc)}
-          style={{
-            fontSize: 10,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "inherit",
-            opacity: loc === active ? 1 : 0.5,
-            padding: 0,
-          }}
-        >
-          {LOCALE_SHORT[loc]}
-        </button>
-      ))}
+    <div
+      role="group"
+      aria-label="Language"
+      style={{ display: "flex", gap: 12, alignItems: "center", color, opacity: pending ? 0.5 : 1 }}
+    >
+      {LOCALES.map((loc) => {
+        const isActive = loc === active;
+        return (
+          <button
+            key={loc}
+            type="button"
+            className="rb-eyebrow"
+            aria-current={isActive ? "true" : undefined}
+            aria-pressed={isActive}
+            aria-label={`Switch to ${loc.toUpperCase()}`}
+            onClick={() => change(loc)}
+            style={{
+              fontSize: 10,
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "inherit",
+              opacity: isActive ? 1 : 0.5,
+              padding: 4,
+            }}
+          >
+            {LOCALE_SHORT[loc]}
+          </button>
+        );
+      })}
     </div>
   );
 }

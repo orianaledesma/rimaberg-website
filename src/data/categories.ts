@@ -7,7 +7,6 @@ export type CategorySlug =
   | "earrings"
   | "rings"
   | "pendants"
-  | "bracelets"
   | "engagement";
 
 export interface CategoryDef {
@@ -19,11 +18,11 @@ export interface CategoryDef {
 
 export const CATEGORY_NAV: CategoryDef[] = [
   { slug: "all", key: "all" },
-  { slug: "new", key: "whatsNew" },
+  // "What's new" hidden until there are pieces flagged as `isNew: true`.
+  // Re-add `{ slug: "new", key: "whatsNew" }` when ready.
   { slug: "earrings", key: "earrings" },
   { slug: "rings", key: "rings" },
   { slug: "pendants", key: "pendants" },
-  { slug: "bracelets", key: "bracelets" },
   { slug: "engagement", key: "engagement" },
 ];
 
@@ -32,6 +31,5 @@ export const PRODUCT_CATEGORIES: CategorySlug[] = [
   "earrings",
   "rings",
   "pendants",
-  "bracelets",
   "engagement",
 ];

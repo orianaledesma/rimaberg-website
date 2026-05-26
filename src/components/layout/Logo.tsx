@@ -1,28 +1,26 @@
-type Tone = "dark" | "light";
+import Image from "next/image";
+
+// Source dimensions of /public/logo/logo.png — used to keep the rendered
+// wordmark in its natural aspect ratio (horizontal lockup).
+const SRC_W = 1092;
+const SRC_H = 358;
 
 /**
- * Tracked wordmark used in the header. `tone` is the colour of the mark itself:
- * "dark" = near-black ink (on paper), "light" = off-white (on the noir hero).
+ * Brand wordmark (white art on a transparent background). Lives in
+ * /public/logo/logo.png — designed for dark surfaces. The component takes a
+ * `height` and computes the width from the source aspect ratio so the mark
+ * never gets squished.
  */
-export default function Logo({ tone = "dark", size = 14 }: { tone?: Tone; size?: number }) {
-  const color = tone === "dark" ? "var(--rb-ink)" : "#fafafa";
+export default function Logo({ height = 56 }: { height?: number }) {
+  const width = Math.round(height * (SRC_W / SRC_H));
   return (
-    <div
-      style={{
-        display: "inline-flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 2,
-        color,
-        lineHeight: 1,
-      }}
-    >
-      <div style={{ fontSize: size, letterSpacing: "0.42em", fontWeight: 400, paddingLeft: "0.42em" }}>
-        RIMA BERG
-      </div>
-      <div style={{ fontSize: 9, letterSpacing: "0.32em", opacity: 0.55, paddingLeft: "0.32em" }}>
-        JEWELLERY · KAUNAS
-      </div>
-    </div>
+    <Image
+      src="/logo/logo.png"
+      alt="Rima Berg"
+      width={width}
+      height={height}
+      priority
+      style={{ display: "block", height, width: "auto" }}
+    />
   );
 }

@@ -6,6 +6,13 @@
   display: flex;
   gap: 32px;
 }
+
+/* Header secondary nav items — hidden on phones to keep the header tidy. */
+@media (max-width: 640px) {
+  .rb-nav-extra {
+    display: none;
+  }
+}
 .rb-cat-nav a,
 .rb-cat-nav button {
   font-size: 11px;

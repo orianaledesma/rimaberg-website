@@ -3,7 +3,9 @@
     "skip": "Pereiti prie turinio"
   },
   "header": {
-    "atelier": "Studija"
+    "atelier": "Papuošalai",
+    "contact": "Kontaktai",
+    "ringSize": "Žiedo dydis"
   },
   "notFound": {
     "title": "Puslapis nerastas",
@@ -16,18 +18,16 @@
     "earrings": "Auskarai",
     "rings": "Žiedai",
     "pendants": "Pakabukai",
-    "bracelets": "Apyrankės",
     "engagement": "Sužadėtuvių",
     "other": "Kita"
   },
   "status": {
     "onRequest": "Pagal užklausą",
-    "preOrder": "Išankstinis užsakymas",
     "madeToOrder": "Gaminama pagal užsakymą",
     "soldOut": "Išparduota"
   },
   "home": {
-    "heroEyebrow": "SS 26 · Žiedlapiai",
+    "heroEyebrow": "Žiedlapiai",
     "heroLine1": "Sodas,",
     "heroEm": "nulietas",
     "heroLine2": "sidabre.",
@@ -40,6 +40,8 @@
     "allPieces": "Visos piezos →",
     "catViewMore": "Plačiau",
     "categoriesTitle": "Kategorijos",
+    "exploreMark": "Atranka",
+    "exploreTitle": "Atraskite daugiau dirbinių",
     "atelierEyebrow": "Studija · Kaunas",
     "atelierTitle": "Ranka, priverčianti akmenį prabilti.",
     "atelierText": "Du dešimtmečius Rima pati lieja ir kalsto savo piezas — granuliuoti paviršiai, safyrai iš studijos stalčiaus, rankomis sušildyti rausvo aukso rėmeliai.",
@@ -69,26 +71,77 @@
     "enquireSubject": "Užklausa — {name} ({code})"
   },
   "about": {
-    "eyebrow": "Apie · Rima Berg",
-    "titleLine1": "Studijos praktika",
-    "titleLine2In": "lietame",
-    "titleEm": "sidabre",
-    "p1": "Rima Berg su sidabru dirba du dešimtmečius — pirma mokėsi Lietuvos dailės akademijoje, o nuo 2008-ųjų turi savo studiją Kaune. Kiekviena pieza liejama, faktūruojama jos pačios įrankiais ir įsodinama akmenimis po vieną.",
-    "p2": "Nė viena kolekcija nekartojama. Pardavus piezą, maketas grįžta į stalčių. Išlieka tik kalba — granuliacija, rausvo aukso rėmeliai ir safyrai Kauno lietaus spalvos.",
-    "artistEyebrow": "Menininkė",
-    "artistTitle": "Veidas rankai.",
-    "artistText": "Rima, nufotografuota prie darbastalio."
+    "eyebrow": "Apie mane",
+    "title": "Apie mane",
+    "byline": "Autorės žodis",
+    "p1": "Man darbas su metalu, tai pirmiausia tekstūrų ir formų paieška. Ir tas ieškojimas vyksta nuolat – stebint aplinkinį pasaulį, besisukant kasdienybėje, įkvėpiant naujus įspūdžius ar susipažįstant su naujais žmonėmis. Kartais idėjos ateina spontaniškai ir išsilieja eskizuose. Kitos reikalauja ilgų dėlionių, beveik mozaikų, nesuskaičiuojamos daugybės bandymų, nepaliekančių manęs tol, kol nepajaučiu kūrinio išbaigtumo.",
+    "p2": "Dar besimokindama Kauno taikomosios dailės mokykloje, atradau ir man labiausiai patinkančią techniką – foninį filigraną. Tačiau jį matau kaip tekstūrą, kaip nedidelį kūrinio elementą, tik papildantį, bet jokiu būdu neužbaigiantį kūrinio minties.",
+    "p3": "Kai kuriuos papuošalus sukuriu tik vienai, ypatingai progai, kiti prašosi, kad prie jų sugrįžčiau. Susisiekime!",
+    "signature": "Rimantė Landsbergienė",
+    "uniqueLine": "Kiekvienas dirbinys yra vienetinis.",
+    "followLabel": "Sekite",
+    "instagramUrl": "https://www.instagram.com/rima_berg_jewelry",
+    "facebookUrl": "https://www.facebook.com/profile.php?id=100054639451000"
   },
   "contact": {
     "contactLabel": "Kontaktai",
     "atelierLabel": "Studija",
     "hoursLabel": "Darbo laikas",
-    "email": "studio@rimaberg.lt",
+    "email": "info@rimaberg.com",
     "phone": "+370 600 12 345",
-    "addressLine1": "Laisvės al. 50",
-    "addressLine2": "LT-44001 Kaunas",
+    "addressLine1": "Vilniaus g. 30",
+    "addressLine2": "Kaunas",
     "hoursLine1": "Pagal išankstinį susitarimą",
-    "hoursLine2": "Antr.–Šešt. · 11–18"
+    "hoursLine2": "Pir.–Penkt. · 10:00–17:00",
+    "ownerName": "Rimantė Landsbergienė",
+    "postalLabel": "Pašto adresas",
+    "postalLine1": "Piliakalnio g. 11A",
+    "postalLine2": "Šėtijų kaimas",
+    "postalLine3": "LT-71223 · Lietuva",
+    "businessReg": "Individ. veiklos pažymėjimo nr. 911884"
+  },
+  "contactPage": {
+    "metaTitle": "Kontaktai",
+    "eyebrow": "Susisiekite",
+    "title": "Kontaktai",
+    "lead": "Užklausoms, individualiems užsakymams ar matavimams — parašykite. Atsakome per dvi darbo dienas.",
+    "ownerLabel": "Savininkė",
+    "showroomLabel": "Salonas",
+    "showroomHint": "Pagal išankstinį susitarimą",
+    "writeUs": "Parašyti →"
+  },
+  "cookieNotice": {
+    "aria": "Pranešimas apie slapukus",
+    "body": "Naudojame vieną funkcinį slapuką jūsų kalbai įsiminti. Jokios analitikos ar reklamos.",
+    "learnMore": "Skaityti politiką",
+    "ok": "Gerai"
+  },
+  "privacy": {
+    "metaTitle": "Privatumas",
+    "eyebrow": "Teisinė",
+    "title": "Privatumas ir slapukai",
+    "lastUpdated": "Atnaujinta 2026 m. gegužės 26 d.",
+    "intro": "Šiame puslapyje aprašoma, kaip Rima Berg (Rimantė Landsbergienė, individualios veiklos pažymėjimo nr. 911884) tvarko asmens duomenis lankantis rimaberg.lt svetainėje.",
+    "section1Title": "Kokius duomenis renkame",
+    "section1Text": "Tik tai, kas reikalinga atsakymui pateikti: el. laiško, kurį siunčiate info@rimaberg.com, turinį (jūsų adresą, žinutę ir priedus). Serverio prieigos žurnaluose IP adresas ir užklausos laikas saugumo tikslais saugomi iki 30 dienų.",
+    "section2Title": "Slapukai",
+    "section2Text": "Svetainė įrašo vieną būtiną slapuką, „rb-locale“, kad atsimintų jūsų kalbos pasirinkimą. Analitiniai ar reklaminiai slapukai nenaudojami.",
+    "section3Title": "Jūsų teisės",
+    "section3Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su savo duomenimis, juos ištaisyti ar ištrinti — parašykite info@rimaberg.com. Atsakome per 30 dienų.",
+    "section4Title": "Dalijimasis",
+    "section4Text": "Jūsų duomenys niekada nėra parduodami ar perduodami tretiesiems asmenims. El. paštas saugomas tik pas mūsų pašto paslaugos teikėją susirašinėjimo tikslais."
+  },
+  "ringSize": {
+    "metaTitle": "Žiedo dydis",
+    "eyebrow": "Pagalba",
+    "title": "Žiedų dydžių lentelė",
+    "lead": "Jei jau žinote savo dydį, naudokite lentelę žemiau ekvivalentui kitose sistemose rasti. Norėdami pasimatuoti namuose, apvyniokite popieriaus juostelę aplink piršto pagrindą, pažymėkite susikirtimo vietą ir padalykite ilgį iš π (3,14), kad gautumėte vidinį skersmenį. Geriausia matuotis dienos pabaigoje, kai pirštai šiek tiek didesni.",
+    "headDiameter": "Vidinis Ø (mm)",
+    "headLT": "Lietuva",
+    "headUKEU": "UK · Europa",
+    "headUS": "JAV",
+    "note": "Platesnėms juostoms (5+ mm) rinkitės pusę dydžio didesnį.",
+    "ctaBack": "Atgal į katalogą →"
   },
   "footer": {
     "copyright": "© 2026 RIMA BERG · Kaunas, LT",
@@ -98,8 +151,8 @@
   },
   "comingSoon": {
     "eyebrow": "Netrukus",
-    "title": "Erdvė Kauno centre",
-    "text": "Atidarome studiją-parduotuvę pačioje Kauno širdyje — vieta pamatyti piezas gyvai ir išsimatuoti. Sekite atidarymo datą.",
+    "title": "Erdvė Vilniaus g. 30",
+    "text": "Atidarome studiją-parduotuvę Kauno centre — vieta pamatyti dirbinius gyvai ir išsimatuoti. Sekite atidarymo datą.",
     "cta": "Žiūrėti vietą →"
   }
 }

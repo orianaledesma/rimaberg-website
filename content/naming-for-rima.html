@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rima Berg — pavadinimai trūksta (21 dirbinys)</title>
+<style>
+  :root { --bg:#fafafa; --ink:#0a0a0a; --mut:#777; --line:#e5e5e0; --warm:#b08855; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.55 'Times New Roman',Georgia,serif; padding:32px clamp(20px,4vw,56px); }
+  header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:32px; }
+  h1 { margin:0 0 6px; font-weight:300; letter-spacing:-0.01em; font-size:26px; }
+  .lead { color:var(--mut); max-width:680px; font-size:14px; }
+  .legend { margin-top:14px; padding:14px 18px; background:#fff; border:1px solid var(--line); font-size:13px; }
+  .legend b { color:var(--warm); }
+  .piece { border-top:1px solid var(--line); padding:28px 0; page-break-inside:avoid;
+           display:grid; grid-template-columns:1.1fr 1fr; gap:32px; align-items:start; }
+  .pid { font-family:'Courier New',monospace; font-size:11px; color:var(--mut);
+         letter-spacing:0.08em; text-transform:uppercase; }
+  .cat { display:inline-block; margin-left:10px; padding:2px 8px; background:#0a0a0a;
+         color:#fff; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; }
+  .photos { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+  .photos figure { margin:0; }
+  .photos img { width:100%; aspect-ratio:1; object-fit:cover; background:#000;
+                border:1px solid var(--line); }
+  .photos figcaption { font-family:'Courier New',monospace; font-size:9px; color:var(--mut);
+                       text-align:center; margin-top:2px; }
+  .suggest { padding:12px 14px; background:#fffaf2; border-left:3px solid var(--warm);
+             margin:14px 0 18px; font-size:13px; }
+  .suggest b { display:block; color:var(--warm); font-size:11px; letter-spacing:0.08em;
+               text-transform:uppercase; margin-bottom:6px; }
+  .field { margin:14px 0; }
+  .label { font-size:11px; color:var(--mut); letter-spacing:0.08em; text-transform:uppercase;
+           margin-bottom:6px; }
+  .blank { border-bottom:1px solid var(--ink); min-height:22px; padding:2px 0;
+           font-size:14px; }
+  .blank.tall { min-height:60px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media print {
+    body { padding:0 18px; font-size:11px; }
+    .piece { page-break-after:always; padding:18px 0; }
+    .photos img { aspect-ratio:1; }
+    header { margin-bottom:18px; }
+  }
+  @media (max-width: 800px) {
+    .piece { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pavadinimai ir aprašymai &mdash; 21 dirbinys</h1>
+  <p class="lead">Rima, čia yra dirbiniai, kuriems reikia tavo pavadinimo ir aprašymo.
+  Šalia kiekvieno yra mūsų pasiūlymas — gali jį priimti, pakeisti arba parašyti visai
+  naują. Pažymėk pasirinkimą ranka arba el. paštu.</p>
+  <div class="legend">
+    <b>🟡 Possible match</b> — manome, kad ši nuotrauka atitinka jau esamą tavo dirbinį
+    iš senosios svetainės. Patikrink pavadinimą.<br>
+    <b>🆕 New piece</b> — atrodo nauja, neturime atitikmens. Tau reikia sukurti pavadinimą
+    ir aprašymą iš naujo.
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+const IMG = "../public/products/";
+const JPEGS = new Set(["DKIV8831","DRAB4844","GWOR7535","NOLG9703"]);
+const ext = (f) => JPEGS.has(f) ? ".JPEG" : ".JPG";
+
+// 21 piezas genéricas con: id, categoría, fotos, sugerencia
+const PIECES = [
+  ["ring-6","rings",["NEIV8493","MIVI4604","HTNH7002","LMQU4182"],
+    "match","serdis (Šerdis · Core)","Statement cuadrado oxidado con cabujón amatista y halo de oro · ~24g. Coincide con la pieza Šerdis del sitio viejo."],
+  ["ring-12","rings",["LAHVE6558"],
+    "match","bangose (Bangosė · In Waves)","Cushion granate marquise + granulado oxidado. Probable variante o foto adicional de Bangosė (granate)."],
+  ["ring-9","rings",["CLWO6017","EMDP9600"],
+    "match","trys-pasirinkimai (Trys pasirinkimai · Three Choices)","Tres bandas pearl-texture apiladas (azul/verde/rosa). Foto del set de tres."],
+  ["earring-5","earrings",["CEVI9188"],
+    "match","trys-norai (Trys norai · Three Wishes)","Disco con tres granos de oro + gancho. Material y forma coinciden con Trys norai (Au/0134)."],
+  ["floral","earrings",["WSLO8352","XLWD5806"],
+    "match","sirdys-olivinai (Širdys · Hearts olivine)","Studs con piedra verde (olivino/peridoto) y halo de perlas/granos. Probable variante de Hearts."],
+  ["earring-1","earrings",["UIDI3815","PTOK9006"],
+    "match","mazi-akcentai-tsavoritas (Maži akcentai · Small Accents)","Studs verdes con halo dorado. Encaja con Maži akcentai tsavoritas."],
+  ["earring-4","earrings",["WQISE4927","IZDC9555"],
+    "match","geletas (Gėlėtas · Flowery)","Set de tres flor studs con piedras de colores diferentes."],
+  ["ring-2","rings",["FNQO4907","EUFK4216","DJFN7978","USZW7228"],
+    "match","upes-dugne (Upės dugne · At the River Bottom)","Bandas anchas sandy con piedritas dispersas. Sin descripción de piedra, encaja con 'an encoded message that never changes'."],
+  ["earring-6","earrings",["GKUE8751","ADDI7571"],
+    "new","⚠️ Fotos grupales de 3 anillos","Estas dos fotos muestran tres anillos juntos (banda calada + granulada + flor). NO son aros. Decidir: ¿reasignar fotos a las piezas individuales, o eliminar?"],
+  ["unassigned1","earrings",["DXLX7939","DWGL3973"],
+    "new","Studs oxidados con piedra rosa","Aros studs con base oxidada y centro rosa (rodolita o granate). Necesita nombre."],
+  ["earring-2","earrings",["NYOT6592","SPNQ3262"],
+    "new","Drop oxidados con amatista","Pendientes drop con centro amatista y halo blanco. Estilo statement, oxidados."],
+  ["earring-3","earrings",["JTPU1824"],
+    "new","Aros domo multi-piedra","Earring tipo domo con piedras de varios colores (zafiro, rubí, citrino). Probablemente conjunto con Sodas."],
+  ["ring-1","rings",["VGYG3526","NLIK2717","LMOV6933","RZHP7534","EZQN0458"],
+    "new","Anillo statement piedra oval ahumada","Cinco fotos del mismo anillo: piedra oval grande (cuarzo ahumado / champán) horizontal, halo granulado plata. No coincide con piezas del catálogo viejo."],
+  ["ring-3","rings",["OXEC1188","NJYWE7094","CKFL0423"],
+    "new","Eternity celeste / rosa","Bandas eternity de plata con piedras celestes (topacio) o rosas (rodolita). Posible familia nueva."],
+  ["ring-5","rings",["GWOR7535","BYOEE2686","DRAB4844","TCQL7440"],
+    "new","Eternity celeste/topacio","Bandas eternity con topacio celeste. Cuatro variantes."],
+  ["ring-7","rings",["GXZN8277"],
+    "new","Anillo ópalo","Banda de oro con ópalo central y piedras blancas alrededor. No hay ópalo en el catálogo viejo."],
+  ["ring-8","rings",["WPNK3037"],
+    "new","Anillo corteza granate cuadrado","Banda ancha tipo corteza, granate cuadrado central."],
+  ["ring-10","rings",["JHJY1419"],
+    "new","Anillo triple-rail granate","Banda triple con granate redondo en bezel central."],
+  ["ring-11","rings",["NOLG9703"],
+    "new","Banda dotted oxidada","Banda fina oxidada con granos de plata y oro rosa. Posible variante de Ekscentriškas."],
+  ["ring-13","rings",["XTIL7961"],
+    "new","Banda calada / encaje","Banda oxidada con patrón calado tipo encaje. Pieza statement, no aparece en catálogo viejo."],
+  ["pendants-1","pendants",["DKIV8831"],
+    "new","Colgante marco cuadrado","Colgante con marco cuadrado de plata calada + cadena de peridoto. Posible familia 'Šeima' o pieza nueva."],
+];
+
+const CAT_LABEL = { rings:"Anillo", earrings:"Aro", pendants:"Colgante", engagement:"Engagement" };
+
+const html = PIECES.map(([id,cat,photos,kind,sugId,sugText]) => `
+  <article class="piece">
+    <div>
+      <div><span class="pid">${id}</span><span class="cat">${CAT_LABEL[cat]||cat}</span></div>
+      <div class="photos" style="margin-top:14px">
+        ${photos.map(f => `<figure><img loading="lazy" src="${IMG}${f}${ext(f)}"><figcaption>${f}</figcaption></figure>`).join("")}
+      </div>
+    </div>
+    <div>
+      <div class="suggest">
+        <b>${kind==="match" ? "🟡 Possible match" : "🆕 New piece"} &middot; sugerencia</b>
+        <div><strong>${sugId}</strong></div>
+        <div style="margin-top:6px; color:#555">${sugText}</div>
+      </div>
+
+      <div class="row">
+        <div class="field"><div class="label">Pavadinimas (LT)</div><div class="blank"></div></div>
+        <div class="field"><div class="label">Name (EN)</div><div class="blank"></div></div>
+      </div>
+      <div class="field"><div class="label">Aprašymas / Description (LT + EN)</div><div class="blank tall"></div></div>
+      <div class="row">
+        <div class="field"><div class="label">Material</div><div class="blank"></div></div>
+        <div class="field"><div class="label">Akmenys / Stones</div><div class="blank"></div></div>
+      </div>
+      <div class="row">
+        <div class="field"><div class="label">Kodas / Code</div><div class="blank"></div></div>
+        <div class="field"><div class="label">Būsena (onRequest · madeToOrder · soldOut)</div><div class="blank"></div></div>
+      </div>
+    </div>
+  </article>
+`).join("");
+
+document.getElementById("app").innerHTML = html;
+</script>
+</body>
+</html>

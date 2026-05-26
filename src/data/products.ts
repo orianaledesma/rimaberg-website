@@ -11,7 +11,7 @@ import { PRODUCTS } from "./products.generated";
  * read helpers the app uses.
  */
 
-export type PriceStatus = "onRequest" | "preOrder" | "madeToOrder" | "soldOut";
+export type PriceStatus = "onRequest" | "madeToOrder" | "soldOut";
 
 export interface LocalizedText {
   en: string;
@@ -40,10 +40,28 @@ export interface Product {
 
 export { PRODUCTS };
 
-/* ── Selectors ──────────────────────────────────────────────────────────── */
+/**
+ * A piece is "publishable" when it carries a real name AND a description in at
+ * least one locale. The import script auto-fills missing names with the id, so
+ * we reject names that equal the id (e.g. "earring-2", "ring-1") — those are
+ * placeholders waiting on Rima's input. The public catalogue stays curated
+ * even while content is in flight.
+ */
+function isRealName(name: string | undefined, id: string): boolean {
+  const n = name?.trim();
+  if (!n) return false;
+  return n.toLowerCase() !== id.toLowerCase();
+}
+export function isPublishable(p: Product): boolean {
+  const hasName = isRealName(p.name.lt, p.id) || isRealName(p.name.en, p.id);
+  const hasDesc = !!(p.description.lt?.trim() || p.description.en?.trim());
+  return hasName && hasDesc;
+}
+
+/* ── Selectors (public; only return publishable pieces) ─────────────────── */
 
 export function getAllProducts(): Product[] {
-  return PRODUCTS;
+  return PRODUCTS.filter(isPublishable);
 }
 
 export function getProductById(id: string): Product | undefined {
@@ -51,25 +69,42 @@ export function getProductById(id: string): Product | undefined {
 }
 
 export function getByCategory(category: CategorySlug): Product[] {
-  return PRODUCTS.filter((p) => p.category === category);
+  // Engagement pieces are rings too: the "rings" filter shows both, while
+  // "engagement" keeps its own dedicated view (matches the old site).
+  const inCategory =
+    category === "rings"
+      ? (p: Product) => p.category === "rings" || p.category === "engagement"
+      : (p: Product) => p.category === category;
+  return PRODUCTS.filter((p) => inCategory(p) && isPublishable(p));
 }
 
 export function getFeatured(): Product[] {
-  return PRODUCTS.filter((p) => p.featured);
+  return PRODUCTS.filter((p) => p.featured && isPublishable(p));
 }
 
 export function getNew(): Product[] {
-  return PRODUCTS.filter((p) => p.isNew);
+  return PRODUCTS.filter((p) => p.isNew && isPublishable(p));
+}
+
+/** A shuffled sample of pieces (random at build time). */
+export function getRandom(count = 10): Product[] {
+  const arr = PRODUCTS.filter(isPublishable);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr.slice(0, count);
 }
 
 /** Related pieces: same category first, then fill from the rest. */
 export function getRelated(id: string, count = 4): Product[] {
+  const all = PRODUCTS.filter(isPublishable);
   const current = getProductById(id);
-  if (!current) return PRODUCTS.slice(0, count);
-  const sameCat = PRODUCTS.filter(
+  if (!current) return all.slice(0, count);
+  const sameCat = all.filter(
     (p) => p.id !== id && p.category === current.category
   );
-  const others = PRODUCTS.filter(
+  const others = all.filter(
     (p) => p.id !== id && p.category !== current.category
   );
   return [...sameCat, ...others].slice(0, count);

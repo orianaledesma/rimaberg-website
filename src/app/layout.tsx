@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, JetBrains_Mono, Allison } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono, Allison, Cormorant_Garamond } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import CookieNotice from "@/components/CookieNotice";
 import "./globals.css";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
@@ -30,6 +31,15 @@ const script = Allison({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-script",
+  display: "swap",
+});
+
+// Editorial serif for headings — gives jewellery copy a publication-like feel.
+const serif = Cormorant_Garamond({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -80,7 +90,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${sans.variable} ${mono.variable} ${script.variable}`}
+      className={`${sans.variable} ${mono.variable} ${script.variable} ${serif.variable}`}
     >
       <body>
         <NextIntlClientProvider messages={messages}>
@@ -90,6 +100,7 @@ export default async function RootLayout({
           <main id="main" tabIndex={-1}>
             {children}
           </main>
+          <CookieNotice />
         </NextIntlClientProvider>
       </body>
     </html>

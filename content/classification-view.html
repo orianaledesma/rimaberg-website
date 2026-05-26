@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rima Berg — Clasificación visual (Claude)</title>
+<style>
+  :root { --bg:#0e0e10; --panel:#17171b; --line:#2a2a31; --ink:#eee; --mut:#9a9aa5;
+          --hi:#3ddc97; --md:#f5c451; --lo:#e8825a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); position:sticky; top:0;
+           background:var(--bg); z-index:5; }
+  h1 { margin:0 0 4px; font-size:18px; }
+  .sub { color:var(--mut); font-size:13px; }
+  .tabs { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tab { padding:6px 12px; border:1px solid var(--line); border-radius:20px; cursor:pointer;
+         color:var(--mut); background:var(--panel); }
+  .tab.on { color:var(--ink); border-color:var(--hi); }
+  main { padding:20px 24px; max-width:1200px; }
+  .cluster { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+             padding:14px 16px; margin-bottom:16px; }
+  .chead { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .cid { font-weight:700; font-size:13px; color:var(--mut); }
+  .ctitle { font-weight:600; }
+  .badge { font-size:11px; padding:2px 8px; border-radius:10px; font-weight:600; }
+  .hi { background:rgba(61,220,151,.15); color:var(--hi); }
+  .md { background:rgba(245,196,81,.15); color:var(--md); }
+  .lo { background:rgba(232,130,90,.15); color:var(--lo); }
+  .hyp { color:var(--mut); font-size:12px; }
+  .hyp b { color:var(--ink); }
+  .pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:8px; }
+  figure { margin:0; }
+  figure img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; background:#000;
+               border:1px solid var(--line); }
+  figcaption { font-size:10px; color:var(--mut); text-align:center; margin-top:2px;
+               overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .note { background:rgba(232,130,90,.08); border:1px solid var(--lo); color:#f0c4b2;
+          padding:12px 14px; border-radius:10px; margin-bottom:16px; font-size:13px; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rima Berg — Clasificación visual de las 128 fotos</h1>
+  <div class="sub">Hecha por Claude leyendo cada foto. Cada bloque = 1 diseño (varias fotos = mismos ángulos). Verde=confianza alta · Amarillo=media · Naranja=baja.</div>
+  <div class="tabs">
+    <div class="tab on" data-cat="rings">Anillos (33 clusters)</div>
+    <div class="tab" data-cat="earrings">Aros</div>
+    <div class="tab" data-cat="pendants">Colgantes</div>
+    <div class="tab" data-cat="groups">Fotos grupales</div>
+  </div>
+</header>
+<main id="app"></main>
+<script>
+const IMG = "../public/products/";
+const DATA = {
+  rings: [
+    ["C1","Banda burbuja 3D · piedras VERDES (peridoto)","hi","uogos-peridotai",["CSTK9172","EKST5959","EYAJ0530","IQFE9915","VUPW8859","YHBO0847"]],
+    ["C2","Banda burbuja 3D · piedras ROSAS","md","uogos-naktyje (turmalinas rosas?)",["OHJDE7035","OMDC8888","TKVA0382"]],
+    ["C3","Banda orgánica irregular · PERLAS + verde","md","bundanti-gamta",["HMKZ3041","UQMZ0328"]],
+    ["C4","Domo liso · MULTICOLOR disperso (flush)","md","uogos-oniksai-ametistai-turmalinai",["AYDJ8153","GULR0741","PALR1784"]],
+    ["C5","Eternity plano · bezels MULTICOLOR","lo","?",["CQTQ7819","MHLO8123"]],
+    ["C6","3 BANDAS apiladas · multicolor","md","trys-pasirinkimai (o set de 3)",["MYTG1376","PHRI5100","POMT3567","UTQC4256"]],
+    ["C7","3 bandas pearl-texture (azul/verde/rosa)","lo","?",["CLWO6017","EMDP9600"]],
+    ["C8","2 bandas anchas sandy · piedritas dispersas","lo","?",["DJFN7978","FNQO4907"]],
+    ["C9","STATEMENT cuadrado oxidado · cabujón AMATISTA + halo oro","hi","serdis (amatista 24g)",["HTNH7002","LMQU4182","MIVI4604","NEIV8493"]],
+    ["C10","STATEMENT oval · champán/smoky horizontal + halo","lo","? (¿pieza nueva, no está en CSV?)",["EZQN0458","LMOV6933","NLIK2717","RZHP7534","VGYG3526"]],
+    ["C11","STATEMENT cushion AMATISTA grande facetada","md","barokas",["VGWS2741","WOWN8142","RENJ5883"]],
+    ["C12","STATEMENT oxidado · GRANATE rojo + granulado","lo","bangose (¿o gele?)",["LAHVE6558","LBWC5844","MNGZ5751","NPLH0546"]],
+    ["C13","Banda sandy · AMATISTA redonda + halo granulado","md","vakaro-dangus",["EKRE0353","LWRJ7149","XQUZ2394"]],
+    ["C14","Banda sandy · TOPACIO azul redondo + halo","md","spalvotos-mintys-topazas (¿o kitu-kampu?)",["DXWH5141"]],
+    ["C15","Domo · piedra NEGRA/oscura + halo oro","lo","?",["JKKV1353"]],
+    ["C16","Domo · smoky redonda + halo oro","lo","?",["KZVG1000"]],
+    ["C17","Banda plata texturada · AMATISTA cuadrada media","lo","bangose-ametista (¿o vakaro-dangus?)",["DEVK4155","PCUU1560"]],
+    ["C18","Banda corteza ancha · GRANATE redondo bezel","lo","gele",["IMG_E6484","JHJY1419"]],
+    ["C19","Banda corteza · GRANATE cuadrado","lo","?",["WPNK3037"]],
+    ["C20","Banda corteza · cushion champán/morganita + garras oro","lo","? (¿pieza nueva?)",["LUIG3767"]],
+    ["C21","Banda fina OXIDADA · granos plata+oro (dotted)","hi","ekscentriskas",["CSOZE2730","GOWJ1319","IQGEE5703","NOLG9703"]],
+    ["C22","Banda fina plata · 1 grano oro rosa (minimal)","md","ekscentriskas (variante) / siekiai",["IHOL5031"]],
+    ["C23","Solitario pequeño · rosa/granate · banda sandy","lo","spalvotos-mintys-rozinis-rodolitas",["BFYI7056","RCTJ3400"]],
+    ["C24","Eternity ORO ROSA · piedras blancas (1 banda)","lo","?",["BSDS0387","GHUB9190","EXZCE7021","SADDE6936","UCIJE1970"]],
+    ["C25","DOBLE eternity oro rosa · blancas","lo","besiskleidziantis-pavasaris (2 brotes)",["JPBJ3789","PYBYE4944","TBNH6232"]],
+    ["C26","DOBLE eternity plata · azul + rosa","lo","?",["DRAB4844"]],
+    ["C27","Banda fina ORO · 1 blanca diminuta (minimal)","lo","kitaip / siekiai",["KKWP1933"]],
+    ["C28","Anillo DISCO pavé oro (cluster)","md","svajones (citrinos+circón)",["ERGF9671","OVYC2621"]],
+    ["C29","Banda oro · ÓPALO + blancas","lo","?",["GXZN8277"]],
+    ["C30","Banda ancha sandy · 3 piedras chicas dispersas","lo","?",["USZW7228","EUFK4215"]],
+    ["C31","Banda CALADA / encaje (openwork)","lo","?",["XTIL7961"]],
+    ["C32","Eternity plata · AZUL/celeste (topacio) bezel","lo","?",["BYOEE2686","GWOR7535","OXEC1188","TCQL7440","NJYWE7094"]],
+    ["C33","Eternity plata · ROSAS bezel","lo","?",["CKFL0423"]]
+  ],
+  earrings: [
+    ["E1","Studs · piedra VERDE centro + halo oro","md","Maži akcentai (tsavoritas) / Žalios gelmės",["BJYI6553","BKJW0222","ENKI9265","JUVN4098","NLBA5785","PATW1732","UIDI3815"]],
+    ["E2","Studs · verde + halo pavé/perla","lo","?",["QPQO2961","WSLO8352","XLWD5806","PTOK9006"]],
+    ["E3","Studs · ROSA/rodolita centro","md","Maži akcentai (rodolita)",["AQHK3944","DXLX7939"]],
+    ["E4","FLOR studs · centro azul","md","Dvi gėlės / flor",["BZZC2577","GJRT7554","GWDF6528"]],
+    ["E5","FLOR studs · multi (rosa/azul/amarillo)","md","flor variantes",["IZDC9555","WQISE4927"]],
+    ["E6","Studs oxidados · centro CITRINO/amarillo","md","Sodas / Maži akcentai amarillo",["DZFA6344","JTLD7370","UHOU4089"]],
+    ["E7","Studs oxidados redondos · centro rosa","lo","?",["DWGL3973"]],
+    ["E8","DROP oxidados · amatista + halo blanco","md","? drop",["NYOT6592","SPNQ3262"]],
+    ["E9","Studs plata lisos texturados (sin piedra)","md","Mieste / Taškas",["GJOJ5082","KEIF2650"]],
+    ["E10","Studs · centro oro rosa + halo plata","md","Svajonė naktyje?",["HTFX3474","YGCE9402"]],
+    ["E11","Studs cluster GRANOS ORO","md","Debesys (oro)",["HYXK1951","UNXI7718"]],
+    ["E12","DROP discos cóncavos grandes plata + granos oro","md","Dangaus žydrynė? statement",["EVMC6579","QHYS4544"]],
+    ["E13","Studs DONUT/círculo abierto","md","Beribis (endless)",["FFQB5036","XDDP7218"]],
+    ["E14","Studs orgánicos DONUT oxidados + granos oro","md","Praamžiai (negros)",["EWAG4701","XLYU1213"]],
+    ["E15","DROP domo multi-piedra (zafiro/rubí/citrino)","md","Sodas / Berries earrings",["JTPU1824"]],
+    ["E16","Studs chicos texturados + punto oro","lo","Taškas / Praamžiai maži",["BSDWE2205"]],
+    ["E17","DROP disco + granos oro (gancho)","lo","Trys norai?",["CEVI9188"]],
+    ["E18","Set granos plata + cabujones ÓNIX negro","lo","Po vandeniu?",["GQDB0230","GZTQ4339"]]
+  ],
+  pendants: [
+    ["P1","Colgante marco cuadrado + cadena cuentas peridoto","lo","? (poca data)",["DKIV8831"]],
+    ["P2","Colgante cuadrado plata plegado + cabujones multicolor","lo","Spalvotos uogos?",["TDYK1987"]]
+  ],
+  groups: [
+    ["G1","3 anillos juntos (calada + granulada + flor)","lo","muestra gele + openwork + granulado",["ADDI7571","GKUE8751"]],
+    ["G2","Mano · 3 bandas apiladas (lifestyle)","lo","foto lifestyle, no pieza única",["BKIJ6345"]]
+  ]
+};
+const BADGE = {hi:"alta",md:"media",lo:"baja"};
+const NOTES = {
+  rings: "⚠️ Detecté ~33 diseños de anillo pero el CSV tiene 26 (15 rings + 11 engagement). C10 (oval smoky) y C20 (morganita) no encuentran nombre → ¿piezas nuevas? Y los hypothesis en naranja son baja confianza: tu ojo decide.",
+  earrings: "Aros agrupados por mi lectura. 41 fotos ≈ 31 piezas del CSV (algunas con 2 ángulos).",
+  pendants: "🚨 El CSV tiene 16 colgantes pero el shoot solo trae 2. Faltan ~14 fotos de colgantes (pedir a Rima).",
+  groups: "Fotos de varias piezas / lifestyle — no van como imagen única de producto."
+};
+function render(cat){
+  const app = document.getElementById("app");
+  let html = NOTES[cat] ? '<div class="note">'+NOTES[cat]+'</div>' : '';
+  for(const [id,title,conf,hyp,photos] of DATA[cat]){
+    html += '<div class="cluster"><div class="chead">'+
+      '<span class="cid">'+id+'</span>'+
+      '<span class="ctitle">'+title+'</span>'+
+      '<span class="badge '+conf+'">'+BADGE[conf]+'</span>'+
+      '<span class="hyp">→ hipótesis: <b>'+hyp+'</b> · '+photos.length+' fotos</span>'+
+      '</div><div class="pgrid">';
+    for(const f of photos){
+      html += '<figure><img loading="lazy" src="'+IMG+f+resolveExt(f)+'"><figcaption>'+f+'</figcaption></figure>';
+    }
+    html += '</div></div>';
+  }
+  app.innerHTML = html;
+}
+// Las .JPEG conocidas (el resto son .JPG)
+const JPEGS = new Set(["BSDS0387","CKFL0423","DKIV8831","DRAB4844","EWAG4701","GHUB9190","GOWJ1319","GWOR7535","IHOL5031","JPBJ3789","JTPU1824","NOLG9703","OMDC8888","TBNH6232","TKVA0382","XLYU1213"]);
+function resolveExt(f){ return JPEGS.has(f) ? ".JPEG" : ".JPG"; }
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on"); render(t.dataset.cat);
+}));
+render("rings");
+</script>
+</body>
+</html>

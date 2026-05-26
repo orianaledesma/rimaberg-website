@@ -140,14 +140,12 @@ const html = String.raw`<!doctype html>
           <option value="earrings">earrings · Auskarai</option>
           <option value="rings">rings · Žiedai</option>
           <option value="pendants">pendants · Pakabukai</option>
-          <option value="bracelets">bracelets · Apyrankės</option>
           <option value="engagement">engagement · Sužadėtuvėms</option>
         </select>
       </div>
       <div><label>Status</label>
         <select id="f_status">
           <option value="onRequest">onRequest</option>
-          <option value="preOrder">preOrder</option>
           <option value="madeToOrder">madeToOrder</option>
           <option value="soldOut">soldOut</option>
         </select>
@@ -294,7 +292,7 @@ $("chips").addEventListener("click", e => {
 });
 $("save").addEventListener("click", () => {
   const p = readForm();
-  if (!p.name) return alert("Name is required.");
+  if (!p.name_lt && !p.name_en) return alert("Name is required.");
   if (!p.images.length) return alert("Select at least one photo.");
   const existingIdx = products.findIndex(x => x.id === (editingId || p.id));
   if (existingIdx >= 0) products[existingIdx] = p;

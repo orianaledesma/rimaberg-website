@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import CategoryNav from "@/components/layout/CategoryNav";
 import Reveal from "@/components/ui/Reveal";
 import ProductCard from "@/components/catalogue/ProductCard";
-import { getAllProducts, getProductById, getRelated } from "@/data/products";
+import ProductGallery from "@/components/catalogue/ProductGallery";
+import { getAllProducts, getProductById, getRelated, isPublishable } from "@/data/products";
 import { blurFor } from "@/data/blur";
 import type { Locale } from "@/i18n/locales";
 
@@ -33,25 +33,24 @@ export default async function ProductDetailPage({
 }) {
   const { id } = await params;
   const product = getProductById(id);
-  if (!product) notFound();
+  if (!product || !isPublishable(product)) notFound();
 
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("detail");
   const tCat = await getTranslations("categories");
-  const tStatus = await getTranslations("status");
+  const tAbout = await getTranslations("about");
 
   const related = getRelated(id);
-  // Build a 4-up thumbnail strip from this piece's photos, then borrow from
-  // related pieces to fill any gaps.
-  const thumbs = [...product.images.slice(1), ...related.map((r) => r.images[0])].slice(0, 4);
+  // The gallery shows the piece's own photos (first is primary).
+  const galleryImages = product.images;
 
   const name = product.name[locale];
   const subject = t("enquireSubject", { name, code: product.code });
-  const mailto = `mailto:studio@rimaberg.lt?subject=${encodeURIComponent(subject)}`;
+  const mailto = `mailto:info@rimaberg.com?subject=${encodeURIComponent(subject)}`;
 
   return (
     <div className="rb-screen">
-        <Header tone="light" />
+        <Header />
         <CategoryNav active={product.category} />
 
         <div
@@ -62,7 +61,7 @@ export default async function ProductDetailPage({
         </div>
 
         <section
-          className="rb-collapse"
+          className="rb-collapse rb-detail-grid"
           style={{
             padding: "32px clamp(20px, 5vw, 64px) 80px",
             display: "grid",
@@ -71,50 +70,41 @@ export default async function ProductDetailPage({
             alignItems: "start",
           }}
         >
-          {/* Gallery */}
+          {/* Gallery — hover to magnify, click for fullscreen zoom */}
           <div>
-            <Reveal mask style={{ aspectRatio: "4/5", background: "var(--rb-noir)", overflow: "hidden", position: "relative" }}>
-              <Image
-                src={product.images[0]}
-                alt={name}
-                fill
-                sizes="(max-width: 760px) 100vw, 55vw"
-                className="rb-kenburns"
-                placeholder={blurFor(product.images[0]) ? "blur" : "empty"}
-                blurDataURL={blurFor(product.images[0])}
-                style={{ objectFit: "cover" }}
-                priority
-              />
-              <div className="rb-mono" style={{ position: "absolute", bottom: 16, right: 16, fontSize: 10, color: "#fafafa", opacity: 0.7 }}>
-                fig. 01
-              </div>
-            </Reveal>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginTop: 12 }}>
-              {thumbs.map((src, i) => (
-                <Reveal key={src + i} delay={60 * (i + 1)} style={{ aspectRatio: "1", overflow: "hidden", background: "var(--rb-noir)", position: "relative" }}>
-                  <Image src={src} alt="" fill sizes="20vw" style={{ objectFit: "cover" }} />
-                </Reveal>
-              ))}
-            </div>
+            <ProductGallery
+              images={galleryImages}
+              alt={name}
+              blurs={galleryImages.map((src) => blurFor(src))}
+            />
           </div>
 
           {/* Detail aside */}
-          <aside className="rb-detail-aside" style={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 20 }}>
+          <aside className="rb-detail-aside" style={{ position: "sticky", top: 96, display: "flex", flexDirection: "column", gap: 20 }}>
             <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
               — {product.code}
             </div>
             <h1 style={{ fontSize: "clamp(40px, 6vw, 56px)", fontWeight: 200, lineHeight: 1, letterSpacing: "-0.02em" }}>
               {name}
             </h1>
-            <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.78, marginTop: 8 }}>
-              {product.description[locale]}
-            </p>
+            {product.description[locale]?.trim() && (
+              <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.78, marginTop: 8 }}>
+                {product.description[locale]}
+              </p>
+            )}
+
+            <div
+              className="rb-mono"
+              style={{ marginTop: 4, fontSize: 11, opacity: 0.6, letterSpacing: "0.12em", textTransform: "uppercase" }}
+            >
+              {tAbout("uniqueLine")}
+            </div>
 
             <dl
               style={{
                 marginTop: 8,
                 paddingTop: 24,
-                borderTop: "1px solid rgba(0,0,0,0.1)",
+                borderTop: "1px solid var(--rb-line)",
                 display: "grid",
                 gridTemplateColumns: "120px 1fr",
                 rowGap: 14,
@@ -122,16 +112,30 @@ export default async function ProductDetailPage({
                 margin: 0,
               }}
             >
-              <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.status")}</dt>
-              <dd style={{ margin: 0 }}>{tStatus(product.status)}</dd>
-              <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.metal")}</dt>
-              <dd style={{ margin: 0 }}>{product.material[locale]}</dd>
-              <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.stones")}</dt>
-              <dd style={{ margin: 0 }}>{product.stones[locale]}</dd>
-              <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.size")}</dt>
-              <dd style={{ margin: 0 }}>{product.sizes[locale]}</dd>
-              <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.leadTime")}</dt>
-              <dd style={{ margin: 0 }}>{product.leadTime[locale]}</dd>
+              {product.material[locale]?.trim() && (
+                <>
+                  <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.metal")}</dt>
+                  <dd style={{ margin: 0 }}>{product.material[locale]}</dd>
+                </>
+              )}
+              {product.stones[locale]?.trim() && (
+                <>
+                  <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.stones")}</dt>
+                  <dd style={{ margin: 0 }}>{product.stones[locale]}</dd>
+                </>
+              )}
+              {product.sizes[locale]?.trim() && (
+                <>
+                  <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.size")}</dt>
+                  <dd style={{ margin: 0 }}>{product.sizes[locale]}</dd>
+                </>
+              )}
+              {product.leadTime[locale]?.trim() && (
+                <>
+                  <dt className="rb-eyebrow" style={{ opacity: 0.5 }}>{t("labels.leadTime")}</dt>
+                  <dd style={{ margin: 0 }}>{product.leadTime[locale]}</dd>
+                </>
+              )}
             </dl>
 
             <a

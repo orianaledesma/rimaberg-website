@@ -5,6 +5,9 @@ import type { Product } from "@/data/products";
 import type { Locale } from "@/i18n/locales";
 import { blurFor } from "@/data/blur";
 
+// Author jewellery: we don't show "On request" / "Pre-order" / "Sold out"
+// retail labels. Every piece is one of a kind — visitors enquire either way.
+
 /**
  * Catalogue tile. Base photo + (optional) hover-swap photo, an overlay with
  * category / name / material, and a meta row underneath. Links to the piece.
@@ -21,7 +24,6 @@ export default async function ProductCard({
 }) {
   const locale = (await getLocale()) as Locale;
   const tCat = await getTranslations("categories");
-  const tStatus = await getTranslations("status");
 
   const swap = product.images[1];
   const material = product.material[locale];
@@ -65,26 +67,8 @@ export default async function ProductCard({
       </div>
 
       {showMeta && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            marginTop: 14,
-            color: "var(--rb-ink)",
-          }}
-        >
+        <div style={{ marginTop: 14, color: "var(--rb-ink)" }}>
           <div style={{ fontSize: 13, fontWeight: 400 }}>{name}</div>
-          <div
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.15em",
-              opacity: 0.55,
-              textTransform: "uppercase",
-            }}
-          >
-            {tStatus(product.status)}
-          </div>
         </div>
       )}
     </Link>

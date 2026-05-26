@@ -3,7 +3,9 @@
     "skip": "Skip to content"
   },
   "header": {
-    "atelier": "Atelier"
+    "atelier": "Jewellery",
+    "contact": "Contact",
+    "ringSize": "Ring size"
   },
   "notFound": {
     "title": "Page not found",
@@ -16,18 +18,16 @@
     "earrings": "Earrings",
     "rings": "Rings",
     "pendants": "Pendants",
-    "bracelets": "Bracelets",
     "engagement": "Engagement",
     "other": "Other"
   },
   "status": {
     "onRequest": "On request",
-    "preOrder": "Pre-order",
     "madeToOrder": "Made to order",
     "soldOut": "Sold out"
   },
   "home": {
-    "heroEyebrow": "SS 26 · Žiedlapiai",
+    "heroEyebrow": "Žiedlapiai",
     "heroLine1": "A garden,",
     "heroEm": "cast",
     "heroLine2": "in silver.",
@@ -40,6 +40,8 @@
     "allPieces": "All pieces →",
     "catViewMore": "View more",
     "categoriesTitle": "Categories",
+    "exploreMark": "Selection",
+    "exploreTitle": "Discover more pieces",
     "atelierEyebrow": "Atelier · Kaunas",
     "atelierTitle": "The hand that makes the stone speak.",
     "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",
@@ -69,26 +71,77 @@
     "enquireSubject": "Enquiry — {name} ({code})"
   },
   "about": {
-    "eyebrow": "About · Rima Berg",
-    "titleLine1": "A studio practice",
-    "titleLine2In": "in",
-    "titleEm": "cast silver",
-    "p1": "Rima Berg has been working with silver for two decades — first apprenticed at the Lithuanian Art Academy, then in her own studio in Kaunas since 2008. Each piece is hand-cast, textured with her own tools, and stone-set one at a time.",
-    "p2": "No collection is reproduced. When a piece sells, the maquette goes back into the drawer. What we keep is the language — granulation, rose-gold bezels, sapphires the colour of Kaunas rain.",
-    "artistEyebrow": "The artist",
-    "artistTitle": "A face for the hand.",
-    "artistText": "Rima photographed at the bench."
+    "eyebrow": "About me",
+    "title": "About me",
+    "byline": "Written by the artist",
+    "p1": "For me, working with metal is primarily about finding texture and shapes. And that quest happens all the time — observing the world, living my everyday life, or getting to know new people. Sometimes ideas come spontaneously and spill out in sketches. Others require long puzzles, almost mosaics — countless attempts that do not leave me until I feel the completeness of the work.",
+    "p2": "While studying at Kaunas School of Applied Arts, I also discovered the technique I liked the most — filigree on a solid surface. However, I see it as a texture, as a small element of the work, only complementing, but by no means completing, the thought of the work.",
+    "p3": "Some pieces I create for just one special occasion; others ask me to come back to them. Let's get in touch.",
+    "signature": "Rimantė Landsbergienė",
+    "uniqueLine": "Each piece is one of a kind.",
+    "followLabel": "Follow",
+    "instagramUrl": "https://www.instagram.com/rima_berg_jewelry",
+    "facebookUrl": "https://www.facebook.com/profile.php?id=100054639451000"
   },
   "contact": {
     "contactLabel": "Contact",
     "atelierLabel": "Atelier",
     "hoursLabel": "Hours",
-    "email": "studio@rimaberg.lt",
+    "email": "info@rimaberg.com",
     "phone": "+370 600 12 345",
-    "addressLine1": "Laisvės al. 50",
-    "addressLine2": "LT-44001 Kaunas",
+    "addressLine1": "Vilniaus g. 30",
+    "addressLine2": "Kaunas",
     "hoursLine1": "By appointment",
-    "hoursLine2": "Tue–Sat · 11–18"
+    "hoursLine2": "Mon–Fri · 10:00–17:00",
+    "ownerName": "Rimantė Landsbergienė",
+    "postalLabel": "Postal address",
+    "postalLine1": "Piliakalnio g. 11A",
+    "postalLine2": "Šėtijų kaimas",
+    "postalLine3": "LT-71223 · Lietuva",
+    "businessReg": "Individ. veiklos pažymėjimo nr. 911884"
+  },
+  "contactPage": {
+    "metaTitle": "Contact",
+    "eyebrow": "Get in touch",
+    "title": "Contact us",
+    "lead": "For enquiries, custom orders, or fittings — write us. We reply within two working days.",
+    "ownerLabel": "Owner",
+    "showroomLabel": "Showroom",
+    "showroomHint": "By appointment only",
+    "writeUs": "Write us →"
+  },
+  "cookieNotice": {
+    "aria": "Cookie notice",
+    "body": "We use a single functional cookie to remember your language. No analytics, no advertising.",
+    "learnMore": "Read the policy",
+    "ok": "OK"
+  },
+  "privacy": {
+    "metaTitle": "Privacy",
+    "eyebrow": "Legal",
+    "title": "Privacy & cookies",
+    "lastUpdated": "Last updated 26 May 2026",
+    "intro": "This page describes how Rima Berg (Rimantė Landsbergienė, individual activity certificate no. 911884) handles personal data when you visit rimaberg.lt.",
+    "section1Title": "What we collect",
+    "section1Text": "Only what is needed to answer you: the contents of any e-mail you send to info@rimaberg.com (your address, message, and any attachments). Server access logs may retain your IP address and request time for up to 30 days for security purposes.",
+    "section2Title": "Cookies",
+    "section2Text": "The site stores one strictly-necessary cookie, `rb-locale`, to remember your language preference. No analytics or advertising cookies are used.",
+    "section3Title": "Your rights",
+    "section3Text": "Under the GDPR you may request access to, correction of, or deletion of your personal data at any time by writing to info@rimaberg.com. We reply within 30 days.",
+    "section4Title": "Sharing",
+    "section4Text": "Your data is never sold or shared with third parties. Email is hosted with our mail provider strictly for correspondence."
+  },
+  "ringSize": {
+    "metaTitle": "Ring size",
+    "eyebrow": "Reference",
+    "title": "Ring sizing guide",
+    "lead": "If you already know your size, use the chart below to find the equivalent in any standard. To measure at home, wrap a thin strip of paper around the base of your finger, mark where it overlaps, and divide that length by π (3.14) to get the inside diameter. Best done at the end of the day, when fingers are slightly larger.",
+    "headDiameter": "Inside Ø (mm)",
+    "headLT": "Lithuania",
+    "headUKEU": "UK · Europe",
+    "headUS": "USA",
+    "note": "For wide bands (5 mm and up), consider going up half a size.",
+    "ctaBack": "Back to catalogue →"
   },
   "footer": {
     "copyright": "© 2026 RIMA BERG · Kaunas, LT",
@@ -98,8 +151,8 @@
   },
   "comingSoon": {
     "eyebrow": "Coming soon",
-    "title": "A space in central Kaunas",
-    "text": "We're opening a studio-store in the heart of Kaunas — a place to see the pieces in person and be fitted. Follow along for the opening date.",
+    "title": "A space on Vilniaus g. 30",
+    "text": "We're opening a studio-store in central Kaunas — a place to see the pieces in person and be fitted. Follow along for the opening date.",
     "cta": "See the location →"
   }
 }

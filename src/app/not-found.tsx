@@ -8,7 +8,7 @@ export default async function NotFound() {
 
   return (
     <div className="rb-screen">
-      <Header tone="light" />
+      <Header />
       <section
         style={{
           minHeight: "60vh",

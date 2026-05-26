@@ -4,14 +4,12 @@ import Logo from "./Logo";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 /**
- * Sticky header: search affordance · centred wordmark · language switch.
- * `tone` flips the colour scheme for the rare dark-background page.
+ * Sticky black header — Atelier link · centred wordmark · language switch.
+ * Always renders dark for a consistent brand anchor across light and dark
+ * pages; the hairline border keeps a soft separation from the hero.
  */
-export default async function Header({ tone = "light" }: { tone?: "light" | "dark" }) {
+export default async function Header() {
   const t = await getTranslations("header");
-  const ink = tone === "dark" ? "#fafafa" : "var(--rb-ink)";
-  const line = tone === "dark" ? "var(--rb-line-dark)" : "var(--rb-line)";
-  const bg = tone === "dark" ? "var(--rb-noir)" : "var(--rb-bg)";
 
   return (
     <header
@@ -19,28 +17,35 @@ export default async function Header({ tone = "light" }: { tone?: "light" | "dar
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "22px clamp(20px, 4vw, 56px)",
-        color: ink,
-        borderBottom: `1px solid ${line}`,
+        padding: "12px clamp(20px, 4vw, 56px)",
+        color: "#fafafa",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.14)",
+        boxShadow: "0 1px 0 rgba(0, 0, 0, 0.6)",
         position: "sticky",
         top: 0,
         zIndex: 10,
-        background: bg,
+        background: "var(--rb-noir)",
       }}
     >
-      <div style={{ display: "flex", gap: 24, alignItems: "center", minWidth: 80 }}>
-        <Link href="/about" className="rb-eyebrow" style={{ fontSize: 10, color: ink, opacity: 0.7 }}>
+      <nav style={{ display: "flex", gap: 22, alignItems: "center", minWidth: 80 }}>
+        <Link href="/about" className="rb-eyebrow" style={{ fontSize: 10, color: "#fafafa", opacity: 0.7 }}>
           {t("atelier")}
         </Link>
-      </div>
+        <Link href="/ring-size" className="rb-eyebrow rb-nav-extra" style={{ fontSize: 10, color: "#fafafa", opacity: 0.7 }}>
+          {t("ringSize")}
+        </Link>
+      </nav>
 
       <Link href="/" aria-label="Rima Berg — home">
-        <Logo tone={tone === "dark" ? "light" : "dark"} size={14} />
+        <Logo />
       </Link>
 
-      <div style={{ display: "flex", minWidth: 80, justifyContent: "flex-end" }}>
-        <LocaleSwitcher tone={tone} />
-      </div>
+      <nav style={{ display: "flex", gap: 22, alignItems: "center", minWidth: 80, justifyContent: "flex-end" }}>
+        <Link href="/contact" className="rb-eyebrow rb-nav-extra" style={{ fontSize: 10, color: "#fafafa", opacity: 0.7 }}>
+          {t("contact")}
+        </Link>
+        <LocaleSwitcher tone="dark" />
+      </nav>
     </header>
   );
 }

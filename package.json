@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "import:products": "node scripts/import-products.mjs",
+    "gen:blur": "node scripts/gen-blur.mjs",
     "contact-sheet": "node scripts/contact-sheet.mjs",
     "builder": "node scripts/builder.mjs"
   },

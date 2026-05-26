@@ -18,8 +18,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CSV = resolve(root, "content/products.csv");
 const OUT = resolve(root, "src/data/products.generated.ts");
 
-const CATEGORIES = ["earrings", "rings", "pendants", "bracelets", "engagement"];
-const STATUSES = ["onRequest", "preOrder", "madeToOrder", "soldOut"];
+const CATEGORIES = ["earrings", "rings", "pendants", "engagement"];
+const STATUSES = ["onRequest", "madeToOrder", "soldOut"];
 
 /** Minimal RFC-4180 CSV parser: handles quoted fields, commas and newlines. */
 function parseCSV(text) {

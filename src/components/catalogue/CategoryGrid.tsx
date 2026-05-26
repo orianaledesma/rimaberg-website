@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { getByCategory, getAllProducts } from "@/data/products";
 import { blurFor } from "@/data/blur";
+import { CATEGORY_IMAGES } from "@/data/home";
 import type { CategorySlug } from "@/data/categories";
 
 interface CategoryTile {
@@ -14,8 +15,12 @@ interface CategoryTile {
   image: string;
 }
 
-/** First photo of a category, with a graceful fallback to any piece (or none). */
+/**
+ * Tile image: prefer the hand-picked photo from data/home.ts, then fall back to
+ * the first photo of the category (or any piece) so a tile is never blank.
+ */
 function pickImage(category: CategorySlug): string {
+  if (CATEGORY_IMAGES[category]) return CATEGORY_IMAGES[category]!;
   const piece = getByCategory(category)[0] ?? getAllProducts()[0];
   return piece?.images[0] ?? "";
 }
@@ -32,7 +37,7 @@ export default async function CategoryGrid() {
     { key: "earrings", href: "/catalogue?category=earrings", image: pickImage("earrings") },
     { key: "rings", href: "/catalogue?category=rings", image: pickImage("rings") },
     { key: "pendants", href: "/catalogue?category=pendants", image: pickImage("pendants") },
-    { key: "other", href: "/catalogue", image: pickImage("bracelets") },
+    { key: "other", href: "/catalogue", image: pickImage("engagement") },
   ];
 
   return (

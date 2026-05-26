@@ -64,7 +64,7 @@ export default async function CataloguePage({
 
   return (
     <div className="rb-screen" data-hover="reveal">
-        <Header tone="light" />
+        <Header />
         <CategoryNav active={isAll ? "all" : category} />
 
         {/* Heading */}

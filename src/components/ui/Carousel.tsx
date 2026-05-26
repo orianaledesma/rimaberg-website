@@ -64,6 +64,7 @@ export default function Carousel({
               priority={priority && idx === 0}
               placeholder={s.blurDataURL ? "blur" : "empty"}
               blurDataURL={s.blurDataURL}
+              quality={90}
               style={{ objectFit: "cover" }}
             />
           ) : (

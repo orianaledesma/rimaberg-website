@@ -12,6 +12,7 @@ import AtelierSection from "@/components/sections/AtelierSection";
 import ComingSoon from "@/components/sections/ComingSoon";
 import { getFeatured } from "@/data/products";
 import { blurFor } from "@/data/blur";
+import { HERO_IMAGES } from "@/data/home";
 import { STORE_MAPS_URL } from "@/data/site";
 
 export default async function HomePage() {
@@ -21,10 +22,14 @@ export default async function HomePage() {
 
   const featured = getFeatured();
 
-  const heroSlides: Slide[] = featured
-    .slice(0, 4)
-    .map((p) => ({ src: p.images[0], blurDataURL: blurFor(p.images[0]) }));
+  const heroSlides: Slide[] = HERO_IMAGES.map((src) => ({
+    src,
+    blurDataURL: blurFor(src),
+  }));
 
+  // One curated strip on the home — Rima's hand-picked `featured` pieces.
+  // Shown below the category tiles so the page reads:
+  //   hero → catalogue intro → categories → selection → atelier → coming soon.
   const carouselItems: CarouselItem[] = featured.map((p) => ({
     id: p.id,
     name: p.name[locale],
@@ -35,7 +40,7 @@ export default async function HomePage() {
 
   return (
     <div className="rb-screen" data-hover="reveal">
-      <Header tone="light" />
+      <Header />
 
       {/* Black hero with full-bleed atelier carousel + overlay copy */}
       <section
@@ -160,14 +165,6 @@ export default async function HomePage() {
           </Link>
         </Reveal>
 
-        <Reveal style={{ marginBottom: 64 }}>
-          <FeaturedCarousel
-            items={carouselItems}
-            viewMoreLabel={t("catViewMore")}
-            ariaLabel={t("catTitle")}
-          />
-        </Reveal>
-
         <Reveal delay={120} style={{ marginBottom: 24 }}>
           <h3 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 200, letterSpacing: "-0.01em" }}>
             {t("categoriesTitle")}
@@ -176,6 +173,27 @@ export default async function HomePage() {
         <Reveal delay={160}>
           <CategoryGrid />
         </Reveal>
+
+        {/* Single curated strip — Rima's selection, below the categories */}
+        {carouselItems.length > 0 && (
+          <>
+            <Reveal delay={120} style={{ margin: "72px 0 24px" }}>
+              <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
+                {t("exploreMark")}
+              </div>
+              <h3 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 200, marginTop: 10, letterSpacing: "-0.01em" }}>
+                {t("exploreTitle")}
+              </h3>
+            </Reveal>
+            <Reveal delay={160}>
+              <FeaturedCarousel
+                items={carouselItems}
+                viewMoreLabel={t("catViewMore")}
+                ariaLabel={t("exploreTitle")}
+              />
+            </Reveal>
+          </>
+        )}
       </section>
 
       <AtelierSection />
