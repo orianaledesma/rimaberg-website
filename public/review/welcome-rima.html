@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rima Berg — svetainė paruošta peržiūrai</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --ink: #0a0a0a;
+    --noir: #0a0a0a;
+    --mut: #6f6f6f;
+    --line: #e5e5e0;
+    --warm: #b08855;
+    --ok: #3a8c3a;
+    --pending: #c4773b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.65 "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  }
+  .topbar {
+    background: var(--noir);
+    color: #fafafa;
+    padding: 22px 32px;
+    text-align: center;
+    letter-spacing: 0.42em;
+    font-size: 14px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    position: sticky; top: 0; z-index: 5;
+  }
+  .topbar .sub {
+    display: block; margin-top: 4px;
+    font-size: 10px; letter-spacing: 0.32em; opacity: 0.55;
+  }
+  .topbar .progress {
+    position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+    font-family: "Courier New", monospace;
+    font-size: 11px; letter-spacing: 0.12em; opacity: 0.7;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 48px 28px 96px; }
+  h1 { font-weight: 300; font-size: clamp(38px, 6vw, 56px); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 8px; }
+  h2 { font-weight: 300; font-size: clamp(24px, 3.5vw, 32px); margin: 56px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+  h3 { font-weight: 400; font-size: 18px; margin: 24px 0 8px; }
+  .eyebrow {
+    font-family: "Courier New", monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mut); margin-bottom: 12px;
+  }
+  p { margin: 0 0 14px; max-width: 64ch; }
+  p.lead { font-size: 18px; color: #333; }
+  .lt { font-style: italic; color: #444; }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--noir); color: #fafafa;
+    padding: 16px 28px; text-decoration: none;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 12px; font-family: ui-sans-serif, system-ui, sans-serif;
+    margin: 18px 0;
+  }
+  .cta:hover { opacity: 0.85; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px; margin: 24px 0 0; padding: 24px;
+    background: #fff; border: 1px solid var(--line);
+  }
+  .stat .n { font-size: 36px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
+  .stat .l { font-family: "Courier New", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mut); }
+  .stat.ok .n { color: var(--ok); }
+  .stat.pending .n { color: var(--pending); }
+
+  /* === FUNCTIONAL CHECKLIST === */
+  .checklist { list-style: none; padding: 0; margin: 14px 0 0; }
+  .checklist li {
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 28px 1fr; gap: 12px;
+    align-items: start; cursor: pointer;
+  }
+  .checklist li:last-child { border-bottom: 0; }
+  .checklist li:hover { background: rgba(0,0,0,0.02); }
+
+  .checklist input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 20px; height: 20px; margin: 3px 0 0;
+    border: 1.5px solid var(--ink); background: #fff;
+    cursor: pointer; transition: all 0.15s;
+    flex: 0 0 auto; border-radius: 2px;
+  }
+  .checklist input[type="checkbox"]:hover { border-color: var(--warm); }
+  .checklist input[type="checkbox"]:checked {
+    background: var(--ok); border-color: var(--ok);
+  }
+  .checklist input[type="checkbox"]:checked::after {
+    content: "✓"; display: block; color: #fff;
+    text-align: center; font-size: 14px; line-height: 17px; font-weight: 700;
+  }
+  .checklist input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--warm); outline-offset: 2px;
+  }
+  .pending-list input[type="checkbox"] { border-color: var(--pending); }
+  .pending-list input[type="checkbox"]:checked {
+    background: var(--pending); border-color: var(--pending);
+  }
+
+  .checklist li.is-done .title { text-decoration: line-through; opacity: 0.5; }
+  .checklist .title { font-weight: 500; font-size: 16px; }
+  .checklist .desc { font-size: 14px; color: var(--mut); margin-top: 2px; }
+  .checklist .desc a { color: inherit; border-bottom: 1px solid currentColor; text-decoration: none; }
+
+  .actions { display: flex; gap: 12px; align-items: center; margin: 16px 0; }
+  .btn-ghost {
+    background: transparent; color: var(--mut);
+    border: 1px solid var(--line); padding: 8px 14px;
+    font-family: "Courier New", monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .worksheet-card {
+    background: #fff; border: 1px solid var(--line);
+    border-left: 3px solid var(--warm); padding: 20px 22px; margin: 14px 0;
+  }
+  .worksheet-card h3 { margin: 0 0 6px; }
+  .worksheet-card p { margin: 0 0 12px; font-size: 14px; color: #444; }
+
+  .timeline { margin: 20px 0; border: 1px solid var(--line); background: #fff; }
+  .timeline .row {
+    display: grid; grid-template-columns: 140px 1fr;
+    padding: 14px 20px; border-bottom: 1px solid var(--line);
+    align-items: center; font-size: 14px;
+  }
+  .timeline .row:last-child { border-bottom: 0; }
+  .timeline .day {
+    font-family: "Courier New", monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--mut);
+  }
+  .timeline .launch { background: #0a0a0a; color: #fafafa; }
+  .timeline .launch .day { color: rgba(255,255,255,0.7); }
+
+  .pill {
+    display: inline-block; padding: 3px 10px;
+    font-family: "Courier New", monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase; border-radius: 12px; margin-left: 8px;
+  }
+  .pill.pending { background: rgba(196, 119, 59, 0.12); color: var(--pending); }
+  .pill.core { background: rgba(176, 136, 85, 0.18); color: var(--warm); }
+
+  footer {
+    margin-top: 80px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--mut);
+    font-family: "Courier New", monospace; letter-spacing: 0.08em;
+  }
+
+  @media print {
+    .topbar, .actions { display: none !important; }
+    .cta { background: #fff !important; color: var(--ink) !important; border: 1px solid var(--ink); }
+    .checklist input[type="checkbox"] { border-color: var(--ink) !important; background: #fff !important; }
+    .checklist input[type="checkbox"]:checked::after { color: var(--ink) !important; }
+    body { font-size: 12px; }
+    h2 { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  RIMA BERG
+  <span class="sub">JEWELLERY · KAUNAS</span>
+  <span class="progress" id="progress">0 / 0</span>
+</div>
+
+<main>
+
+  <section>
+    <div class="eyebrow">Welcome · Sveiki atvykę</div>
+    <h1>The website is live for review.</h1>
+    <p class="lt">Svetainė paruošta peržiūrai.</p>
+    <p class="lead">
+      Rima, this is the website built around your jewellery. It's live on the
+      web and ready for you to walk through. Below you'll find what to test,
+      what we still need from you, and the two worksheets that finish the
+      catalogue. <b>Tick the checkboxes as you go — your progress is saved automatically in this browser.</b>
+    </p>
+    <p class="lt">
+      Rima, čia svetainė, sukurta jūsų dirbiniams. Žemiau rasite ką patikrinti
+      ir ko dar trūksta. <b>Pažymėkite varneles — pažanga automatiškai išsaugoma.</b>
+    </p>
+
+    <a class="cta" href="https://rimaberg-website.vercel.app" target="_blank" rel="noopener">
+      Open the site →
+    </a>
+
+    <div class="stats">
+      <div class="stat ok"><div class="n">32</div><div class="l">Pieces published</div></div>
+      <div class="stat pending"><div class="n">20</div><div class="l">Untitled (awaiting names)</div></div>
+      <div class="stat"><div class="n">128</div><div class="l">Photos online</div></div>
+      <div class="stat ok"><div class="n">2</div><div class="l">Languages · LT / EN</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>1 · What to test on the site</h2>
+    <p>Take a slow walk through each page. Mark each item as you check it.</p>
+    <p class="lt">Apeikite kiekvieną puslapį be skubos. Pažymėkite varnele ką patikrinote.</p>
+
+    <ul class="checklist test-list" data-section="test">
+      <li><input type="checkbox" data-key="t-home"><span>
+        <div class="title">Home — <a href="https://rimaberg-website.vercel.app/" target="_blank">/</a></div>
+        <div class="desc">Hero carousel · "About me" extract · 4 categories · selected pieces strip · "Coming soon" for the Kaunas store · footer. Does the visual tone feel like your studio?</div></span></li>
+      <li><input type="checkbox" data-key="t-catalogue"><span>
+        <div class="title">Catalogue — <a href="https://rimaberg-website.vercel.app/catalogue" target="_blank">/catalogue</a></div>
+        <div class="desc">32 pieces shown. Filter by category at the top. Click any piece to open its detail.</div></span></li>
+      <li><input type="checkbox" data-key="t-detail"><span>
+        <div class="title">Piece detail (e.g. Šerdis, Trys pasirinkimai, Bundanti gamta)</div>
+        <div class="desc">Hover the main photo → magnifier follows the cursor. Click → fullscreen lightbox with zoom. Try a few pieces — do all photos really belong to that piece?</div></span></li>
+      <li><input type="checkbox" data-key="t-about"><span>
+        <div class="title">About me — <a href="https://rimaberg-website.vercel.app/about" target="_blank">/about</a></div>
+        <div class="desc">The text you wrote, in LT and EN. Switch languages with the top-right LT/EN toggle.</div></span></li>
+      <li><input type="checkbox" data-key="t-contact"><span>
+        <div class="title">Contact — <a href="https://rimaberg-website.vercel.app/contact" target="_blank">/contact</a></div>
+        <div class="desc">Your name, Piliakalnio g. 11A · Šėtijų k. · LT-71223 · registration 911884 · info@rimaberg.com · Maps link to the Kaunas showroom.</div></span></li>
+      <li><input type="checkbox" data-key="t-ringsize"><span>
+        <div class="title">Ring size — <a href="https://rimaberg-website.vercel.app/ring-size" target="_blank">/ring-size</a></div>
+        <div class="desc">22-row chart (mm · Lithuania · UK·Europe · USA). Anything wrong or missing for your customers?</div></span></li>
+      <li><input type="checkbox" data-key="t-privacy"><span>
+        <div class="title">Privacy + cookies — <a href="https://rimaberg-website.vercel.app/privacy" target="_blank">/privacy</a></div>
+        <div class="desc">GDPR-aligned. Only one functional cookie (language). The notice at the bottom of the screen explains it.</div></span></li>
+      <li><input type="checkbox" data-key="t-phone"><span>
+        <div class="title">Phone test — open the site on your phone</div>
+        <div class="desc">The header simplifies, the gallery goes full-width, the catalogue scrolls smoothly. Anything broken?</div></span></li>
+      <li><input type="checkbox" data-key="t-lang"><span>
+        <div class="title">Language toggle (LT ↔ EN)</div>
+        <div class="desc">Top-right of the header. Confirm the whole site switches — and that the Lithuanian copy reads natural (not "translated").</div></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2 · What we still need from you</h2>
+    <p>These are the open items. We can ship without #6 and #7 (they can come after launch).</p>
+    <p class="lt">Be #6 ir #7 galime ir startuoti — jie gali būti pridėti vėliau.</p>
+
+    <ul class="checklist pending-list" data-section="pending">
+      <li><input type="checkbox" data-key="p-naming"><span>
+        <div class="title">1. Name the 20 Untitled pieces <span class="pill core">core</span></div>
+        <div class="desc">Open <a href="naming-for-rima.html" target="_blank">naming-for-rima.html</a> — one page per piece with photos, suggested match/new and blanks for LT/EN name + description.</div></span></li>
+      <li><input type="checkbox" data-key="p-validate"><span>
+        <div class="title">2. Validate the 32 published pieces <span class="pill core">core</span></div>
+        <div class="desc">Open <a href="product-review-for-rima.html" target="_blank">product-review-for-rima.html</a> — every piece with all its photos and description. Tick "Photos OK / Name OK / Description OK" per piece.</div></span></li>
+      <li><input type="checkbox" data-key="p-metals"><span>
+        <div class="title">3. Detailed metals per piece</div>
+        <div class="desc">Most cards say "Silver 925, Gold". Is the gold 14k? 18k? Rose? It raises perceived value to be specific.</div></span></li>
+      <li><input type="checkbox" data-key="p-hours"><span>
+        <div class="title">4. Confirm opening hours <span class="pill pending">site shows provisional</span></div>
+        <div class="desc">Right now: <b>Mon–Fri · 10:00–17:00</b> by appointment. Send back the real hours.</div></span></li>
+      <li><input type="checkbox" data-key="p-lt-review"><span>
+        <div class="title">5. Native Lithuanian review</div>
+        <div class="desc">Read the LT version of: About me · Contact · Ring size intro · Privacy + cookie notice · Coming Soon. Send back any wording you'd phrase differently.</div></span></li>
+      <li><input type="checkbox" data-key="p-hires"><span>
+        <div class="title">6. 4 photos in high resolution</div>
+        <div class="desc">BKIJ6345, IMG_E6484, EVMC6579, QHYS4544 are below 1300px and pixelate when zoomed. Send the originals from your photographer.</div></span></li>
+      <li><input type="checkbox" data-key="p-pendants"><span>
+        <div class="title">7. Pendant photoshoot (15 missing)</div>
+        <div class="desc">The "Pakabukai" category is empty. When the next session is scheduled, send the files.</div></span></li>
+      <li><input type="checkbox" data-key="p-storefront"><span>
+        <div class="title">8. Storefront photo</div>
+        <div class="desc">When the Kaunas store at Vilniaus g. 30 is finished, send a photo of the entrance. We'll replace "Coming soon" with a "Visit the studio" section.</div></span></li>
+    </ul>
+
+    <div class="actions">
+      <button class="btn-ghost" id="clear">Clear all checks</button>
+      <span style="font-family:'Courier New',monospace;font-size:11px;color:var(--mut)">Your progress is saved in this browser.</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>3 · The two worksheets</h2>
+    <p>Open these. Fill in on screen (changes save automatically), or print.</p>
+
+    <div class="worksheet-card">
+      <h3>📋 naming-for-rima.html</h3>
+      <p>20 untitled pieces. Each has a "Suggestion" panel — either a match with an existing name from the old site or a "new piece" flag. Confirm or change.</p>
+      <a class="cta" href="naming-for-rima.html" target="_blank">Open worksheet →</a>
+    </div>
+
+    <div class="worksheet-card">
+      <h3>🔍 product-review-for-rima.html</h3>
+      <p>All 52 pieces grouped (32 published + 20 untitled) with their photos. Verify each "pack" of photos really belongs to that piece.</p>
+      <a class="cta" href="product-review-for-rima.html" target="_blank">Open review →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>4 · Timeline to launch</h2>
+    <p>Target launch: <b>June 2, 2026</b>.</p>
+    <div class="timeline">
+      <div class="row"><span class="day">Today · 26 May</span><span>Site live for review · this document sent</span></div>
+      <div class="row"><span class="day">27 – 29 May</span><span>Rima: name the 20 Untitled · validate 32 packs · review LT</span></div>
+      <div class="row"><span class="day">30 May</span><span>Oriana: integrate changes · final UI/UX pass</span></div>
+      <div class="row"><span class="day">31 May · 1 Jun</span><span>QA on staging · domain setup</span></div>
+      <div class="row launch"><span class="day">2 June</span><span>🚀 Public launch</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5 · How to send your feedback</h2>
+    <p>
+      Easiest: fill in this page and the worksheets in your browser (everything saves automatically),
+      then write open questions or send a quick screen-recording to Oriana.
+    </p>
+    <p class="lt">
+      Lengviausia: užpildykite naršyklėje (viskas automatiškai išsaugoma),
+      o atvirus klausimus parašykite Oriana.
+    </p>
+  </section>
+
+  <footer>
+    Rima Berg · prototype review packet · prepared 2026-05-26 · launch target 2026-06-02<br>
+    Live: rimaberg-website.vercel.app
+  </footer>
+
+</main>
+
+<script>
+  // Persisted checklist state, scoped per HTML so each file has its own bucket.
+  const KEY = "rb-review-welcome-v1";
+  const state = JSON.parse(localStorage.getItem(KEY) || "{}");
+  const checks = document.querySelectorAll('.checklist input[type="checkbox"]');
+
+  function syncRow(cb) {
+    const li = cb.closest('li');
+    if (li) li.classList.toggle('is-done', cb.checked);
+  }
+  function persist() {
+    localStorage.setItem(KEY, JSON.stringify(state));
+    const total = checks.length;
+    const done = [...checks].filter(c => c.checked).length;
+    document.getElementById('progress').textContent = `${done} / ${total}`;
+  }
+
+  checks.forEach(cb => {
+    if (state[cb.dataset.key]) { cb.checked = true; syncRow(cb); }
+    cb.addEventListener('change', () => {
+      state[cb.dataset.key] = cb.checked;
+      syncRow(cb);
+      persist();
+    });
+  });
+  // Whole row click toggles the box (better tap target).
+  document.querySelectorAll('.checklist li').forEach(li => {
+    li.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') return;
+      const cb = li.querySelector('input[type="checkbox"]');
+      if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event('change')); }
+    });
+  });
+  document.getElementById('clear').addEventListener('click', () => {
+    if (!confirm('Clear all checks?')) return;
+    checks.forEach(cb => { cb.checked = false; state[cb.dataset.key] = false; syncRow(cb); });
+    persist();
+  });
+  persist();
+</script>
+</body>
+</html>

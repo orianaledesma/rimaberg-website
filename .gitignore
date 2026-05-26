@@ -34,3 +34,4 @@ next-env.d.ts
 # generated content reference (regenerate with npm run contact-sheet)
 content/contact-sheet.html
 content/builder.html
+.vercel
