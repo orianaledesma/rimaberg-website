@@ -20,7 +20,8 @@ export default function Logo({ height = 56 }: { height?: number }) {
       width={width}
       height={height}
       priority
-      style={{ display: "block", height, width: "auto" }}
+      className="rb-logo-img"
+      style={{ display: "block", width: "auto" }}
     />
   );
 }

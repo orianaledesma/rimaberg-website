@@ -240,7 +240,41 @@
   will-change: transform;
 }
 .rb-hcar-card:hover .rb-hcar-media img {
-  transform: scale(1.04);
+  transform: scale(1.08);
+}
+
+/* Zoom-in entry on the "Atranka" strip — triggered when its Reveal wrapper
+   lands in view, with a small per-card stagger so the row feels alive. */
+.rb-reveal .rb-hcar-media img {
+  transform: scale(1.18);
+  opacity: 0.001;
+}
+.rb-reveal.is-in .rb-hcar-media img {
+  animation: rb-hcar-zoom-in 1.5s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+}
+.rb-reveal.is-in .rb-hcar-card:nth-child(2) .rb-hcar-media img { animation-delay: 120ms; }
+.rb-reveal.is-in .rb-hcar-card:nth-child(3) .rb-hcar-media img { animation-delay: 240ms; }
+.rb-reveal.is-in .rb-hcar-card:nth-child(4) .rb-hcar-media img { animation-delay: 360ms; }
+.rb-reveal.is-in .rb-hcar-card:nth-child(5) .rb-hcar-media img { animation-delay: 480ms; }
+.rb-reveal.is-in .rb-hcar-card:nth-child(n+6) .rb-hcar-media img { animation-delay: 600ms; }
+
+@keyframes rb-hcar-zoom-in {
+  0% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-reveal .rb-hcar-media img,
+  .rb-reveal.is-in .rb-hcar-media img {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 .rb-hcar-body {
   text-align: center;

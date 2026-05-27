@@ -9,13 +9,11 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.08);
-  transition: opacity 1.2s cubic-bezier(0.2, 0.6, 0.2, 1), transform 4s ease-out;
+  transition: opacity 1.4s cubic-bezier(0.2, 0.6, 0.2, 1);
   pointer-events: none;
 }
 .rb-carousel-slide.is-active {
   opacity: 1;
-  transform: scale(1);
   pointer-events: auto;
 }
 .rb-carousel-slide img {
@@ -23,6 +21,26 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1.06);
+  transition: transform 1.4s ease-out;
+}
+.rb-carousel-slide.is-active img {
+  animation: rb-kenburns-drift 16s ease-in-out infinite alternate;
+}
+@keyframes rb-kenburns-drift {
+  0% {
+    transform: scale(1.18) translate3d(-1.6%, -1.2%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-carousel-slide img,
+  .rb-carousel-slide.is-active img {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 .rb-carousel-caption {
   position: absolute;

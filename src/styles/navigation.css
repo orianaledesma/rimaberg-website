@@ -13,6 +13,17 @@
     display: none;
   }
 }
+
+/* Responsive wordmark: 56px on desktop, scaled down on phones so it doesn't
+   dominate the narrow header. Width stays auto to preserve aspect ratio. */
+.rb-logo-img {
+  height: 56px;
+}
+@media (max-width: 640px) {
+  .rb-logo-img {
+    height: 40px;
+  }
+}
 .rb-cat-nav a,
 .rb-cat-nav button {
   font-size: 11px;
