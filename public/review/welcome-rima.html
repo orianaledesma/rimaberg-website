@@ -308,15 +308,52 @@
     </div>
   </section>
 
-  <section>
-    <h2>5 · How to send your feedback</h2>
+  <section id="send">
+    <h2>5 · Send your feedback to Oriana</h2>
     <p>
-      Easiest: fill in this page and the worksheets in your browser (everything saves automatically),
-      then write open questions or send a quick screen-recording to Oriana.
+      When you're done with the three documents — this checklist, the
+      <a href="naming-for-rima.html">naming worksheet</a> and the
+      <a href="product-review-for-rima.html">product review</a> — click the
+      button below. It bundles everything you ticked and wrote across all
+      three pages into a single email to Oriana.
     </p>
     <p class="lt">
-      Lengviausia: užpildykite naršyklėje (viskas automatiškai išsaugoma),
-      o atvirus klausimus parašykite Oriana.
+      Kai baigsite tris dokumentus — šį sąrašą,
+      <a href="naming-for-rima.html">pavadinimų lapą</a> ir
+      <a href="product-review-for-rima.html">produktų peržiūrą</a> —
+      paspauskite mygtuką žemiau. Visi jūsų atsakymai bus suvienyti
+      į vieną laišką Orianai.
+    </p>
+
+    <div class="worksheet-card" style="border-left-color: var(--ok);">
+      <h3>Free notes · Pastabos</h3>
+      <p>Anything else you want Oriana to know — questions, ideas, things to change.</p>
+      <textarea id="freeNotes" placeholder="Type here…"
+        style="width:100%;min-height:120px;padding:14px;border:1px solid var(--line);
+        background:#fff;font:14px/1.55 inherit;resize:vertical;color:var(--ink);"></textarea>
+    </div>
+
+    <div style="margin: 28px 0 8px;">
+      <button class="cta" id="sendBtn" type="button" style="border:none;cursor:pointer;font-size:13px;">
+        📧 Send my feedback to Oriana
+      </button>
+      <div id="sendStatus" style="font-family:'Courier New',monospace;font-size:11px;
+        color:var(--mut);margin-top:10px;min-height:18px;"></div>
+      <textarea id="sendFallback" readonly aria-label="Feedback content"
+        style="display:none;width:100%;min-height:220px;margin-top:10px;padding:14px;
+        border:1px solid var(--line);background:#fff;font:12px/1.5 'Courier New',monospace;
+        color:var(--ink);"></textarea>
+    </div>
+
+    <p style="font-size:13px;color:var(--mut);margin-top:8px;">
+      <b>What happens when you click:</b> your full feedback is copied to your
+      clipboard, and your email program opens with a message already addressed
+      to Oriana. Paste (Ctrl+V on Windows · ⌘+V on Mac) inside the email and
+      hit send.
+    </p>
+    <p class="lt" style="font-size:13px;">
+      Paspaudus: visi atsakymai nukopijuojami į iškarpinę, atsidaro laiškas
+      Orianai. Įklijuokite (Ctrl+V / ⌘+V) ir išsiųskite.
     </p>
   </section>
 
@@ -366,6 +403,158 @@
     persist();
   });
   persist();
+
+  // ===== Persist the free-notes textarea =====
+  const NOTES_KEY = "rb-review-welcome-notes-v1";
+  const notesEl = document.getElementById('freeNotes');
+  notesEl.value = localStorage.getItem(NOTES_KEY) || "";
+  notesEl.addEventListener('input', () => {
+    localStorage.setItem(NOTES_KEY, notesEl.value);
+  });
+
+  // ===== Build a single feedback bundle across the 3 review docs =====
+  const ORIANA_EMAIL = "oriana.ledesma96@gmail.com";
+
+  function readJSON(key) {
+    try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch { return {}; }
+  }
+
+  function labelForKey(key) {
+    // Looks up the visible title for a welcome-page checkbox key.
+    const cb = document.querySelector(`input[data-key="${key}"]`);
+    if (!cb) return key;
+    const t = cb.closest('li')?.querySelector('.title');
+    return t ? t.textContent.trim().replace(/\s+/g, ' ') : key;
+  }
+
+  function buildSummary() {
+    const lines = [];
+    const today = new Date().toISOString().slice(0, 10);
+    lines.push(`RIMA BERG — review feedback`);
+    lines.push(`Date: ${today}`);
+    lines.push(`From: Rima → Oriana`);
+    lines.push(``);
+
+    // --- 1. Welcome checklist ---
+    const welcome = readJSON("rb-review-welcome-v1");
+    const allKeys = [...document.querySelectorAll('input[data-key]')].map(el => el.dataset.key);
+    const test = allKeys.filter(k => k.startsWith('t-'));
+    const pending = allKeys.filter(k => k.startsWith('p-'));
+
+    lines.push(`==============================`);
+    lines.push(`1. SITE TEST (welcome checklist)`);
+    lines.push(`==============================`);
+    test.forEach(k => {
+      lines.push(`${welcome[k] ? '[x]' : '[ ]'} ${labelForKey(k)}`);
+    });
+    lines.push(``);
+    lines.push(`Pending items confirmed:`);
+    pending.forEach(k => {
+      lines.push(`${welcome[k] ? '[x]' : '[ ]'} ${labelForKey(k)}`);
+    });
+    lines.push(``);
+
+    // --- 2. Product review ---
+    const prod = readJSON("rb-product-review-v1");
+    const prodIds = [...new Set(Object.keys(prod).map(k => k.split('.')[0]))].sort();
+    lines.push(`==============================`);
+    lines.push(`2. PRODUCT REVIEW (${prodIds.length} pieces touched)`);
+    lines.push(`==============================`);
+    if (prodIds.length === 0) {
+      lines.push(`(no entries yet)`);
+    } else {
+      prodIds.forEach(id => {
+        const flags = [];
+        if (prod[`${id}.photos`]) flags.push('photos✓');
+        if (prod[`${id}.name`])   flags.push('name✓');
+        if (prod[`${id}.desc`])   flags.push('description✓');
+        const note = (prod[`${id}.note`] || '').trim();
+        lines.push(`• ${id} — ${flags.join(' · ') || 'no checks'}`);
+        if (note) lines.push(`    note: ${note}`);
+      });
+    }
+    lines.push(``);
+
+    // --- 3. Naming ---
+    const naming = readJSON("rb-naming-v1");
+    const namingIds = [...new Set(Object.keys(naming).map(k => k.split('.')[0]))].sort();
+    lines.push(`==============================`);
+    lines.push(`3. NAMING (20 untitled pieces)`);
+    lines.push(`==============================`);
+    if (namingIds.length === 0) {
+      lines.push(`(no entries yet)`);
+    } else {
+      namingIds.forEach(id => {
+        const lt = naming[`${id}.name_lt`] || '';
+        const en = naming[`${id}.name_en`] || '';
+        const dLt = naming[`${id}.description_lt`] || '';
+        const dEn = naming[`${id}.description_en`] || '';
+        const mat = naming[`${id}.material`] || '';
+        const sto = naming[`${id}.stones`] || '';
+        const hasAny = lt || en || dLt || dEn || mat || sto;
+        if (!hasAny) return;
+        lines.push(`• ${id}`);
+        if (lt)  lines.push(`    name (LT): ${lt}`);
+        if (en)  lines.push(`    name (EN): ${en}`);
+        if (dLt) lines.push(`    desc (LT): ${dLt}`);
+        if (dEn) lines.push(`    desc (EN): ${dEn}`);
+        if (mat) lines.push(`    material: ${mat}`);
+        if (sto) lines.push(`    stones: ${sto}`);
+      });
+    }
+    lines.push(``);
+
+    // --- 4. Free notes ---
+    const notes = (notesEl.value || '').trim();
+    lines.push(`==============================`);
+    lines.push(`4. FREE NOTES · PASTABOS`);
+    lines.push(`==============================`);
+    lines.push(notes || '(none)');
+    lines.push(``);
+    lines.push(`— end —`);
+
+    return lines.join('\n');
+  }
+
+  async function sendFeedback() {
+    const status = document.getElementById('sendStatus');
+    const body = buildSummary();
+    const subject = `Rima Berg — review feedback (${new Date().toISOString().slice(0,10)})`;
+
+    // Try clipboard first (silent if unavailable).
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(body);
+      copied = true;
+    } catch { /* older browsers — fallthrough */ }
+
+    // Short mailto body so the link doesn't get truncated by the email client.
+    const intro =
+      `Hi Oriana,\n\n` +
+      `My full feedback is in the clipboard — please paste it below (Ctrl+V / ⌘+V).\n\n` +
+      `— Rima\n`;
+    const href =
+      `mailto:${ORIANA_EMAIL}?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(intro)}`;
+
+    window.location.href = href;
+
+    if (copied) {
+      status.textContent = "✓ Feedback copied to clipboard. Your email program is opening — paste (Ctrl+V / ⌘+V) into the message and send.";
+      status.style.color = "var(--ok)";
+    } else {
+      // Show full text so Rima can copy it manually.
+      const fb = document.getElementById('sendFallback');
+      fb.value = body;
+      fb.style.display = 'block';
+      fb.focus();
+      fb.select();
+      status.textContent = "Couldn't auto-copy. Select all the text below (it's already selected), copy it (Ctrl+C / ⌘+C), and paste into the email that just opened.";
+      status.style.color = "var(--pending)";
+    }
+  }
+
+  document.getElementById('sendBtn').addEventListener('click', sendFeedback);
 </script>
 </body>
 </html>
