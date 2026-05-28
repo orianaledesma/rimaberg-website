@@ -200,6 +200,7 @@ export default function HeroPieces({
           </div>
 
           <Link href={ctaHref} className="rb-hero-cta">
+            <span className="rb-hero-cta-shine" aria-hidden="true" />
             <svg
               width="14"
               height="14"
