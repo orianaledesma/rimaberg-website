@@ -77,9 +77,12 @@ export default function HeroPieces({
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      {/* Background carousel — slides cross-fade, ken-burns drift from rb-carousel */}
+      {/* Background carousel — slides cross-fade, ken-burns drift from rb-carousel.
+          Photos are framed (object-fit: contain) inside the noir hero so the
+          piece is fully visible and the LT/EN overlay sits on solid noir for
+          readable contrast. */}
       <div
-        className="rb-carousel"
+        className="rb-carousel rb-hero-frame"
         style={{ position: "absolute", inset: 0 }}
         role="group"
         aria-roledescription="carousel"
@@ -95,24 +98,25 @@ export default function HeroPieces({
               src={p.src}
               alt={p.name}
               fill
-              sizes="100vw"
+              sizes="(max-width: 760px) 100vw, 70vw"
               priority={idx === 0}
               placeholder={p.blurDataURL ? "blur" : "empty"}
               blurDataURL={p.blurDataURL}
-              quality={90}
-              style={{ objectFit: "cover" }}
+              quality={95}
+              style={{ objectFit: "contain", objectPosition: "center" }}
             />
           </div>
         ))}
       </div>
 
-      {/* Dark scrim to keep the type legible over light pieces too. */}
+      {/* Soft radial vignette + side gradient so the overlay copy keeps
+          contrast against the photo without darkening it too much. */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(110deg, rgba(0,0,0,0.72), rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.45) 100%)",
+            "linear-gradient(110deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0.5) 100%)",
           pointerEvents: "none",
         }}
       />

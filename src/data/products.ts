@@ -67,7 +67,11 @@ export function isPublishable(p: Product): boolean {
 /* ── Selectors (public; only return publishable pieces) ─────────────────── */
 
 export function getAllProducts(): Product[] {
-  return PRODUCTS.filter(isPublishable);
+  // Carrousel pieces are hero-only: they live in MANUAL_PRODUCTS so HeroPieces
+  // can drive its rotation with curated photos + poetic captions, but they
+  // duplicate real CSV pieces (e.g. naktine-zvaigzde ↔ earring-2). Exclude
+  // them from /catalogue so the listing stays free of duplicates.
+  return PRODUCTS.filter((p) => p.category !== "carrousel" && isPublishable(p));
 }
 
 export function getProductById(id: string): Product | undefined {

@@ -293,6 +293,31 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Hero frame — photos are object-fit: contain inside a noir box so they're
+   shown whole and the overlay copy reads against solid noir. The ken-burns
+   drift from .rb-carousel is disabled here because scaling a contained image
+   reveals the photo edges drifting; a small static scale keeps the slide
+   feeling alive without breaking the framing. The frame also adds a soft
+   inset on every breakpoint so the photo never hugs the corners. */
+.rb-hero-frame .rb-carousel-slide {
+  padding: clamp(24px, 4vw, 56px);
+  box-sizing: border-box;
+}
+.rb-hero-frame .rb-carousel-slide.is-active img {
+  animation: none !important;
+  transform: scale(1) !important;
+}
+.rb-hero-frame .rb-carousel-slide img {
+  transform: scale(1);
+}
+@media (max-width: 760px) {
+  /* On mobile the overlay copy occupies more of the hero, so the photo gets
+     a slightly tighter frame to leave more breathing room for the text. */
+  .rb-hero-frame .rb-carousel-slide {
+    padding: 20px 20px 240px 20px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .rb-hero-h1, .rb-hero-h1 + p { animation: none !important; }
 }
