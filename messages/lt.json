@@ -7,6 +7,27 @@
     "contact": "Kontaktai",
     "ringSize": "Žiedo dydis"
   },
+  "nav": {
+    "catalogue": "Katalogas",
+    "atelier": "Studija",
+    "about": "Apie",
+    "contact": "Kontaktai",
+    "openMenu": "Atidaryti meniu",
+    "closeMenu": "Uždaryti meniu",
+    "primaryAria": "Pagrindinė navigacija",
+    "langEn": "EN",
+    "langLt": "LT",
+    "langSwitchToEn": "Pereiti į anglų",
+    "langSwitchToLt": "Pereiti į lietuvių",
+    "drawerAria": "Mobilus meniu",
+    "logoAria": "Rima Berg — į pradžią"
+  },
+  "banner": {
+    "atelierDesktop": "APLANKYKITE STUDIJĄ · VILNIAUS G. 30 →",
+    "atelierMobile": "APLANKYKITE STUDIJĄ →",
+    "ariaLabel": "Pranešimas apie studiją",
+    "dismissAria": "Uždaryti pranešimą apie studiją"
+  },
   "notFound": {
     "title": "Puslapis nerastas",
     "lead": "Ieškoma pieza galbūt grįžo į studijos stalčių.",
@@ -19,6 +40,7 @@
     "rings": "Žiedai",
     "pendants": "Pakabukai",
     "engagement": "Sužadėtuvių",
+    "carrousel": "Karuselė",
     "other": "Kita"
   },
   "status": {
@@ -47,6 +69,22 @@
     "atelierText": "Du dešimtmečius Rima pati lieja ir kalsto savo piezas — granuliuoti paviršiai, safyrai iš studijos stalčiaus, rankomis sušildyti rausvo aukso rėmeliai.",
     "aboutCta": "Apie Rimą →",
     "processCta": "Procesas"
+  },
+  "atelier": {
+    "eyebrow": "STUDIJA",
+    "title": "Studija-parduotuvė Vilniaus g. 30,",
+    "titleLine2": "netrukus atidaroma Kaune.",
+    "lead": "Maža erdvė pamatyti dirbinius gyvai, išsimatuoti žiedą ir susitikti su autore. Iki atidarymo — pagal išankstinį susitarimą; parašykite, kad sutartume vizitą.",
+    "addressLabel": "ADRESAS",
+    "addressValue": "Vilniaus g. 30, Kaunas",
+    "hoursLabel": "DARBO LAIKAS",
+    "hoursValue": "Pagal išankstinį susitarimą · Pir.–Penkt. · 10:00–17:00",
+    "hoursPlaceholder": "Netrukus",
+    "directionsCta": "Nuoroda žemėlapyje →",
+    "directionsAria": "Atidaryti Vilniaus g. 30, Kaunas Google žemėlapyje (atsidaro naujame skirtuke)",
+    "mapTitle": "Žemėlapis su Rima Berg studijos vieta Vilniaus g. 30, Kaunas",
+    "photoComingSoon": "Nuotrauka netrukus",
+    "photoAlt": "Rima Berg studija Kaune — išorinis vaizdas"
   },
   "catalogue": {
     "indexMark": "— Indeksas · {category}",
@@ -101,35 +139,68 @@
     "businessReg": "Individ. veiklos pažymėjimo nr. 911884"
   },
   "contactPage": {
-    "metaTitle": "Kontaktai",
-    "eyebrow": "Susisiekite",
-    "title": "Kontaktai",
-    "lead": "Užklausoms, individualiems užsakymams ar matavimams — parašykite. Atsakome per dvi darbo dienas.",
-    "ownerLabel": "Savininkė",
-    "showroomLabel": "Salonas",
-    "showroomHint": "Pagal išankstinį susitarimą",
-    "writeUs": "Parašyti →"
+    "metaTitle": "Kontaktai — Rima Berg",
+    "eyebrow": "KONTAKTAI",
+    "title": "Susisiekime",
+    "lead": "Užklausoms apie dirbinius, individualiems užsakymams ar vizitams į studiją — parašykite. Atsakome per dvi darbo dienas.",
+    "writeUs": "info@rimaberg.com",
+    "writeUsAria": "Rašyti info@rimaberg.com (atidaro pašto programą)",
+    "atelierEyebrow": "STUDIJA",
+    "atelierAddress": "Vilniaus g. 30, Kaunas",
+    "directionsCta": "Nuoroda žemėlapyje ↗",
+    "directionsAria": "Atidaryti Vilniaus g. 30, Kaunas Google žemėlapyje (atsidaro naujame skirtuke)"
   },
   "cookieNotice": {
     "aria": "Pranešimas apie slapukus",
-    "body": "Naudojame vieną funkcinį slapuką jūsų kalbai įsiminti. Jokios analitikos ar reklamos.",
+    "body": "Naudojame du būtinus slapukus — kalbai įsiminti ir pranešimui apie studiją uždaryti. Jokios analitikos, jokios reklamos.",
     "learnMore": "Skaityti politiką",
     "ok": "Gerai"
   },
   "privacy": {
-    "metaTitle": "Privatumas",
-    "eyebrow": "Teisinė",
+    "metaTitle": "Privatumas — Rima Berg",
+    "eyebrow": "TEISINĖ",
     "title": "Privatumas ir slapukai",
-    "lastUpdated": "Atnaujinta 2026 m. gegužės 26 d.",
-    "intro": "Šiame puslapyje aprašoma, kaip Rima Berg (Rimantė Landsbergienė, individualios veiklos pažymėjimo nr. 911884) tvarko asmens duomenis lankantis rimaberg.lt svetainėje.",
+    "lastUpdated": "Atnaujinta 2026 m. gegužės 28 d.",
+    "intro": "Šiame puslapyje aprašoma, kaip Rima Berg (Rimantė Landsbergienė, individualios veiklos pažymėjimo nr. 911884, studija Vilniaus g. 30, Kaunas) tvarko jūsų asmens duomenis lankantis rimaberg.com, rašant info@rimaberg.com ar atvykstant į studiją.",
     "section1Title": "Kokius duomenis renkame",
-    "section1Text": "Tik tai, kas reikalinga atsakymui pateikti: el. laiško, kurį siunčiate info@rimaberg.com, turinį (jūsų adresą, žinutę ir priedus). Serverio prieigos žurnaluose IP adresas ir užklausos laikas saugumo tikslais saugomi iki 30 dienų.",
+    "section1Text": "Tik tai, kas reikalinga atsakymui pateikti. Kai rašote info@rimaberg.com, gauname jūsų el. pašto adresą, žinutę ir priedus. Lankantis svetainėje, serveris saugumo tikslais gali trumpai įrašyti jūsų IP adresą ir užklausos laiką — šie žurnalai saugomi iki 30 dienų. Nenaudojame analitikos, reklamos ar sekimo įrankių.",
     "section2Title": "Slapukai",
-    "section2Text": "Svetainė įrašo vieną būtiną slapuką, „rb-locale“, kad atsimintų jūsų kalbos pasirinkimą. Analitiniai ar reklaminiai slapukai nenaudojami.",
-    "section3Title": "Jūsų teisės",
-    "section3Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su savo duomenimis, juos ištaisyti ar ištrinti — parašykite info@rimaberg.com. Atsakome per 30 dienų.",
-    "section4Title": "Dalijimasis",
-    "section4Text": "Jūsų duomenys niekada nėra parduodami ar perduodami tretiesiems asmenims. El. paštas saugomas tik pas mūsų pašto paslaugos teikėją susirašinėjimo tikslais."
+    "section2Text": "Svetainė naudoja du būtinus slapukus. „rb-locale“ įsimena pasirinktą kalbą (EN arba LT) iki dvylikos mėnesių. „rb-atelier-banner“ įsimena, kad uždarėte pranešimą apie studiją, ir nerodo jo dar septynias dienas. Analitiniai ar reklaminiai slapukai nenaudojami. Smulkiau — slapukų puslapyje.",
+    "section3Title": "Teisinis pagrindas",
+    "section3Text": "Duomenis tvarkome dviem pagrindais pagal BDAR: jūsų sutikimo (kai mums rašote ar pasirenkate kalbą) ir teisėto intereso atsakyti į užklausas dėl dirbinių, individualių užsakymų ir vizitų į studiją.",
+    "section4Title": "Saugojimo laikotarpis",
+    "section4Text": "Užklausų el. laiškus saugome iki 24 mėnesių nuo paskutinio atsakymo, kad galėtume tęsti pokalbius dėl užsakymų. Serverio žurnalai saugomi iki 30 dienų. Slapukai galioja kaip aprašyta slapukų puslapyje.",
+    "section5Title": "Dalijimasis",
+    "section5Text": "Jūsų duomenys niekada nėra parduodami ar perduodami tretiesiems asmenims rinkodaros tikslais. El. paštas saugomas tik pas pašto paslaugos teikėją susirašinėjimo tikslais. Žemėlapiai ir šriftai svetainėje pateikiami per Google — jūsų naršyklė gali siųsti užklausą į Google šiems ištekliams užkrauti.",
+    "section6Title": "Jūsų teisės",
+    "section6Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su duomenimis, juos ištaisyti ar ištrinti, apriboti ar sustabdyti tvarkymą, atšaukti anksčiau duotą sutikimą ar gauti duomenis perkeliamu formatu. Rašykite info@rimaberg.com — atsakome per 30 dienų. Jei netenkina atsakymas, galite kreiptis į Valstybinę duomenų apsaugos inspekciją (VDAI), https://vdai.lrv.lt.",
+    "section7Title": "Kontaktai",
+    "section7Text": "Visais privatumo klausimais rašykite info@rimaberg.com arba kreipkitės į studiją Vilniaus g. 30, Kaunas."
+  },
+  "cookies": {
+    "metaTitle": "Slapukai — Rima Berg",
+    "eyebrow": "TEISINĖ",
+    "title": "Slapukai",
+    "lastUpdated": "Atnaujinta 2026 m. gegužės 28 d.",
+    "intro": "rimaberg.com naudoja du nedidelius slapukus — tik tuos, kurių reikia, kad svetainė veiktų. Jokios analitikos, jokios reklamos, jokio sekimo.",
+    "headName": "Pavadinimas",
+    "headPurpose": "Paskirtis",
+    "headExpiry": "Galiojimas",
+    "headType": "Tipas",
+    "localeName": "rb-locale",
+    "localePurpose": "Įsimena pasirinktą kalbą (EN arba LT).",
+    "localeExpiry": "12 mėnesių",
+    "localeType": "Būtinas",
+    "bannerName": "rb-atelier-banner",
+    "bannerPurpose": "Įsimena, kad uždarėte pranešimą apie studiją, kad jis nebūtų rodomas savaitę.",
+    "bannerExpiry": "7 dienos",
+    "bannerType": "Būtinas",
+    "consentTitle": "Sutikimas",
+    "consentText": "Abu slapukai yra būtini funkcijoms, kurių paprašėte (kalbos pasirinkimas, banerio uždarymas), todėl pagal BDAR papildomo sutikimo nereikia. Vis tiek galite juos bet kada ištrinti naršyklės nustatymuose.",
+    "manageTitle": "Kaip ištrinti slapukus",
+    "manageText": "Dauguma naršyklių leidžia peržiūrėti ir pašalinti slapukus nustatymų meniu. Greitos nuorodos: Chrome, Firefox, Safari, Edge.",
+    "changesTitle": "Politikos pakeitimai",
+    "changesText": "Jei kada pridėsime naujų slapukų — pvz., analitikos — atnaujinsime šį puslapį ir pirmiau paprašysime jūsų sutikimo."
   },
   "ringSize": {
     "metaTitle": "Žiedo dydis",
@@ -147,7 +218,9 @@
     "copyright": "© 2026 RIMA BERG · Kaunas, LT",
     "instagram": "Instagram",
     "facebook": "Facebook",
-    "contact": "Kontaktai"
+    "contact": "Kontaktai",
+    "privacy": "Privatumas",
+    "cookies": "Slapukai"
   },
   "comingSoon": {
     "eyebrow": "Netrukus",

@@ -7,6 +7,27 @@
     "contact": "Contact",
     "ringSize": "Ring size"
   },
+  "nav": {
+    "catalogue": "Catalogue",
+    "atelier": "Atelier",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "primaryAria": "Primary navigation",
+    "langEn": "EN",
+    "langLt": "LT",
+    "langSwitchToEn": "Switch to English",
+    "langSwitchToLt": "Switch to Lithuanian",
+    "drawerAria": "Mobile menu",
+    "logoAria": "Rima Berg — back to home"
+  },
+  "banner": {
+    "atelierDesktop": "VISIT OUR ATELIER · VILNIAUS G. 30 →",
+    "atelierMobile": "VISIT THE ATELIER →",
+    "ariaLabel": "Atelier announcement",
+    "dismissAria": "Dismiss atelier announcement"
+  },
   "notFound": {
     "title": "Page not found",
     "lead": "The piece you're looking for may have returned to the studio drawer.",
@@ -19,6 +40,7 @@
     "rings": "Rings",
     "pendants": "Pendants",
     "engagement": "Engagement",
+    "carrousel": "Carrousel",
     "other": "Other"
   },
   "status": {
@@ -47,6 +69,22 @@
     "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",
     "aboutCta": "About Rima →",
     "processCta": "The process"
+  },
+  "atelier": {
+    "eyebrow": "THE ATELIER",
+    "title": "A studio-store on Vilniaus g. 30,",
+    "titleLine2": "opening soon in Kaunas.",
+    "lead": "A small space to see the pieces in person, be fitted for a ring, and meet the maker. By appointment until the opening — write us to arrange a visit.",
+    "addressLabel": "ADDRESS",
+    "addressValue": "Vilniaus g. 30, Kaunas",
+    "hoursLabel": "HOURS",
+    "hoursValue": "By appointment · Mon–Fri · 10:00–17:00",
+    "hoursPlaceholder": "Coming soon",
+    "directionsCta": "Get directions →",
+    "directionsAria": "Open Vilniaus g. 30, Kaunas in Google Maps (opens in new tab)",
+    "mapTitle": "Map showing the Rima Berg atelier at Vilniaus g. 30, Kaunas",
+    "photoComingSoon": "Photography coming soon",
+    "photoAlt": "Rima Berg atelier in Kaunas — exterior view"
   },
   "catalogue": {
     "indexMark": "— Index · {category}",
@@ -101,35 +139,68 @@
     "businessReg": "Individ. veiklos pažymėjimo nr. 911884"
   },
   "contactPage": {
-    "metaTitle": "Contact",
-    "eyebrow": "Get in touch",
-    "title": "Contact us",
-    "lead": "For enquiries, custom orders, or fittings — write us. We reply within two working days.",
-    "ownerLabel": "Owner",
-    "showroomLabel": "Showroom",
-    "showroomHint": "By appointment only",
-    "writeUs": "Write us →"
+    "metaTitle": "Contact — Rima Berg",
+    "eyebrow": "CONTACT",
+    "title": "Get in touch",
+    "lead": "For enquiries about pieces, custom orders or atelier visits — write us. We reply within two working days.",
+    "writeUs": "info@rimaberg.com",
+    "writeUsAria": "Write to info@rimaberg.com (opens your mail client)",
+    "atelierEyebrow": "THE ATELIER",
+    "atelierAddress": "Vilniaus g. 30, Kaunas",
+    "directionsCta": "Get directions ↗",
+    "directionsAria": "Open Vilniaus g. 30, Kaunas in Google Maps (opens in new tab)"
   },
   "cookieNotice": {
     "aria": "Cookie notice",
-    "body": "We use a single functional cookie to remember your language. No analytics, no advertising.",
+    "body": "We use two strictly-necessary cookies — to remember your language and your dismiss of the atelier announcement. No analytics, no advertising.",
     "learnMore": "Read the policy",
     "ok": "OK"
   },
   "privacy": {
-    "metaTitle": "Privacy",
-    "eyebrow": "Legal",
+    "metaTitle": "Privacy — Rima Berg",
+    "eyebrow": "LEGAL",
     "title": "Privacy & cookies",
-    "lastUpdated": "Last updated 26 May 2026",
-    "intro": "This page describes how Rima Berg (Rimantė Landsbergienė, individual activity certificate no. 911884) handles personal data when you visit rimaberg.lt.",
+    "lastUpdated": "Last updated 28 May 2026",
+    "intro": "This page describes how Rima Berg (Rimantė Landsbergienė, individual activity certificate no. 911884, atelier at Vilniaus g. 30, Kaunas) handles your personal data when you visit rimaberg.com, write to info@rimaberg.com, or visit the atelier.",
     "section1Title": "What we collect",
-    "section1Text": "Only what is needed to answer you: the contents of any e-mail you send to info@rimaberg.com (your address, message, and any attachments). Server access logs may retain your IP address and request time for up to 30 days for security purposes.",
+    "section1Text": "Only what is needed to answer you. When you write to info@rimaberg.com we receive your email address, your message and any attachments. When you visit the website, our server may briefly log your IP address and the time of your request for security purposes — these logs are kept for up to 30 days. We do not run analytics, advertising or tracking scripts.",
     "section2Title": "Cookies",
-    "section2Text": "The site stores one strictly-necessary cookie, `rb-locale`, to remember your language preference. No analytics or advertising cookies are used.",
-    "section3Title": "Your rights",
-    "section3Text": "Under the GDPR you may request access to, correction of, or deletion of your personal data at any time by writing to info@rimaberg.com. We reply within 30 days.",
-    "section4Title": "Sharing",
-    "section4Text": "Your data is never sold or shared with third parties. Email is hosted with our mail provider strictly for correspondence."
+    "section2Text": "The site uses two strictly-necessary cookies. `rb-locale` remembers your language choice (EN or LT) for up to twelve months. `rb-atelier-banner` remembers that you dismissed the atelier announcement so we do not show it again for seven days. No analytics or advertising cookies are used. See the Cookies page for details.",
+    "section3Title": "Legal basis",
+    "section3Text": "We process your data on two grounds under the GDPR: your consent (when you write to us or set your language) and our legitimate interest in replying to enquiries about pieces, custom orders and atelier visits.",
+    "section4Title": "Retention",
+    "section4Text": "We keep enquiry emails for up to 24 months from the last reply, so we can follow up on commissions and orders. Server access logs are kept for up to 30 days. Cookies expire as described in the Cookies page.",
+    "section5Title": "Sharing",
+    "section5Text": "Your data is never sold or shared with third parties for marketing. Email is hosted with our mail provider strictly for correspondence. Maps and fonts on the website are loaded from Google — your browser may share a request with Google when these resources load.",
+    "section6Title": "Your rights",
+    "section6Text": "Under the GDPR you may at any time request access to your data, ask for it to be corrected or deleted, ask us to limit or stop processing it, withdraw a previously given consent, or receive your data in a portable format. Write to info@rimaberg.com — we reply within 30 days. If you are not satisfied, you may also lodge a complaint with the State Data Protection Inspectorate of Lithuania (VDAI), https://vdai.lrv.lt.",
+    "section7Title": "Contact",
+    "section7Text": "For any privacy question, write to info@rimaberg.com or to the atelier at Vilniaus g. 30, Kaunas."
+  },
+  "cookies": {
+    "metaTitle": "Cookies — Rima Berg",
+    "eyebrow": "LEGAL",
+    "title": "Cookies",
+    "lastUpdated": "Last updated 28 May 2026",
+    "intro": "rimaberg.com uses two small cookies, only the ones we need to make the site work. No analytics, no advertising, no tracking.",
+    "headName": "Name",
+    "headPurpose": "Purpose",
+    "headExpiry": "Expiry",
+    "headType": "Type",
+    "localeName": "rb-locale",
+    "localePurpose": "Remembers your language choice (EN or LT).",
+    "localeExpiry": "12 months",
+    "localeType": "Strictly necessary",
+    "bannerName": "rb-atelier-banner",
+    "bannerPurpose": "Remembers that you dismissed the atelier announcement so it is not shown again for a week.",
+    "bannerExpiry": "7 days",
+    "bannerType": "Strictly necessary",
+    "consentTitle": "Consent",
+    "consentText": "Both cookies are strictly necessary to provide functionality you asked for (your language, your dismiss action), so no extra consent is required under the GDPR. You can still delete them at any time in your browser settings.",
+    "manageTitle": "How to delete cookies",
+    "manageText": "Most browsers let you view and remove cookies in the settings menu. Quick links: Chrome, Firefox, Safari, Edge.",
+    "changesTitle": "Changes to this policy",
+    "changesText": "If we ever add new cookies — for example, analytics — we will update this page and ask for your consent first."
   },
   "ringSize": {
     "metaTitle": "Ring size",
@@ -147,7 +218,9 @@
     "copyright": "© 2026 RIMA BERG · Kaunas, LT",
     "instagram": "Instagram",
     "facebook": "Facebook",
-    "contact": "Contact"
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
   },
   "comingSoon": {
     "eyebrow": "Coming soon",

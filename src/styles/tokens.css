@@ -13,4 +13,43 @@
   --rb-line: rgba(0, 0, 0, 0.08);
   --rb-line-dark: rgba(255, 255, 255, 0.08);
   --rb-accent: #c96442;    /* terracotta — focus ring (visible on paper and noir) */
+
+  /* Layout heights — coordinate header shrink, banner and logo from a single
+     place. The Header client component flips the data-scrolled attribute on
+     the root to switch to the "scrolled" set; see HeaderShell.tsx. */
+  --rb-header-h: 128px;
+  --rb-header-pad-y: 24px;
+  --rb-logo-h: 80px;
+  --rb-banner-h: 40px;
+
+  /* z-index stack — banner sits above header but below the mobile drawer and
+     the lightbox (rb-lightbox uses 1000). */
+  --rb-z-banner: 60;
+  --rb-z-header: 50;
+  --rb-z-backdrop: 70;
+  --rb-z-drawer: 80;
+
+  /* Easings — extracted from the eight places they were hardcoded. */
+  --rb-ease-slow: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --rb-ease-fast: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrolled state — toggled by the Header sentinel via data-scrolled="true" on
+   <html>. Mobile gets its own smaller logo defaults below. */
+html[data-scrolled="true"] {
+  --rb-header-h: 80px;
+  --rb-header-pad-y: 16px;
+  --rb-logo-h: 48px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --rb-header-h: 88px;
+    --rb-logo-h: 56px;
+    --rb-banner-h: 44px;
+  }
+  html[data-scrolled="true"] {
+    --rb-header-h: 64px;
+    --rb-logo-h: 40px;
+  }
 }
