@@ -14,9 +14,9 @@ Cosas que necesitan su decisión / información antes del launch.
 - [ ] **Materiales detallados por pieza** — muchas dicen solo "Silver 925, Gold". ¿14k? ¿18k? ¿oro rosa o amarillo? Sube percepción de valor.
 - [ ] **15 colgantes sin foto** — la categoría Pendants queda casi vacía. Mandar fotos.
 - [ ] **4 fotos en alta resolución** — `BKIJ6345`, `IMG_E6484`, `EVMC6579`, `QHYS4544` están en 1024–1280px, pixelan al hacer zoom. *Ya las saqué del banner del home; faltan para detalle.*
-- [ ] **Confirmar dirección postal** = Piliakalnio g. 11A, Šėtijų kaimas, LT-71223, Lietuva.
-- [ ] **Confirmar showroom Kaunas** = Vilniaus g. 30. La sección "Coming Soon" se mantiene hasta que abra el local; cuando esté listo el frente: mandar foto para reemplazar.
-- [ ] **Confirmar horario** — provisorio Mon–Fri · 10:00–17:00. Definir.
+- [x] **Dirección postal** — removida del sitio a pedido de Rimantė (iter2, 2026-05-28). Ya no aparece en ninguna página ni en el bundle i18n.
+- [x] **Showroom Kaunas** = Vilniaus g. 30 — confirmado. Sección "The Atelier" reemplazó a "Coming Soon" con foto placeholder, dirección, horarios y Google Maps embed. Falta foto real del frente cuando abra.
+- [ ] **Confirmar horario** — provisorio Visit us · Mon–Fri · 10:00–17:00. Definir.
 - [ ] **Confirmar email** = info@rimaberg.com (ya está en todo el sitio).
 - [ ] **Logo final** — versión actual (1092×358 horizontal blanca sobre transparente). ¿OK o ajustar arte?
 

@@ -45,7 +45,7 @@ técnicos. Lo que falta son **decisiones de marca y contenido**, no código.
 
 ### Contenido textual
 - **About me** con el texto real escrito por la autora (LT + EN), firma cursiva, links a Instagram y Facebook reales
-- **Contact** con `Rimantė Landsbergienė`, Piliakalnio g. 11A, Šėtijų kaimas, LT-71223, registro 911884, email info@rimaberg.com, link al showroom Kaunas en Google Maps
+- **Contact** simplificado (iter2, 2026-05-28): invitación corta + email `info@rimaberg.com` como acción primaria + dirección del atelier Vilniaus g. 30, Kaunas + link a Google Maps. Dirección postal personal y registro de actividad fueron removidos a pedido de Rimantė.
 - **Ring size**: tabla de 22 filas (mm · LT · UK·Europa · USA) + cómo medir
 - **Privacy + cookie notice** GDPR-aligned en LT y EN
 
