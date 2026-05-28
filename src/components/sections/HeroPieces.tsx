@@ -141,12 +141,6 @@ export default function HeroPieces({
         }}
       >
         <div style={{ maxWidth: 820, pointerEvents: "auto" }}>
-          <div
-            className="rb-eyebrow"
-            style={{ opacity: 0.7, marginBottom: 24 }}
-          >
-            — Carrousel · {String(i + 1).padStart(2, "0")}
-          </div>
           <h1
             key={`name-${active.id}`}
             className="rb-hero-h1"
@@ -204,21 +198,8 @@ export default function HeroPieces({
             ))}
           </div>
 
-          <Link
-            href={ctaHref}
-            style={{
-              color: "#fafafa",
-              borderBottom: "1px solid #fafafa",
-              paddingBottom: 4,
-              fontSize: 12,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              whiteSpace: "nowrap",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
+          <Link href={ctaHref} className="rb-hero-cta">
+            <span className="rb-hero-cta-shine" aria-hidden="true" />
             <svg
               width="14"
               height="14"
@@ -229,7 +210,7 @@ export default function HeroPieces({
               <path
                 d="M7 1.5c-2.2 0-4 1.7-4 3.8 0 2.9 4 7.2 4 7.2s4-4.3 4-7.2c0-2.1-1.8-3.8-4-3.8z"
                 stroke="currentColor"
-                strokeWidth="1.1"
+                strokeWidth="1.2"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -239,11 +220,12 @@ export default function HeroPieces({
                 cy="5.4"
                 r="1.4"
                 stroke="currentColor"
-                strokeWidth="1.1"
+                strokeWidth="1.2"
                 fill="none"
               />
             </svg>
-            {ctaLabel}
+            <span className="rb-hero-cta-label">{ctaLabel}</span>
+            <span className="rb-hero-cta-arrow" aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
