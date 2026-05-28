@@ -146,7 +146,7 @@
   },
   "cookieNotice": {
     "aria": "Pranešimas apie slapukus",
-    "body": "Naudojame du būtinus slapukus — kalbai įsiminti ir pranešimui apie studiją uždaryti. Jokios analitikos, jokios reklamos.",
+    "body": "Naudojame vieną būtiną slapuką kalbai įsiminti. Jokios analitikos, jokios reklamos.",
     "learnMore": "Skaityti politiką",
     "ok": "Gerai"
   },
@@ -159,7 +159,7 @@
     "section1Title": "Kokius duomenis renkame",
     "section1Text": "Tik tai, kas reikalinga atsakymui pateikti. Kai rašote info@rimaberg.com, gauname jūsų el. pašto adresą, žinutę ir priedus. Lankantis svetainėje, serveris saugumo tikslais gali trumpai įrašyti jūsų IP adresą ir užklausos laiką — šie žurnalai saugomi iki 30 dienų. Nenaudojame analitikos, reklamos ar sekimo įrankių.",
     "section2Title": "Slapukai",
-    "section2Text": "Svetainė naudoja du būtinus slapukus. „rb-locale“ įsimena pasirinktą kalbą (EN arba LT) iki dvylikos mėnesių. „rb-atelier-banner“ įsimena, kad uždarėte pranešimą apie studiją, ir nerodo jo dar septynias dienas. Analitiniai ar reklaminiai slapukai nenaudojami. Smulkiau — slapukų puslapyje.",
+    "section2Text": "Svetainė naudoja vieną būtiną slapuką, „rb-locale“, kuris įsimena pasirinktą kalbą (EN arba LT) iki dvylikos mėnesių. Analitiniai ar reklaminiai slapukai nenaudojami. Slapukus bet kada galite ištrinti naršyklės nustatymuose (Chrome, Firefox, Safari, Edge).",
     "section3Title": "Teisinis pagrindas",
     "section3Text": "Duomenis tvarkome dviem pagrindais pagal BDAR: jūsų sutikimo (kai mums rašote ar pasirenkate kalbą) ir teisėto intereso atsakyti į užklausas dėl dirbinių, individualių užsakymų ir vizitų į studiją.",
     "section4Title": "Saugojimo laikotarpis",
@@ -168,31 +168,6 @@
     "section5Text": "Jūsų duomenys niekada nėra parduodami ar perduodami tretiesiems asmenims rinkodaros tikslais. El. paštas saugomas tik pas pašto paslaugos teikėją susirašinėjimo tikslais. Žemėlapiai ir šriftai svetainėje pateikiami per Google — jūsų naršyklė gali siųsti užklausą į Google šiems ištekliams užkrauti.",
     "section6Title": "Jūsų teisės",
     "section6Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su duomenimis, juos ištaisyti ar ištrinti, apriboti ar sustabdyti tvarkymą, atšaukti anksčiau duotą sutikimą ar gauti duomenis perkeliamu formatu. Rašykite info@rimaberg.com — atsakome per 30 dienų. Jei netenkina atsakymas, galite kreiptis į Valstybinę duomenų apsaugos inspekciją (VDAI), https://vdai.lrv.lt."
-  },
-  "cookies": {
-    "metaTitle": "Slapukai — Rima Berg",
-    "eyebrow": "TEISINĖ",
-    "title": "Slapukai",
-    "lastUpdated": "Atnaujinta 2026 m. gegužės 28 d.",
-    "intro": "rimaberg.com naudoja du nedidelius slapukus — tik tuos, kurių reikia, kad svetainė veiktų. Jokios analitikos, jokios reklamos, jokio sekimo.",
-    "headName": "Pavadinimas",
-    "headPurpose": "Paskirtis",
-    "headExpiry": "Galiojimas",
-    "headType": "Tipas",
-    "localeName": "rb-locale",
-    "localePurpose": "Įsimena pasirinktą kalbą (EN arba LT).",
-    "localeExpiry": "12 mėnesių",
-    "localeType": "Būtinas",
-    "bannerName": "rb-atelier-banner",
-    "bannerPurpose": "Įsimena, kad uždarėte pranešimą apie studiją, kad jis nebūtų rodomas savaitę.",
-    "bannerExpiry": "7 dienos",
-    "bannerType": "Būtinas",
-    "consentTitle": "Sutikimas",
-    "consentText": "Abu slapukai yra būtini funkcijoms, kurių paprašėte (kalbos pasirinkimas, banerio uždarymas), todėl pagal BDAR papildomo sutikimo nereikia. Vis tiek galite juos bet kada ištrinti naršyklės nustatymuose.",
-    "manageTitle": "Kaip ištrinti slapukus",
-    "manageText": "Dauguma naršyklių leidžia peržiūrėti ir pašalinti slapukus nustatymų meniu. Greitos nuorodos: Chrome, Firefox, Safari, Edge.",
-    "changesTitle": "Politikos pakeitimai",
-    "changesText": "Jei kada pridėsime naujų slapukų — pvz., analitikos — atnaujinsime šį puslapį ir pirmiau paprašysime jūsų sutikimo."
   },
   "ringSize": {
     "metaTitle": "Žiedo dydis",
@@ -211,8 +186,7 @@
     "instagram": "Instagram",
     "facebook": "Facebook",
     "contact": "Kontaktai",
-    "privacy": "Privatumas",
-    "cookies": "Slapukai"
+    "privacy": "Privatumas ir slapukai"
   },
   "comingSoon": {
     "eyebrow": "Netrukus",

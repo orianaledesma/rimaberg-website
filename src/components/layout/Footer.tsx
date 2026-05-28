@@ -133,22 +133,13 @@ export default async function Footer() {
         >
           © {year} RIMA BERG · KAUNAS, LT
         </span>
-        <div style={{ display: "flex", gap: 24 }}>
-          <Link
-            href="/privacy"
-            className="rb-mono"
-            style={{ fontSize: 11, opacity: 0.45, letterSpacing: "0.1em", color: "inherit" }}
-          >
-            {t("privacy").toUpperCase()}
-          </Link>
-          <Link
-            href="/cookies"
-            className="rb-mono"
-            style={{ fontSize: 11, opacity: 0.45, letterSpacing: "0.1em", color: "inherit" }}
-          >
-            {t("cookies").toUpperCase()}
-          </Link>
-        </div>
+        <Link
+          href="/privacy"
+          className="rb-mono"
+          style={{ fontSize: 11, opacity: 0.45, letterSpacing: "0.1em", color: "inherit" }}
+        >
+          {t("privacy").toUpperCase()}
+        </Link>
       </div>
     </footer>
   );

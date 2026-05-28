@@ -146,7 +146,7 @@
   },
   "cookieNotice": {
     "aria": "Cookie notice",
-    "body": "We use two strictly-necessary cookies — to remember your language and your dismiss of the atelier announcement. No analytics, no advertising.",
+    "body": "We use one strictly-necessary cookie to remember your language. No analytics, no advertising.",
     "learnMore": "Read the policy",
     "ok": "OK"
   },
@@ -159,7 +159,7 @@
     "section1Title": "What we collect",
     "section1Text": "Only what is needed to answer you. When you write to info@rimaberg.com we receive your email address, your message and any attachments. When you visit the website, our server may briefly log your IP address and the time of your request for security purposes — these logs are kept for up to 30 days. We do not run analytics, advertising or tracking scripts.",
     "section2Title": "Cookies",
-    "section2Text": "The site uses two strictly-necessary cookies. `rb-locale` remembers your language choice (EN or LT) for up to twelve months. `rb-atelier-banner` remembers that you dismissed the atelier announcement so we do not show it again for seven days. No analytics or advertising cookies are used. See the Cookies page for details.",
+    "section2Text": "The site uses one strictly-necessary cookie, `rb-locale`, to remember your language choice (EN or LT) for up to twelve months. No analytics or advertising cookies are used. You can delete cookies at any time from your browser settings (Chrome, Firefox, Safari, Edge).",
     "section3Title": "Legal basis",
     "section3Text": "We process your data on two grounds under the GDPR: your consent (when you write to us or set your language) and our legitimate interest in replying to enquiries about pieces, custom orders and atelier visits.",
     "section4Title": "Retention",
@@ -168,31 +168,6 @@
     "section5Text": "Your data is never sold or shared with third parties for marketing. Email is hosted with our mail provider strictly for correspondence. Maps and fonts on the website are loaded from Google — your browser may share a request with Google when these resources load.",
     "section6Title": "Your rights",
     "section6Text": "Under the GDPR you may at any time request access to your data, ask for it to be corrected or deleted, ask us to limit or stop processing it, withdraw a previously given consent, or receive your data in a portable format. Write to info@rimaberg.com — we reply within 30 days. If you are not satisfied, you may also lodge a complaint with the State Data Protection Inspectorate of Lithuania (VDAI), https://vdai.lrv.lt."
-  },
-  "cookies": {
-    "metaTitle": "Cookies — Rima Berg",
-    "eyebrow": "LEGAL",
-    "title": "Cookies",
-    "lastUpdated": "Last updated 28 May 2026",
-    "intro": "rimaberg.com uses two small cookies, only the ones we need to make the site work. No analytics, no advertising, no tracking.",
-    "headName": "Name",
-    "headPurpose": "Purpose",
-    "headExpiry": "Expiry",
-    "headType": "Type",
-    "localeName": "rb-locale",
-    "localePurpose": "Remembers your language choice (EN or LT).",
-    "localeExpiry": "12 months",
-    "localeType": "Strictly necessary",
-    "bannerName": "rb-atelier-banner",
-    "bannerPurpose": "Remembers that you dismissed the atelier announcement so it is not shown again for a week.",
-    "bannerExpiry": "7 days",
-    "bannerType": "Strictly necessary",
-    "consentTitle": "Consent",
-    "consentText": "Both cookies are strictly necessary to provide functionality you asked for (your language, your dismiss action), so no extra consent is required under the GDPR. You can still delete them at any time in your browser settings.",
-    "manageTitle": "How to delete cookies",
-    "manageText": "Most browsers let you view and remove cookies in the settings menu. Quick links: Chrome, Firefox, Safari, Edge.",
-    "changesTitle": "Changes to this policy",
-    "changesText": "If we ever add new cookies — for example, analytics — we will update this page and ask for your consent first."
   },
   "ringSize": {
     "metaTitle": "Ring size",
@@ -211,8 +186,7 @@
     "instagram": "Instagram",
     "facebook": "Facebook",
     "contact": "Contact",
-    "privacy": "Privacy",
-    "cookies": "Cookies"
+    "privacy": "Privacy & cookies"
   },
   "comingSoon": {
     "eyebrow": "Coming soon",
