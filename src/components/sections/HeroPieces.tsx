@@ -68,7 +68,10 @@ export default function HeroPieces({
         // iteration — the hero CTA + the atelier section carry the call.)
         height:
           "clamp(420px, calc(94svh - var(--rb-header-h)), 620px)",
-        background: "var(--rb-noir)",
+        // Pure black (not --rb-noir #0a0a0a) so the letterboxing around
+        // contained photos is visually seamless with the overlay scrim and
+        // the page beneath when the piece is shorter than the hero height.
+        background: "#000000",
         overflow: "hidden",
         color: "#fafafa",
       }}

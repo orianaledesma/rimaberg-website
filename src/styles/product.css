@@ -292,8 +292,9 @@
   letter-spacing: 0.05em;
 }
 .rb-hcar-cta {
-  display: inline-block;
-  margin-top: 16px;
+  display: block;
+  width: max-content;
+  margin: 18px auto 0;
   padding: 11px 24px;
   border: 1px solid var(--rb-line);
   color: var(--rb-ink);

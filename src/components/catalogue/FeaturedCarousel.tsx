@@ -9,8 +9,6 @@ export interface CarouselItem {
   name: string;
   image: string;
   blurDataURL?: string;
-  /** Pre-translated status (rendered where a price would go). */
-  statusLabel: string;
 }
 
 /**
@@ -57,7 +55,6 @@ export default function FeaturedCarousel({
               <Link href={`/catalogue/${p.id}`} className="rb-hcar-name">
                 {p.name}
               </Link>
-              <div className="rb-hcar-status rb-mono">{p.statusLabel}</div>
               <Link href={`/catalogue/${p.id}`} className="rb-hcar-cta rb-eyebrow">
                 {viewMoreLabel}
               </Link>

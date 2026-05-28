@@ -43,17 +43,7 @@
     "carrousel": "Carrousel",
     "other": "Other"
   },
-  "status": {
-    "onRequest": "On request",
-    "madeToOrder": "Made to order",
-    "soldOut": "Sold out"
-  },
   "home": {
-    "heroEyebrow": "Žiedlapiai",
-    "heroLine1": "A garden,",
-    "heroEm": "cast",
-    "heroLine2": "in silver.",
-    "heroLead": "Each piece is hand-textured and stone-set in Kaunas — slow studio practice, no two alike.",
     "heroCta": "Find us",
     "catMark": "— § II",
     "catTitle": "The catalogue",
@@ -98,15 +88,12 @@
   "detail": {
     "breadcrumbHome": "Catalogue",
     "related": "Related, by hand",
-    "enquire": "Enquire about this piece",
     "labels": {
-      "status": "Status",
       "metal": "Metal",
       "stones": "Stones",
       "size": "Size",
       "leadTime": "Lead time"
-    },
-    "enquireSubject": "Enquiry — {name} ({code})"
+    }
   },
   "about": {
     "eyebrow": "About me",
@@ -126,7 +113,6 @@
     "atelierLabel": "Atelier",
     "hoursLabel": "Hours",
     "email": "info@rimaberg.com",
-    "phone": "+370 600 12 345",
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "By appointment",
@@ -187,11 +173,5 @@
     "facebook": "Facebook",
     "contact": "Contact",
     "privacy": "Privacy & cookies"
-  },
-  "comingSoon": {
-    "eyebrow": "Coming soon",
-    "title": "A space on Vilniaus g. 30",
-    "text": "We're opening a studio-store in central Kaunas — a place to see the pieces in person and be fitted. Follow along for the opening date.",
-    "cta": "See the location →"
   }
 }

@@ -295,21 +295,29 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
 }
 
 /* Hero frame — photos are object-fit: contain inside a noir box so they're
-   shown whole and the overlay copy reads against solid noir. The ken-burns
-   drift from .rb-carousel is disabled here because scaling a contained image
-   reveals the photo edges drifting; a small static scale keeps the slide
-   feeling alive without breaking the framing. The frame also adds a soft
-   inset on every breakpoint so the photo never hugs the corners. */
+   shown whole and the overlay copy reads against solid noir. The default
+   ken-burns drift translates the image which reveals the contain edges, so
+   we run a frame-only keyframe that just breathes a scale (1.02 → 1.08)
+   without translation — the piece feels alive without artefacts. */
 .rb-hero-frame .rb-carousel-slide {
   padding: clamp(24px, 4vw, 56px);
   box-sizing: border-box;
 }
-.rb-hero-frame .rb-carousel-slide.is-active img {
-  animation: none !important;
-  transform: scale(1) !important;
-}
 .rb-hero-frame .rb-carousel-slide img {
-  transform: scale(1);
+  transform: scale(1.02);
+}
+.rb-hero-frame .rb-carousel-slide.is-active img {
+  animation: rb-hero-frame-zoom 14s ease-in-out infinite alternate !important;
+}
+@keyframes rb-hero-frame-zoom {
+  0%   { transform: scale(1.02); }
+  100% { transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-hero-frame .rb-carousel-slide.is-active img {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
 }
 @media (max-width: 760px) {
   /* On mobile the overlay copy occupies more of the hero, so the photo gets

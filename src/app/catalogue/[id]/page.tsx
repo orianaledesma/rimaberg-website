@@ -45,8 +45,6 @@ export default async function ProductDetailPage({
   const galleryImages = product.images;
 
   const name = product.name[locale];
-  const subject = t("enquireSubject", { name, code: product.code });
-  const mailto = `mailto:info@rimaberg.com?subject=${encodeURIComponent(subject)}`;
 
   return (
     <div className="rb-screen">
@@ -138,21 +136,6 @@ export default async function ProductDetailPage({
               )}
             </dl>
 
-            <a
-              href={mailto}
-              style={{
-                marginTop: 28,
-                padding: "20px 24px",
-                background: "var(--rb-ink)",
-                color: "var(--rb-bg)",
-                fontSize: 11,
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                textAlign: "center",
-              }}
-            >
-              {t("enquire")}
-            </a>
           </aside>
         </section>
 

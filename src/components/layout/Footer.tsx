@@ -10,7 +10,6 @@ export default async function Footer() {
   const t = await getTranslations("footer");
   const tc = await getTranslations("contact");
   const year = new Date().getFullYear();
-  const phoneHref = `tel:${tc("phone").replace(/\s/g, "")}`;
 
   return (
     <footer
@@ -74,12 +73,6 @@ export default async function Footer() {
             style={{ display: "block", fontSize: 13, lineHeight: 1.6, color: "inherit" }}
           >
             {tc("email")}
-          </a>
-          <a
-            href={phoneHref}
-            style={{ display: "block", fontSize: 13, lineHeight: 1.6, color: "inherit" }}
-          >
-            {tc("phone")}
           </a>
         </div>
 

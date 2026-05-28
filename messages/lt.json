@@ -30,7 +30,7 @@
   },
   "notFound": {
     "title": "Puslapis nerastas",
-    "lead": "Ieškoma pieza galbūt grįžo į studijos stalčių.",
+    "lead": "Ieškomas dirbinys galbūt grįžo į studijos stalčių.",
     "back": "Atgal į katalogą"
   },
   "categories": {
@@ -43,23 +43,13 @@
     "carrousel": "Karuselė",
     "other": "Kita"
   },
-  "status": {
-    "onRequest": "Pagal užklausą",
-    "madeToOrder": "Gaminama pagal užsakymą",
-    "soldOut": "Išparduota"
-  },
   "home": {
-    "heroEyebrow": "Žiedlapiai",
-    "heroLine1": "Sodas,",
-    "heroEm": "nulietas",
-    "heroLine2": "sidabre.",
-    "heroLead": "Kiekviena pieza rankomis faktūruojama ir akmenimis įsodinama Kaune — lėta studijos praktika, nė vienos vienodos.",
     "heroCta": "Kur mus rasti",
     "catMark": "— § II",
     "catTitle": "Katalogas",
-    "catLead": "Veikiantis piezų, šiuo metu laikomų studijos stalčiuje, sąrašas. Kai kurios unikalios, kai kurios gaminamos pagal užsakymą.",
+    "catLead": "Veikiantis dirbinių, šiuo metu laikomų studijos stalčiuje, sąrašas. Kai kurie unikalūs, kai kurie gaminami pagal užsakymą.",
     "catVisit": "Aplankykite mus Kaune →",
-    "allPieces": "Visos piezos →",
+    "allPieces": "Visi dirbiniai →",
     "catViewMore": "Plačiau",
     "categoriesTitle": "Kategorijos",
     "exploreMark": "Atranka",
@@ -89,8 +79,8 @@
   "catalogue": {
     "indexMark": "— Indeksas · {category}",
     "allTitle": "Katalogas",
-    "pieces": "{count} piezos",
-    "empty": "Šioje kategorijoje piezų dar nėra.",
+    "pieces": "{count} dirbiniai",
+    "empty": "Šioje kategorijoje dirbinių dar nėra.",
     "featuredMark": "— Atrinkta",
     "featuredTitle": "Studijos atranka",
     "viewMore": "Plačiau"
@@ -98,15 +88,12 @@
   "detail": {
     "breadcrumbHome": "Katalogas",
     "related": "Susiję, rankų darbo",
-    "enquire": "Teirautis dėl šios piezos",
     "labels": {
-      "status": "Būsena",
       "metal": "Metalas",
       "stones": "Akmenys",
       "size": "Dydis",
       "leadTime": "Pagaminimo laikas"
-    },
-    "enquireSubject": "Užklausa — {name} ({code})"
+    }
   },
   "about": {
     "eyebrow": "Apie mane",
@@ -126,7 +113,6 @@
     "atelierLabel": "Studija",
     "hoursLabel": "Darbo laikas",
     "email": "info@rimaberg.com",
-    "phone": "+370 600 12 345",
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "Pagal išankstinį susitarimą",
@@ -187,11 +173,5 @@
     "facebook": "Facebook",
     "contact": "Kontaktai",
     "privacy": "Privatumas ir slapukai"
-  },
-  "comingSoon": {
-    "eyebrow": "Netrukus",
-    "title": "Erdvė Vilniaus g. 30",
-    "text": "Atidarome studiją-parduotuvę Kauno centre — vieta pamatyti dirbinius gyvai ir išsimatuoti. Sekite atidarymo datą.",
-    "cta": "Žiūrėti vietą →"
   }
 }

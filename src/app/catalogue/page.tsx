@@ -35,7 +35,6 @@ export default async function CataloguePage({
   const { category = "all" } = await searchParams;
   const t = await getTranslations("catalogue");
   const tCat = await getTranslations("categories");
-  const tStatus = await getTranslations("status");
   const locale = (await getLocale()) as Locale;
 
   const items = resolveItems(category);
@@ -59,7 +58,6 @@ export default async function CataloguePage({
     name: p.name[locale],
     image: p.images[0],
     blurDataURL: blurFor(p.images[0]),
-    statusLabel: tStatus(p.status),
   }));
 
   return (
