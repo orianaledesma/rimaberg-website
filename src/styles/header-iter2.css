@@ -284,3 +284,11 @@
 /* When the drawer is open, freeze body scroll. The Header client component
    adds this class to <html> imperatively. */
 html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
+
+/* StoreSection — collapse to single column on mobile, swap aspect ratio. */
+@media (max-width: 760px) {
+  .rb-store-photo { aspect-ratio: 4 / 5 !important; }
+  section#atelier > .rb-collapse {
+    grid-template-columns: 1fr !important;
+  }
+}

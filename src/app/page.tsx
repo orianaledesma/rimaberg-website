@@ -9,7 +9,7 @@ import Reveal from "@/components/ui/Reveal";
 import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/FeaturedCarousel";
 import CategoryGrid from "@/components/catalogue/CategoryGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
-import ComingSoon from "@/components/sections/ComingSoon";
+import StoreSection from "@/components/sections/StoreSection";
 import { getFeatured } from "@/data/products";
 import { blurFor } from "@/data/blur";
 import { HERO_IMAGES } from "@/data/home";
@@ -198,7 +198,7 @@ export default async function HomePage() {
 
       <AtelierSection />
 
-      <ComingSoon />
+      <StoreSection />
 
       <Footer />
     </div>
