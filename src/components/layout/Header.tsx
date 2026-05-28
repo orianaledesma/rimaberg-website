@@ -114,7 +114,8 @@ export default function Header() {
       <div ref={sentinelRef} className="rb-scroll-sentinel" aria-hidden="true" />
 
       <header className="rb-header">
-        {/* Left: hamburger (mobile) + primary nav (desktop) */}
+        {/* Left: hamburger (always visible — desktop AND mobile, since the
+            full nav now lives in the drawer for both breakpoints). */}
         <div className="rb-header-left">
           <button
             ref={hamburgerRef}
@@ -135,18 +136,6 @@ export default function Header() {
               />
             </svg>
           </button>
-
-          <nav className="rb-header-nav" aria-label={t("primaryAria")}>
-            {NAV.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className={isActive(item) ? "is-active" : undefined}
-              >
-                {t(item.key)}
-              </Link>
-            ))}
-          </nav>
         </div>
 
         {/* Center: wordmark */}

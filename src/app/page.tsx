@@ -11,8 +11,8 @@ import CategoryGrid from "@/components/catalogue/CategoryGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
 import StoreSection from "@/components/sections/StoreSection";
 import { getFeatured } from "@/data/products";
+import { MANUAL_PRODUCTS } from "@/data/products.manual";
 import { blurFor } from "@/data/blur";
-import { HERO_IMAGES } from "@/data/home";
 import { STORE_MAPS_URL } from "@/data/site";
 
 export default async function HomePage() {
@@ -22,9 +22,12 @@ export default async function HomePage() {
 
   const featured = getFeatured();
 
-  const heroSlides: Slide[] = HERO_IMAGES.map((src) => ({
-    src,
-    blurDataURL: blurFor(src),
+  // Hero slides are the seven Carrousel pieces — name + poetic LT/EN caption
+  // change with each slide while the brand wordmark stays fixed on top.
+  const heroSlides: Slide[] = MANUAL_PRODUCTS.map((p) => ({
+    src: p.images[0],
+    blurDataURL: blurFor(p.images[0]),
+    caption: `${p.name[locale]} — ${p.description[locale]}`,
   }));
 
   // One curated strip on the home — Rima's hand-picked `featured` pieces.
@@ -110,7 +113,7 @@ export default async function HomePage() {
               {t("heroLead")}
             </p>
             <Link
-              href="/catalogue"
+              href="/#atelier"
               style={{
                 color: "#fafafa",
                 borderBottom: "1px solid #fafafa",
@@ -119,8 +122,29 @@ export default async function HomePage() {
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
               }}
             >
+              {/* Location pin — paper stroke matches the link colour. */}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                aria-hidden="true"
+                style={{ flexShrink: 0 }}
+              >
+                <path
+                  d="M7 1.5c-2.2 0-4 1.7-4 3.8 0 2.9 4 7.2 4 7.2s4-4.3 4-7.2c0-2.1-1.8-3.8-4-3.8z"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="7" cy="5.4" r="1.4" stroke="currentColor" strokeWidth="1.1" fill="none" />
+              </svg>
               {t("heroCta")}
             </Link>
           </Reveal>

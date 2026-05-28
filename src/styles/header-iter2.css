@@ -148,9 +148,10 @@
   background: currentColor;
 }
 
-/* Hamburguesa (mobile) */
+/* Hamburguesa — always visible (desktop + mobile). The full nav lives in the
+   drawer for both breakpoints, freeing the header for logo + lang only. */
 .rb-hamburger {
-  display: none;
+  display: inline-flex;
   width: 44px;
   height: 44px;
   align-items: center;
@@ -162,10 +163,13 @@
   padding: 0;
 }
 .rb-hamburger svg { display: block; }
+.rb-header-nav { display: none; }
 
 @media (max-width: 760px) {
-  .rb-header-nav { display: none; }
-  .rb-hamburger { display: inline-flex; }
+  /* On mobile the language switcher lives only inside the drawer, so the
+     right slot of the header collapses. The grid keeps its 1fr / auto / 1fr
+     columns so the logo stays centred regardless. */
+  .rb-header-right { display: none; }
 }
 
 /* ── Mobile drawer ──────────────────────────────────────────────────────── */

@@ -65,7 +65,7 @@ export default async function StoreSection({
               alt={t("photoAlt")}
               fill
               sizes="(max-width: 760px) 100vw, 55vw"
-              quality={88}
+              quality={90}
               style={{ objectFit: "cover" }}
             />
           ) : (
