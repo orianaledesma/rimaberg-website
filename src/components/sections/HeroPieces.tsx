@@ -176,10 +176,12 @@ export default function HeroPieces({
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "flex-end",
+            alignItems: "center",
             pointerEvents: "auto",
-            gap: 32,
-            flexWrap: "wrap",
+            gap: 20,
+            // nowrap keeps the pill beside the dots even when the LT label
+            // (KUR MUS RASTI) is wider than the EN one (FIND US).
+            flexWrap: "nowrap",
           }}
         >
           {/* Dots — clickable indicators that double as a slide picker. */}
@@ -226,7 +228,6 @@ export default function HeroPieces({
               />
             </svg>
             <span className="rb-hero-cta-label">{ctaLabel}</span>
-            <span className="rb-hero-cta-arrow" aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

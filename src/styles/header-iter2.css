@@ -305,8 +305,8 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 22px;
+  gap: 10px;
+  padding: 11px 18px;
   color: #fafafa;
   background: rgba(250, 250, 250, 0.04);
   border: 1px solid rgba(250, 250, 250, 0.7);
@@ -327,15 +327,6 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   border-color: #fafafa;
   transform: translateY(-1px);
 }
-.rb-hero-cta-arrow {
-  display: inline-block;
-  transition: transform 280ms var(--rb-ease-slow);
-  font-size: 14px;
-}
-.rb-hero-cta:hover .rb-hero-cta-arrow {
-  transform: translateX(4px);
-}
-
 /* Diagonal shine sweep — a thin white gradient travels across the chip every
    few seconds. Layered behind the label via z-index, never blocks the click. */
 .rb-hero-cta-shine {
@@ -371,8 +362,7 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .rb-hero-cta,
-  .rb-hero-cta-shine,
-  .rb-hero-cta-arrow {
+  .rb-hero-cta-shine {
     animation: none !important;
     transition: none !important;
   }
