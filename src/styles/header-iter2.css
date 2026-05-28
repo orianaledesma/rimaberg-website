@@ -297,80 +297,47 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   .rb-hero-h1, .rb-hero-h1 + p { animation: none !important; }
 }
 
-/* Hero CTA — outlined chip with a soft pulsing glow to draw the eye, a
-   diagonal shine sweep every few seconds and a small arrow that slides on
-   hover. The whole thing stays subtle enough to fit the atelier voice. */
+/* Hero CTA — back to the inline link (pin + label + arrow with a thin
+   underline) Ori liked better than the pill chip. We keep the glow as a
+   soft pulsing text-shadow on the label so the action still attracts the
+   eye without the chip outline visually weighting the corner. */
 .rb-hero-cta {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 22px;
+  gap: 10px;
+  padding-bottom: 4px;
   color: #fafafa;
-  background: rgba(250, 250, 250, 0.04);
-  border: 1px solid rgba(250, 250, 250, 0.7);
-  border-radius: 999px;
+  border-bottom: 1px solid #fafafa;
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   white-space: nowrap;
   text-decoration: none;
-  overflow: hidden;
-  isolation: isolate;
-  transition: background 280ms ease, border-color 280ms ease,
-    transform 280ms var(--rb-ease-slow);
-  animation: rb-hero-cta-pulse 2800ms ease-in-out infinite;
+  transition: opacity 200ms ease;
 }
-.rb-hero-cta:hover {
-  background: rgba(250, 250, 250, 0.14);
-  border-color: #fafafa;
-  transform: translateY(-1px);
+.rb-hero-cta:hover { opacity: 0.85; }
+
+.rb-hero-cta-label {
+  animation: rb-hero-cta-glow 2800ms ease-in-out infinite;
 }
 .rb-hero-cta-arrow {
   display: inline-block;
-  transition: transform 280ms var(--rb-ease-slow);
   font-size: 14px;
+  transition: transform 280ms var(--rb-ease-slow);
 }
 .rb-hero-cta:hover .rb-hero-cta-arrow {
   transform: translateX(4px);
 }
 
-/* Diagonal shine sweep — a thin white gradient travels across the chip every
-   few seconds. Layered behind the label via z-index, never blocks the click. */
-.rb-hero-cta-shine {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background: linear-gradient(
-    115deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.28) 50%,
-    transparent 70%
-  );
-  transform: translateX(-120%);
-  animation: rb-hero-cta-shine 3600ms ease-in-out 1200ms infinite;
-}
-
-@keyframes rb-hero-cta-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(250, 250, 250, 0.35),
-                0 0 18px 0 rgba(250, 250, 250, 0.08);
-  }
-  50% {
-    box-shadow: 0 0 0 6px rgba(250, 250, 250, 0),
-                0 0 28px 4px rgba(250, 250, 250, 0.18);
-  }
-}
-@keyframes rb-hero-cta-shine {
-  0%   { transform: translateX(-120%); }
-  60%  { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
+/* Glow lives on the label so the underline + pin stay crisp. */
+@keyframes rb-hero-cta-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(250, 250, 250, 0); }
+  50%      { text-shadow: 0 0 14px rgba(250, 250, 250, 0.55); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rb-hero-cta,
-  .rb-hero-cta-shine,
+  .rb-hero-cta-label,
   .rb-hero-cta-arrow {
     animation: none !important;
     transition: none !important;
