@@ -67,6 +67,7 @@ export default function Header() {
   useEffect(() => {
     if (!open) return;
     const html = document.documentElement;
+    const hamburger = hamburgerRef.current; // capture for cleanup
     html.classList.add("rb-no-scroll");
     document.body.classList.add("rb-no-scroll");
     const onKey = (e: KeyboardEvent) => {
@@ -85,7 +86,7 @@ export default function Header() {
       document.body.classList.remove("rb-no-scroll");
       document.removeEventListener("keydown", onKey);
       window.cancelAnimationFrame(id);
-      hamburgerRef.current?.focus();
+      hamburger?.focus();
     };
   }, [open]);
 

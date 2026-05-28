@@ -10,12 +10,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("metaTitle") };
 }
 
-/** Contact page — static business info (owner, postal, registration, email)
- *  and a soft link to the Kaunas showroom. No form: a `mailto:` keeps the
- *  contract simple. */
+/**
+ * Contact page — pared down to the essentials: a one-line invitation, a
+ * button-styled mailto whose label IS the email (so it can be copied even
+ * when no mail client is configured), and the atelier address with a Maps
+ * link. No form, no postal address, no business registration here — those
+ * live in Privacy where they are legally meaningful.
+ */
 export default async function ContactPage() {
   const t = await getTranslations("contactPage");
-  const tc = await getTranslations("contact");
 
   return (
     <div className="rb-screen">
@@ -24,7 +27,9 @@ export default async function ContactPage() {
       <section
         style={{
           padding: "clamp(56px, 9vw, 96px) clamp(20px, 5vw, 64px) 32px",
-          maxWidth: 920,
+          maxWidth: 720,
+          margin: "0 auto",
+          textAlign: "center",
         }}
       >
         <Reveal>
@@ -34,104 +39,78 @@ export default async function ContactPage() {
           <h1
             style={{
               fontSize: "clamp(40px, 7vw, 64px)",
-              fontWeight: 200,
+              fontWeight: 300,
               marginTop: 16,
               letterSpacing: "-0.02em",
-              lineHeight: 1,
+              lineHeight: 1.05,
             }}
           >
             {t("title")}
           </h1>
-          <p style={{ fontSize: 15, lineHeight: 1.7, opacity: 0.75, marginTop: 24, maxWidth: 540 }}>
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.7,
+              opacity: 0.75,
+              marginTop: 28,
+              maxWidth: 520,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
             {t("lead")}
           </p>
+        </Reveal>
+
+        <Reveal delay={120} style={{ marginTop: 40 }}>
+          <a
+            href={`mailto:${t("writeUs")}`}
+            className="rb-btn"
+            aria-label={t("writeUsAria")}
+            style={{ display: "inline-flex" }}
+          >
+            {t("writeUs")} →
+          </a>
         </Reveal>
       </section>
 
       <section
         style={{
-          padding: "32px clamp(20px, 5vw, 64px) 96px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: 56,
+          padding: "16px clamp(20px, 5vw, 64px) 96px",
+          maxWidth: 720,
+          margin: "0 auto",
+          textAlign: "center",
           borderTop: "1px solid var(--rb-line)",
+          marginTop: "clamp(48px, 8vw, 80px)",
         }}
       >
-        {/* Owner + postal address (legal) */}
-        <Reveal>
-          <div className="rb-eyebrow" style={{ opacity: 0.55, marginBottom: 14 }}>
-            {t("ownerLabel")}
+        <Reveal delay={80} style={{ paddingTop: "clamp(40px, 6vw, 64px)" }}>
+          <div
+            className="rb-eyebrow"
+            style={{ opacity: 0.55, marginBottom: 14 }}
+          >
+            {t("atelierEyebrow")}
           </div>
-          <div style={{ fontSize: 18, fontWeight: 300, marginBottom: 24 }}>
-            {tc("ownerName")}
-          </div>
-
-          <div className="rb-eyebrow" style={{ opacity: 0.55, marginBottom: 14 }}>
-            {tc("postalLabel")}
-          </div>
-          <address style={{ fontStyle: "normal", fontSize: 14, lineHeight: 1.7 }}>
-            {tc("postalLine1")}
-            <br />
-            {tc("postalLine2")}
-            <br />
-            {tc("postalLine3")}
-          </address>
-
-          <div className="rb-mono" style={{ fontSize: 11, opacity: 0.45, marginTop: 28, letterSpacing: "0.08em" }}>
-            {tc("businessReg")}
-          </div>
-        </Reveal>
-
-        {/* Email + showroom */}
-        <Reveal delay={120}>
-          <div className="rb-eyebrow" style={{ opacity: 0.55, marginBottom: 14 }}>
-            E-mail
-          </div>
-          <a
-            href={`mailto:${tc("email")}`}
+          <address
+            className="rb-mono"
             style={{
-              display: "inline-block",
-              fontSize: 18,
-              fontWeight: 300,
-              marginBottom: 32,
-              borderBottom: "1px solid var(--rb-ink)",
-              paddingBottom: 4,
-              color: "inherit",
-              textDecoration: "none",
+              fontStyle: "normal",
+              fontSize: 16,
+              letterSpacing: "0.04em",
+              lineHeight: 1.7,
+              marginBottom: 24,
             }}
           >
-            {tc("email")}
-          </a>
-
-          <div className="rb-eyebrow" style={{ opacity: 0.55, marginBottom: 14 }}>
-            {t("showroomLabel")}
-          </div>
+            {t("atelierAddress")}
+          </address>
           <a
             href={STORE_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "block",
-              fontSize: 14,
-              lineHeight: 1.7,
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            {tc("addressLine1")}
-            <br />
-            {tc("addressLine2")}
-          </a>
-          <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55, marginTop: 12, letterSpacing: "0.08em" }}>
-            {t("showroomHint")} · {tc("hoursLine2")}
-          </div>
-
-          <a
-            href={`mailto:${tc("email")}`}
+            aria-label={t("directionsAria")}
             className="rb-btn"
-            style={{ marginTop: 36, display: "inline-block" }}
           >
-            {t("writeUs")}
+            {t("directionsCta")}
           </a>
         </Reveal>
       </section>

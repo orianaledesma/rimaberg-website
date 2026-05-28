@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Minimal GDPR-aligned privacy notice. Static, no third-party trackers. */
 export default async function PrivacyPage() {
   const t = await getTranslations("privacy");
-  const sections = [1, 2, 3, 4] as const;
+  const sections = [1, 2, 3, 4, 5, 6, 7] as const;
 
   return (
     <div className="rb-screen">
