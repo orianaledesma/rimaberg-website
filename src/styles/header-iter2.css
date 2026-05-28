@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Iteration 2 — Top banner, split header, mobile drawer.
+   Uses only existing tokens (--rb-noir, --rb-bg, --rb-line, etc) plus the
+   iter2 tokens added in tokens.css (--rb-header-h, --rb-logo-h, z-index,
+   easings). Keeps motion behind prefers-reduced-motion.
+   ========================================================================== */
+
+/* ── TopBanner ─────────────────────────────────────────────────────────── */
+.rb-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: var(--rb-banner-h);
+  padding: 10px 56px 10px 24px; /* extra right padding clears the X */
+  background: var(--rb-noir);
+  color: #fafafa;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: var(--rb-z-banner);
+  overflow: hidden;
+  animation: rb-banner-in 250ms ease-out both;
+}
+@keyframes rb-banner-in {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.rb-banner-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
+}
+.rb-banner-link:hover {
+  border-color: rgba(250, 250, 250, 0.5);
+}
+.rb-banner-dismiss {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+.rb-banner-dismiss:hover {
+  opacity: 1;
+}
+.rb-banner-mobile { display: none; }
+@media (max-width: 760px) {
+  .rb-banner {
+    font-size: 10.5px;
+    padding: 12px 48px 12px 16px;
+  }
+  .rb-banner-desktop { display: none; }
+  .rb-banner-mobile { display: inline; }
+}
+.rb-banner.is-closing {
+  animation: rb-banner-out 200ms ease forwards;
+}
+@keyframes rb-banner-out {
+  from { max-height: 80px; opacity: 1; }
+  to   { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-banner,
+  .rb-banner.is-closing {
+    animation: none !important;
+  }
+}
+
+/* ── Header (split nav + shrink) ───────────────────────────────────────── */
+.rb-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: var(--rb-header-pad-y) clamp(20px, 4vw, 56px);
+  background: var(--rb-noir);
+  color: #fafafa;
+  position: sticky;
+  top: 0;
+  z-index: var(--rb-z-header);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  transition: padding 220ms var(--rb-ease-fast);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-header { transition: none; }
+}
+.rb-header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-width: 0;
+}
+.rb-header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rb-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.rb-header a {
+  color: inherit;
+  text-decoration: none;
+}
+.rb-header-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.rb-header-nav a {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  opacity: 0.55;
+  padding: 8px 0;
+  position: relative;
+  transition: opacity 200ms ease;
+}
+.rb-header-nav a:hover,
+.rb-header-nav a.is-active {
+  opacity: 1;
+}
+.rb-header-nav a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Hamburguesa (mobile) */
+.rb-hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.rb-hamburger svg { display: block; }
+
+@media (max-width: 760px) {
+  .rb-header-nav { display: none; }
+  .rb-hamburger { display: inline-flex; }
+}
+
+/* ── Mobile drawer ──────────────────────────────────────────────────────── */
+.rb-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  z-index: var(--rb-z-backdrop);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.rb-drawer-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.rb-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(80vw, 360px);
+  background: var(--rb-bg);
+  color: var(--rb-ink);
+  z-index: var(--rb-z-drawer);
+  transform: translateX(-100%);
+  transition: transform 280ms var(--rb-ease-slow);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 32px;
+  border-right: 1px solid var(--rb-line);
+  overflow-y: auto;
+}
+.rb-drawer.is-open {
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-drawer-backdrop,
+  .rb-drawer { transition: none; }
+}
+.rb-drawer-close {
+  align-self: flex-start;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+.rb-drawer-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.rb-drawer-items a {
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-serif), serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.005em;
+  padding: 14px 0;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+}
+.rb-drawer-items a.is-active {
+  border-bottom: 1px solid currentColor;
+  align-self: flex-start;
+}
+.rb-drawer-divider {
+  height: 1px;
+  background: var(--rb-line);
+  margin: 24px 0;
+}
+.rb-drawer-lang {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.rb-drawer-lang button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 4px;
+  color: inherit;
+  opacity: 0.55;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.rb-drawer-lang button.is-active {
+  opacity: 1;
+  border-bottom: 1px solid currentColor;
+}
+
+/* ── Scroll sentinel ───────────────────────────────────────────────────── */
+.rb-scroll-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 80px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* When the drawer is open, freeze body scroll. The Header client component
+   adds this class to <html> imperatively. */
+html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }

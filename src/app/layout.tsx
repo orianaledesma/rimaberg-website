@@ -3,6 +3,7 @@ import { Hanken_Grotesk, JetBrains_Mono, Allison, Cormorant_Garamond } from "nex
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import CookieNotice from "@/components/CookieNotice";
+import TopBanner from "@/components/layout/TopBanner";
 import "./globals.css";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
@@ -12,6 +13,7 @@ import "@/styles/navigation.css";
 import "@/styles/carousel.css";
 import "@/styles/product.css";
 import "@/styles/layout.css";
+import "@/styles/header-iter2.css";
 
 const sans = Hanken_Grotesk({
   subsets: ["latin"],
@@ -97,6 +99,7 @@ export default async function RootLayout({
           <a href="#main" className="rb-skip">
             {t("skip")}
           </a>
+          <TopBanner />
           <main id="main" tabIndex={-1}>
             {children}
           </main>

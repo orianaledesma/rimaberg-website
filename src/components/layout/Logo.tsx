@@ -11,7 +11,11 @@ const SRC_H = 358;
  * `height` and computes the width from the source aspect ratio so the mark
  * never gets squished.
  */
-export default function Logo({ height = 56 }: { height?: number }) {
+export default function Logo({ height = 80 }: { height?: number }) {
+  // The component renders at the largest size we use anywhere (--rb-logo-h
+  // desktop default). The actual display size is driven by CSS — the .rb-logo-img
+  // rule scales height via the --rb-logo-h token, which the Header toggles on
+  // scroll and the responsive query shrinks on mobile.
   const width = Math.round(height * (SRC_W / SRC_H));
   return (
     <Image

@@ -14,15 +14,16 @@
   }
 }
 
-/* Responsive wordmark: 56px on desktop, scaled down on phones so it doesn't
-   dominate the narrow header. Width stays auto to preserve aspect ratio. */
+/* Responsive wordmark: height is driven by the --rb-logo-h token, which the
+   Header toggles on scroll (default → scrolled) and the responsive query in
+   tokens.css shrinks on mobile. Width stays auto to preserve aspect ratio.
+   The transition makes the shrink feel coordinated with the header height. */
 .rb-logo-img {
-  height: 56px;
+  height: var(--rb-logo-h);
+  transition: height 220ms var(--rb-ease-fast);
 }
-@media (max-width: 640px) {
-  .rb-logo-img {
-    height: 40px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .rb-logo-img { transition: none; }
 }
 .rb-cat-nav a,
 .rb-cat-nav button {
