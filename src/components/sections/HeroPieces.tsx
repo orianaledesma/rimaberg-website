@@ -59,7 +59,14 @@ export default function HeroPieces({
     <section
       style={{
         position: "relative",
-        height: "min(760px, 86vh)",
+        // Keep the whole hero (photo + name + caption + CTA) above the fold:
+        // subtract the banner + header heights from 94 svh so a tease of the
+        // next section is always visible. Clamped between 420px and 620px so
+        // very short viewports still get a usable hero and very tall screens
+        // do not stretch the photo. svh stays stable when the mobile URL bar
+        // collapses.
+        height:
+          "clamp(420px, calc(94svh - var(--rb-header-h) - var(--rb-banner-h)), 620px)",
         background: "var(--rb-noir)",
         overflow: "hidden",
         color: "#fafafa",
@@ -125,7 +132,7 @@ export default function HeroPieces({
           position: "absolute",
           inset: 0,
           padding:
-            "clamp(56px, 9vw, 110px) clamp(20px, 5vw, 64px) clamp(48px, 8vw, 100px)",
+            "clamp(40px, 6vw, 72px) clamp(20px, 5vw, 64px) clamp(32px, 5vw, 56px)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -144,7 +151,7 @@ export default function HeroPieces({
             key={`name-${active.id}`}
             className="rb-hero-h1"
             style={{
-              fontSize: "clamp(48px, 7vw, 88px)",
+              fontSize: "clamp(40px, 5.5vw, 72px)",
               fontWeight: 300,
               lineHeight: 1,
               letterSpacing: "-0.02em",

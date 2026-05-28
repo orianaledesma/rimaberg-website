@@ -16,10 +16,11 @@
 
   /* Layout heights — coordinate header shrink, banner and logo from a single
      place. The Header client component flips the data-scrolled attribute on
-     the root to switch to the "scrolled" set; see HeaderShell.tsx. */
-  --rb-header-h: 128px;
+     the root to switch to the "scrolled" set; see HeaderShell.tsx.
+     Default desktop: logo 100 + padding-y 24*2 = 148. */
+  --rb-header-h: 148px;
   --rb-header-pad-y: 24px;
-  --rb-logo-h: 80px;
+  --rb-logo-h: 100px;
   --rb-banner-h: 40px;
 
   /* z-index stack — banner sits above header but below the mobile drawer and
@@ -35,21 +36,26 @@
 }
 
 /* Scrolled state — toggled by the Header sentinel via data-scrolled="true" on
-   <html>. Mobile gets its own smaller logo defaults below. */
+   <html>. Mobile gets its own smaller logo defaults below.
+   Scrolled desktop: logo 60 + padding-y 16*2 = 92. */
 html[data-scrolled="true"] {
-  --rb-header-h: 80px;
+  --rb-header-h: 92px;
   --rb-header-pad-y: 16px;
-  --rb-logo-h: 48px;
+  --rb-logo-h: 60px;
 }
 
 @media (max-width: 760px) {
   :root {
-    --rb-header-h: 88px;
-    --rb-logo-h: 56px;
+    /* Mobile default: logo 64 + padding-y 16*2 = 96. */
+    --rb-header-h: 96px;
+    --rb-header-pad-y: 16px;
+    --rb-logo-h: 64px;
     --rb-banner-h: 44px;
   }
   html[data-scrolled="true"] {
-    --rb-header-h: 64px;
-    --rb-logo-h: 40px;
+    /* Mobile scrolled: logo 44 + padding-y 12*2 = 68. */
+    --rb-header-h: 68px;
+    --rb-header-pad-y: 12px;
+    --rb-logo-h: 44px;
   }
 }
