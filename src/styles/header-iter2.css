@@ -165,12 +165,10 @@
 .rb-hamburger svg { display: block; }
 .rb-header-nav { display: none; }
 
-@media (max-width: 760px) {
-  /* On mobile the language switcher lives only inside the drawer, so the
-     right slot of the header collapses. The grid keeps its 1fr / auto / 1fr
-     columns so the logo stays centred regardless. */
-  .rb-header-right { display: none; }
-}
+/* The language switcher lives only inside the drawer on all breakpoints
+   now — the header right slot is reserved for symmetry with the left
+   hamburger so the logo stays centred. */
+.rb-header-right { display: none; }
 
 /* ── Mobile drawer ──────────────────────────────────────────────────────── */
 .rb-drawer-backdrop {
@@ -288,6 +286,16 @@
 /* When the drawer is open, freeze body scroll. The Header client component
    adds this class to <html> imperatively. */
 html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
+
+/* Hero text crossfade — re-keyed per slide via `key={active.id}` in JSX so
+   the h1 and p restart their animation when the active piece changes. */
+@keyframes rb-hero-fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-hero-h1, .rb-hero-h1 + p { animation: none !important; }
+}
 
 /* StoreSection — collapse to single column on mobile, swap aspect ratio. */
 @media (max-width: 760px) {

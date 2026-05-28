@@ -4,8 +4,8 @@ import type { Locale } from "@/i18n/locales";
 import Header from "@/components/layout/Header";
 import CategoryNav from "@/components/layout/CategoryNav";
 import Footer from "@/components/layout/Footer";
-import Carousel, { type Slide } from "@/components/ui/Carousel";
 import Reveal from "@/components/ui/Reveal";
+import HeroPieces, { type HeroPiece } from "@/components/sections/HeroPieces";
 import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/FeaturedCarousel";
 import CategoryGrid from "@/components/catalogue/CategoryGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
@@ -22,13 +22,30 @@ export default async function HomePage() {
 
   const featured = getFeatured();
 
-  // Hero slides are the seven Carrousel pieces — name + poetic LT/EN caption
-  // change with each slide while the brand wordmark stays fixed on top.
-  const heroSlides: Slide[] = MANUAL_PRODUCTS.map((p) => ({
-    src: p.images[0],
-    blurDataURL: blurFor(p.images[0]),
-    caption: `${p.name[locale]} — ${p.description[locale]}`,
-  }));
+  // Hero pieces — six of the seven Carrousel entries, in the exact order Ori
+  // confirmed for the launch. Each slide drives the h1 (name) and p (poetic
+  // LT/EN caption) of the hero overlay; the carousel state lives in the
+  // <HeroPieces /> client component so they stay in lockstep.
+  const HERO_ORDER = [
+    "fakturos",
+    "naktine-zvaigzde",
+    "pasirinkimai",
+    "pavasario-zydejimas",
+    "spalvos-jausmuose",
+    "zibejimas",
+  ];
+  const piecesById = new Map(MANUAL_PRODUCTS.map((p) => [p.id, p]));
+  const heroPieces: HeroPiece[] = HERO_ORDER.flatMap((id) => {
+    const p = piecesById.get(id);
+    if (!p) return [];
+    return [{
+      id: p.id,
+      name: p.name[locale],
+      description: p.description[locale],
+      src: p.images[0],
+      blurDataURL: blurFor(p.images[0]),
+    }];
+  });
 
   // One curated strip on the home — Rima's hand-picked `featured` pieces.
   // Shown below the category tiles so the page reads:
@@ -45,111 +62,12 @@ export default async function HomePage() {
     <div className="rb-screen" data-hover="reveal">
       <Header />
 
-      {/* Black hero with full-bleed atelier carousel + overlay copy */}
-      <section
-        style={{
-          position: "relative",
-          height: "min(760px, 86vh)",
-          background: "var(--rb-noir)",
-          overflow: "hidden",
-          color: "#fafafa",
-        }}
-      >
-        <Carousel slides={heroSlides} height={760} interval={5200} showCounter={false} priority />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(110deg, rgba(0,0,0,0.72), rgba(0,0,0,0.15) 55%, transparent 80%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          className="rb-hero-overlay"
-          style={{
-            position: "absolute",
-            inset: 0,
-            padding: "clamp(56px, 9vw, 110px) clamp(20px, 5vw, 64px) clamp(48px, 8vw, 100px)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            pointerEvents: "none",
-          }}
-        >
-          <Reveal className="rb-hero-head" style={{ maxWidth: 720 }}>
-            <div className="rb-eyebrow" style={{ opacity: 0.75 }}>
-              {t("heroEyebrow")}
-            </div>
-            <h1
-              style={{
-                fontSize: "clamp(48px, 8vw, 96px)",
-                fontWeight: 200,
-                lineHeight: 0.94,
-                letterSpacing: "-0.025em",
-                marginTop: 28,
-                textWrap: "pretty",
-              }}
-            >
-              {t("heroLine1")}{" "}
-              <em style={{ fontStyle: "italic", fontWeight: 200 }}>{t("heroEm")}</em>
-              <br />
-              {t("heroLine2")}
-            </h1>
-          </Reveal>
-          <Reveal
-            delay={200}
-            className="rb-hero-foot"
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              pointerEvents: "auto",
-              gap: 64,
-              flexWrap: "wrap",
-            }}
-          >
-            <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.78, maxWidth: 360 }}>
-              {t("heroLead")}
-            </p>
-            <Link
-              href="/#atelier"
-              style={{
-                color: "#fafafa",
-                borderBottom: "1px solid #fafafa",
-                paddingBottom: 4,
-                fontSize: 12,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              {/* Location pin — paper stroke matches the link colour. */}
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                aria-hidden="true"
-                style={{ flexShrink: 0 }}
-              >
-                <path
-                  d="M7 1.5c-2.2 0-4 1.7-4 3.8 0 2.9 4 7.2 4 7.2s4-4.3 4-7.2c0-2.1-1.8-3.8-4-3.8z"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <circle cx="7" cy="5.4" r="1.4" stroke="currentColor" strokeWidth="1.1" fill="none" />
-              </svg>
-              {t("heroCta")}
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      <HeroPieces
+        pieces={heroPieces}
+        ctaLabel={t("heroCta")}
+        ctaHref="/#atelier"
+      />
+
 
       <CategoryNav active="all" />
 
