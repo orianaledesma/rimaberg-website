@@ -1,5 +1,6 @@
 import type { CategorySlug } from "./categories";
-import { PRODUCTS } from "./products.generated";
+import { PRODUCTS as GENERATED } from "./products.generated";
+import { MANUAL_PRODUCTS } from "./products.manual";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────
@@ -36,9 +37,14 @@ export interface Product {
   description: LocalizedText;
   featured?: boolean;
   isNew?: boolean;
+  /** When true, the product detail page skips rendering the description block.
+   *  Used by the Carrousel collection — Rima asked to suppress the captions
+   *  for now while leaving them in data so a single flag flip turns them on. */
+  hideDescription?: boolean;
 }
 
-export { PRODUCTS };
+/** Generated pieces (from CSV) + the manually-curated Carrousel collection. */
+export const PRODUCTS: Product[] = [...GENERATED, ...MANUAL_PRODUCTS];
 
 /**
  * A piece is "publishable" when it carries a real name AND a description in at

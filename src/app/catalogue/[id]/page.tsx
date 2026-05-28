@@ -87,7 +87,7 @@ export default async function ProductDetailPage({
             <h1 style={{ fontSize: "clamp(40px, 6vw, 56px)", fontWeight: 200, lineHeight: 1, letterSpacing: "-0.02em" }}>
               {name}
             </h1>
-            {product.description[locale]?.trim() && (
+            {!product.hideDescription && product.description[locale]?.trim() && (
               <p style={{ fontSize: 14, lineHeight: 1.7, opacity: 0.78, marginTop: 8 }}>
                 {product.description[locale]}
               </p>

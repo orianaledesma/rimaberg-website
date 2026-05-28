@@ -7,7 +7,8 @@ export type CategorySlug =
   | "earrings"
   | "rings"
   | "pendants"
-  | "engagement";
+  | "engagement"
+  | "carrousel";
 
 export interface CategoryDef {
   /** URL slug + filter id. "all"/"new" are virtual. */
@@ -26,10 +27,14 @@ export const CATEGORY_NAV: CategoryDef[] = [
   { slug: "engagement", key: "engagement" },
 ];
 
-/** Real product categories (excludes the virtual "all"/"new"). */
+/** Real product categories (excludes the virtual "all"/"new"). The
+ *  "carrousel" category is intentionally absent from CATEGORY_NAV — pieces in
+ *  that collection appear in the "all" filter and on dedicated routes only,
+ *  not as a top-level nav entry. */
 export const PRODUCT_CATEGORIES: CategorySlug[] = [
   "earrings",
   "rings",
   "pendants",
   "engagement",
+  "carrousel",
 ];
