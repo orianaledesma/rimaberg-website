@@ -60,13 +60,14 @@ export default function HeroPieces({
       style={{
         position: "relative",
         // Keep the whole hero (photo + name + caption + CTA) above the fold:
-        // subtract the banner + header heights from 94 svh so a tease of the
-        // next section is always visible. Clamped between 420px and 620px so
+        // subtract the header height from 94 svh so a tease of the next
+        // section is always visible. Clamped between 420px and 620px so
         // very short viewports still get a usable hero and very tall screens
         // do not stretch the photo. svh stays stable when the mobile URL bar
-        // collapses.
+        // collapses. (Top announcement banner has been removed in this
+        // iteration — the hero CTA + the atelier section carry the call.)
         height:
-          "clamp(420px, calc(94svh - var(--rb-header-h) - var(--rb-banner-h)), 620px)",
+          "clamp(420px, calc(94svh - var(--rb-header-h)), 620px)",
         background: "var(--rb-noir)",
         overflow: "hidden",
         color: "#fafafa",

@@ -130,13 +130,7 @@
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "Pagal išankstinį susitarimą",
-    "hoursLine2": "Pir.–Penkt. · 10:00–17:00",
-    "ownerName": "Rimantė Landsbergienė",
-    "postalLabel": "Pašto adresas",
-    "postalLine1": "Piliakalnio g. 11A",
-    "postalLine2": "Šėtijų kaimas",
-    "postalLine3": "LT-71223 · Lietuva",
-    "businessReg": "Individ. veiklos pažymėjimo nr. 911884"
+    "hoursLine2": "Pir.–Penkt. · 10:00–17:00"
   },
   "contactPage": {
     "metaTitle": "Kontaktai — Rima Berg",
@@ -173,9 +167,7 @@
     "section5Title": "Dalijimasis",
     "section5Text": "Jūsų duomenys niekada nėra parduodami ar perduodami tretiesiems asmenims rinkodaros tikslais. El. paštas saugomas tik pas pašto paslaugos teikėją susirašinėjimo tikslais. Žemėlapiai ir šriftai svetainėje pateikiami per Google — jūsų naršyklė gali siųsti užklausą į Google šiems ištekliams užkrauti.",
     "section6Title": "Jūsų teisės",
-    "section6Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su duomenimis, juos ištaisyti ar ištrinti, apriboti ar sustabdyti tvarkymą, atšaukti anksčiau duotą sutikimą ar gauti duomenis perkeliamu formatu. Rašykite info@rimaberg.com — atsakome per 30 dienų. Jei netenkina atsakymas, galite kreiptis į Valstybinę duomenų apsaugos inspekciją (VDAI), https://vdai.lrv.lt.",
-    "section7Title": "Kontaktai ir duomenų valdytojas",
-    "section7Text": "Visais privatumo klausimais rašykite info@rimaberg.com arba kreipkitės į studiją Vilniaus g. 30, Kaunas. Duomenų valdytoja — Rimantė Landsbergienė (individualios veiklos pažymėjimo nr. 911884), prekės ženklas Rima Berg."
+    "section6Text": "Pagal BDAR turite teisę bet kada prašyti susipažinti su duomenimis, juos ištaisyti ar ištrinti, apriboti ar sustabdyti tvarkymą, atšaukti anksčiau duotą sutikimą ar gauti duomenis perkeliamu formatu. Rašykite info@rimaberg.com — atsakome per 30 dienų. Jei netenkina atsakymas, galite kreiptis į Valstybinę duomenų apsaugos inspekciją (VDAI), https://vdai.lrv.lt."
   },
   "cookies": {
     "metaTitle": "Slapukai — Rima Berg",
