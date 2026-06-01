@@ -14,8 +14,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1),
-    opacity 1.1s cubic-bezier(0.2, 0.6, 0.2, 1), filter 1.2s;
+  transition: transform 0.55s cubic-bezier(0.2, 0.6, 0.2, 1),
+    opacity 0.45s cubic-bezier(0.2, 0.6, 0.2, 1), filter 0.5s;
   will-change: transform, opacity;
 }
 .rb-prod-img--base {
@@ -46,7 +46,7 @@
   justify-content: flex-end;
   padding: 20px;
   opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: opacity 0.3s cubic-bezier(0.2, 0.6, 0.2, 1);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 55%);
   color: #fff;
   z-index: 3;
@@ -97,7 +97,7 @@
 }
 .rb-tile-img {
   object-fit: cover;
-  transition: transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.2, 0.6, 0.2, 1);
   will-change: transform;
 }
 .rb-tile:hover .rb-tile-img {
@@ -162,7 +162,7 @@
 }
 .rb-catcard-img {
   object-fit: cover;
-  transition: transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.2, 0.6, 0.2, 1);
   will-change: transform;
 }
 .rb-catcard:hover .rb-catcard-img {
@@ -236,7 +236,7 @@
   overflow: hidden;
 }
 .rb-hcar-media img {
-  transition: transform 1.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
   will-change: transform;
 }
 .rb-hcar-card:hover .rb-hcar-media img {
@@ -250,7 +250,7 @@
   opacity: 0.001;
 }
 .rb-reveal.is-in .rb-hcar-media img {
-  animation: rb-hcar-zoom-in 1.5s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+  animation: rb-hcar-zoom-in 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
 }
 .rb-reveal.is-in .rb-hcar-card:nth-child(2) .rb-hcar-media img { animation-delay: 120ms; }
 .rb-reveal.is-in .rb-hcar-card:nth-child(3) .rb-hcar-media img { animation-delay: 240ms; }

@@ -307,11 +307,11 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   transform: scale(1.02);
 }
 .rb-hero-frame .rb-carousel-slide.is-active img {
-  animation: rb-hero-frame-zoom 14s ease-in-out infinite alternate !important;
+  animation: rb-hero-frame-zoom 8s ease-in-out infinite alternate !important;
 }
 @keyframes rb-hero-frame-zoom {
-  0%   { transform: scale(1.02); }
-  100% { transform: scale(1.08); }
+  0%   { transform: scale(1.08); }
+  100% { transform: scale(1.02); }
 }
 @media (prefers-reduced-motion: reduce) {
   .rb-hero-frame .rb-carousel-slide.is-active img {

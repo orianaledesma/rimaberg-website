@@ -6,8 +6,8 @@
 .rb-reveal {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
-  transition: opacity 1.15s cubic-bezier(0.2, 0.6, 0.2, 1),
-    transform 1.25s cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: opacity 0.45s cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
   will-change: opacity, transform;
 }
 .rb-reveal.is-in {
@@ -18,7 +18,7 @@
   clip-path: inset(0 0 100% 0);
   opacity: 1;
   transform: none;
-  transition: clip-path 1.4s cubic-bezier(0.6, 0.05, 0.15, 1);
+  transition: clip-path 0.6s cubic-bezier(0.6, 0.05, 0.15, 1);
 }
 .rb-reveal--mask.is-in {
   clip-path: inset(0 0 0% 0);
@@ -34,7 +34,7 @@
   }
 }
 .rb-kenburns {
-  animation: kenburns 18s ease-in-out infinite alternate;
+  animation: kenburns 10s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
