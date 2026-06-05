@@ -47,28 +47,26 @@
     "heroCta": "Find us",
     "catMark": "— § II",
     "catTitle": "The catalogue",
-    "catLead": "A working index of pieces currently held in the studio drawer. Some are unique, some are made to order.",
+    "catLead": "Every piece of art is a feeling that has taken shape.",
     "catVisit": "Visit us in Kaunas →",
     "allPieces": "All pieces →",
     "catViewMore": "View more",
     "categoriesTitle": "Categories",
-    "exploreMark": "Selection",
     "exploreTitle": "Discover more pieces",
     "atelierEyebrow": "Atelier · Kaunas",
     "atelierTitle": "The hand that makes the stone speak.",
-    "atelierText": "For twenty years Rima has cast and chased her own pieces — granulated surfaces, sapphires from the studio drawer, rose-gold bezels turned warm by hand.",
+    "atelierText": "Stories are born from metal, and hands make them eternal.",
     "aboutCta": "About Rima →",
     "processCta": "The process"
   },
   "atelier": {
     "eyebrow": "THE ATELIER",
-    "title": "A studio-store on Vilniaus g. 30,",
-    "titleLine2": "opening soon in Kaunas.",
-    "lead": "A small space to see the pieces in person, be fitted for a ring, and meet the maker. By appointment until the opening — write us to arrange a visit.",
+    "title": "Studio-gallery Vilniaus st. 30.",
+    "lead": "A small space to see the products live, try on a ring and meet the author.",
     "addressLabel": "ADDRESS",
     "addressValue": "Vilniaus g. 30, Kaunas",
     "hoursLabel": "HOURS",
-    "hoursValue": "Visit us · Mon–Fri · 10:00–17:00",
+    "hoursValue": "Visit us · Mon–Fri · 11:00–18:00",
     "hoursPlaceholder": "Coming soon",
     "directionsCta": "Get directions →",
     "directionsAria": "Open Vilniaus g. 30, Kaunas in Google Maps (opens in new tab)",
@@ -77,11 +75,9 @@
     "photoAlt": "Rima Berg atelier in Kaunas — exterior view"
   },
   "catalogue": {
-    "indexMark": "— Index · {category}",
     "allTitle": "The catalogue",
     "pieces": "{count} pieces",
     "empty": "No pieces in this category yet.",
-    "featuredMark": "— Selected",
     "featuredTitle": "Studio selection",
     "viewMore": "View more"
   },
@@ -116,7 +112,7 @@
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "By appointment",
-    "hoursLine2": "Mon–Fri · 10:00–17:00"
+    "hoursLine2": "Mon–Fri · 11:00–18:00"
   },
   "contactPage": {
     "metaTitle": "Contact — Rima Berg",

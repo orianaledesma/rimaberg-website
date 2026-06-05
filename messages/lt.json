@@ -47,28 +47,26 @@
     "heroCta": "Kur mus rasti",
     "catMark": "— § II",
     "catTitle": "Katalogas",
-    "catLead": "Veikiantis dirbinių, šiuo metu laikomų studijos stalčiuje, sąrašas. Kai kurie unikalūs, kai kurie gaminami pagal užsakymą.",
+    "catLead": "Kiekvienas kūrinys - tai jausmas, kuris rado formą.",
     "catVisit": "Aplankykite mus Kaune →",
     "allPieces": "Visi dirbiniai →",
     "catViewMore": "Plačiau",
     "categoriesTitle": "Kategorijos",
-    "exploreMark": "Atranka",
     "exploreTitle": "Atraskite daugiau dirbinių",
     "atelierEyebrow": "Studija · Kaunas",
     "atelierTitle": "Ranka, priverčianti akmenį prabilti.",
-    "atelierText": "Du dešimtmečius Rima pati lieja ir kalsto savo piezas — granuliuoti paviršiai, safyrai iš studijos stalčiaus, rankomis sušildyti rausvo aukso rėmeliai.",
+    "atelierText": "Iš metalo gimsta istorijos, kurias rankos paverčia amžinomis.",
     "aboutCta": "Apie Rimą →",
     "processCta": "Procesas"
   },
   "atelier": {
     "eyebrow": "STUDIJA",
-    "title": "Studija-parduotuvė Vilniaus g. 30,",
-    "titleLine2": "netrukus atidaroma Kaune.",
-    "lead": "Maža erdvė pamatyti dirbinius gyvai, išsimatuoti žiedą ir susitikti su autore. Iki atidarymo — pagal išankstinį susitarimą; parašykite, kad sutartume vizitą.",
+    "title": "Studija-galerija Vilniaus g. 30.",
+    "lead": "Maža erdvė pamatyti dirbinius gyvai, išsimatuoti žiedą ir susitikti su autore.",
     "addressLabel": "ADRESAS",
     "addressValue": "Vilniaus g. 30, Kaunas",
     "hoursLabel": "DARBO LAIKAS",
-    "hoursValue": "Atvykite · Pir.–Penkt. · 10:00–17:00",
+    "hoursValue": "Atvykite · Pir.–Penkt. · 11:00–18:00",
     "hoursPlaceholder": "Netrukus",
     "directionsCta": "Nuoroda žemėlapyje →",
     "directionsAria": "Atidaryti Vilniaus g. 30, Kaunas Google žemėlapyje (atsidaro naujame skirtuke)",
@@ -77,11 +75,9 @@
     "photoAlt": "Rima Berg studija Kaune — išorinis vaizdas"
   },
   "catalogue": {
-    "indexMark": "— Indeksas · {category}",
     "allTitle": "Katalogas",
     "pieces": "{count} dirbiniai",
     "empty": "Šioje kategorijoje dirbinių dar nėra.",
-    "featuredMark": "— Atrinkta",
     "featuredTitle": "Studijos atranka",
     "viewMore": "Plačiau"
   },
@@ -116,7 +112,7 @@
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "Pagal išankstinį susitarimą",
-    "hoursLine2": "Pir.–Penkt. · 10:00–17:00"
+    "hoursLine2": "Pir.–Penkt. · 11:00–18:00"
   },
   "contactPage": {
     "metaTitle": "Kontaktai — Rima Berg",
