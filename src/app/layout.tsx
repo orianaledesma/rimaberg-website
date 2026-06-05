@@ -44,7 +44,7 @@ const serif = Cormorant_Garamond({
   display: "swap",
 });
 
-const SITE_URL = "https://rimaberg.lt";
+const SITE_URL = "https://www.rimaberg.com";
 const SITE_NAME = "Rima Berg";
 const TAGLINE = "Jewellery · Kaunas";
 const DESCRIPTION =
