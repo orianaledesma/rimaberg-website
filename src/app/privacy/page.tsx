@@ -25,9 +25,6 @@ export default async function PrivacyPage() {
         }}
       >
         <Reveal>
-          <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-            — {t("eyebrow")}
-          </div>
           <h1
             style={{
               fontSize: "clamp(40px, 7vw, 64px)",

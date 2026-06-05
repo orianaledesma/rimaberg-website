@@ -68,9 +68,6 @@ export default async function CataloguePage({
         {/* Heading */}
         <section style={{ padding: "clamp(40px, 6vw, 64px) clamp(20px, 5vw, 64px) 32px" }}>
           <Reveal>
-            <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-              {t("indexMark", { category: heading })}
-            </div>
             <h1
               style={{
                 fontSize: "clamp(40px, 7vw, 64px)",
@@ -95,14 +92,6 @@ export default async function CataloguePage({
         {/* Curated horizontal carousel — swipeable on mobile */}
         {carouselItems.length > 0 && (
           <section style={{ padding: "8px clamp(20px, 5vw, 64px) 64px" }}>
-            <Reveal style={{ marginBottom: 28 }}>
-              <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-                {t("featuredMark")}
-              </div>
-              <h2 style={{ fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 200, marginTop: 10, letterSpacing: "-0.015em" }}>
-                {t("featuredTitle")}
-              </h2>
-            </Reveal>
             <Reveal delay={120}>
               <FeaturedCarousel
                 items={carouselItems}

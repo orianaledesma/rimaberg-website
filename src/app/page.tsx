@@ -21,11 +21,13 @@ export default async function HomePage() {
 
   const featured = getFeatured();
 
-  // Hero pieces — six of the seven Carrousel entries, in the exact order Ori
-  // confirmed for the launch. Each slide drives the h1 (name) and p (poetic
-  // LT/EN caption) of the hero overlay; the carousel state lives in the
-  // <HeroPieces /> client component so they stay in lockstep.
+  // Hero pieces — all seven Carrousel entries, in the exact order Ori
+  // confirmed for the launch (Du pumpurai opens the band). Each slide drives
+  // the h1 (name) and p (poetic LT/EN caption) of the hero overlay; the
+  // carousel state lives in the <HeroPieces /> client component so they stay
+  // in lockstep.
   const HERO_ORDER = [
+    "du-pumpurai",
     "fakturos",
     "naktine-zvaigzde",
     "pasirinkimai",
@@ -81,9 +83,6 @@ export default async function HomePage() {
           }}
         >
           <div>
-            <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-              {t("catMark")}
-            </div>
             <h2 style={{ fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 200, marginTop: 12, letterSpacing: "-0.015em" }}>
               {t("catTitle")}
             </h2>
@@ -118,9 +117,6 @@ export default async function HomePage() {
         {carouselItems.length > 0 && (
           <>
             <Reveal delay={120} style={{ margin: "72px 0 24px" }}>
-              <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-                {t("exploreMark")}
-              </div>
               <h3 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 200, marginTop: 10, letterSpacing: "-0.01em" }}>
                 {t("exploreTitle")}
               </h3>

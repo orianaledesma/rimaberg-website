@@ -32,9 +32,6 @@ export default async function AtelierSection() {
       }}
     >
       <Reveal>
-        <div className="rb-eyebrow" style={{ opacity: 0.5 }}>
-          {t("atelierEyebrow")}
-        </div>
         <h2
           style={{
             fontSize: "clamp(32px, 5vw, 56px)",

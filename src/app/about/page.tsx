@@ -31,9 +31,6 @@ export default async function AboutPage() {
         }}
       >
         <Reveal>
-          <div className="rb-mono" style={{ fontSize: 11, opacity: 0.55 }}>
-            — {t("eyebrow")}
-          </div>
           <h1
             style={{
               fontSize: "clamp(52px, 9vw, 96px)",

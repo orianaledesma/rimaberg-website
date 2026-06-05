@@ -83,17 +83,6 @@ export default async function StoreSection({
 
         {/* Content column */}
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div
-            className="rb-mono"
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              opacity: 0.55,
-            }}
-          >
-            {t("eyebrow")}
-          </div>
           <h2
             style={{
               fontSize: "clamp(32px, 4.5vw, 56px)",
@@ -104,8 +93,6 @@ export default async function StoreSection({
             }}
           >
             {t("title")}
-            <br />
-            {t("titleLine2")}
           </h2>
           <p
             style={{

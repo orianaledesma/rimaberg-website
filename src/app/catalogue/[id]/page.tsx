@@ -141,9 +141,6 @@ export default async function ProductDetailPage({
 
         {/* Related */}
         <section style={{ padding: "64px clamp(20px, 5vw, 64px) 96px", borderTop: "1px solid var(--rb-line)" }}>
-          <Reveal className="rb-mono" style={{ fontSize: 11, opacity: 0.55, marginBottom: 32 }}>
-            — {t("related")}
-          </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 24 }}>
             {related.map((q, i) => (
               <Reveal key={q.id} delay={i * 80}>
