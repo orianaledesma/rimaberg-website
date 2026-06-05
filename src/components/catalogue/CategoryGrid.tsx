@@ -26,9 +26,9 @@ function pickImage(category: CategorySlug): string {
 }
 
 /**
- * Home category showcase — four tiles (earrings · rings · pendants · other),
+ * Home category showcase — four tiles (earrings · rings · pendants · engagement),
  * each a photo with the category name on a translucent rule across the top.
- * "Other" links to the full catalogue; the rest deep-link to their filter.
+ * Every tile deep-links to its catalogue filter.
  */
 export default async function CategoryGrid() {
   const tCat = await getTranslations("categories");
@@ -37,7 +37,7 @@ export default async function CategoryGrid() {
     { key: "earrings", href: "/catalogue?category=earrings", image: pickImage("earrings") },
     { key: "rings", href: "/catalogue?category=rings", image: pickImage("rings") },
     { key: "pendants", href: "/catalogue?category=pendants", image: pickImage("pendants") },
-    { key: "other", href: "/catalogue", image: pickImage("engagement") },
+    { key: "engagement", href: "/catalogue?category=engagement", image: pickImage("engagement") },
   ];
 
   return (
