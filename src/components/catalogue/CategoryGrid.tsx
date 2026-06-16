@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { getByCategory, getAllProducts } from "@/data/products";
+import { getByCategory, getAllProducts } from "@/data/catalogue";
 import { blurFor } from "@/data/blur";
 import { CATEGORY_IMAGES } from "@/data/home";
 import type { CategorySlug } from "@/data/categories";
@@ -19,9 +19,9 @@ interface CategoryTile {
  * Tile image: prefer the hand-picked photo from data/home.ts, then fall back to
  * the first photo of the category (or any piece) so a tile is never blank.
  */
-function pickImage(category: CategorySlug): string {
+async function pickImage(category: CategorySlug): Promise<string> {
   if (CATEGORY_IMAGES[category]) return CATEGORY_IMAGES[category]!;
-  const piece = getByCategory(category)[0] ?? getAllProducts()[0];
+  const piece = (await getByCategory(category))[0] ?? (await getAllProducts())[0];
   return piece?.images[0] ?? "";
 }
 
@@ -34,10 +34,10 @@ export default async function CategoryGrid() {
   const tCat = await getTranslations("categories");
 
   const tiles: CategoryTile[] = [
-    { key: "earrings", href: "/catalogue?category=earrings", image: pickImage("earrings") },
-    { key: "rings", href: "/catalogue?category=rings", image: pickImage("rings") },
-    { key: "pendants", href: "/catalogue?category=pendants", image: pickImage("pendants") },
-    { key: "engagement", href: "/catalogue?category=engagement", image: pickImage("engagement") },
+    { key: "earrings", href: "/catalogue?category=earrings", image: await pickImage("earrings") },
+    { key: "rings", href: "/catalogue?category=rings", image: await pickImage("rings") },
+    { key: "pendants", href: "/catalogue?category=pendants", image: await pickImage("pendants") },
+    { key: "engagement", href: "/catalogue?category=engagement", image: await pickImage("engagement") },
   ];
 
   return (

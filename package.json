@@ -10,9 +10,11 @@
     "import:products": "node scripts/import-products.mjs",
     "gen:blur": "node scripts/gen-blur.mjs",
     "contact-sheet": "node scripts/contact-sheet.mjs",
-    "builder": "node scripts/builder.mjs"
+    "builder": "node scripts/builder.mjs",
+    "seed": "tsx --env-file=.env.local scripts/seed.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "next": "^15.3.1",
     "next-intl": "^4.11.0",
     "react": "^19.0.0",
@@ -27,6 +29,7 @@
     "eslint-config-next": "^15.3.1",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }
