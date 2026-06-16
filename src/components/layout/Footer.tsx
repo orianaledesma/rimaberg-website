@@ -10,6 +10,10 @@ export default async function Footer() {
   const t = await getTranslations("footer");
   const tc = await getTranslations("contact");
   const year = new Date().getFullYear();
+  // VAT line is optional — only shown when the contact namespace carries a value.
+  const vatCode = tc("vatCode");
+  const legalPhone = tc("legalPhone");
+  const phoneHref = `tel:${legalPhone.replace(/[^\d+]/g, "")}`;
 
   return (
     <footer
@@ -18,14 +22,7 @@ export default async function Footer() {
         borderTop: "1px solid var(--rb-line)",
       }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: 40,
-          marginBottom: 48,
-        }}
-      >
+      <div className="rb-footer-cols">
         {/* Atelier · address linked to Google Maps */}
         <div>
           <div className="rb-eyebrow" style={{ opacity: 0.5, marginBottom: 14 }}>
@@ -74,6 +71,36 @@ export default async function Footer() {
           >
             {tc("email")}
           </a>
+        </div>
+
+        {/* Legal · business registration. Part of the single-row column set
+            (.rb-footer-cols); collapses below Contact on small screens. */}
+        <div>
+          <div className="rb-eyebrow" style={{ opacity: 0.5, marginBottom: 14 }}>
+            {tc("legalLabel")}
+          </div>
+          <div style={{ fontSize: 13, lineHeight: 1.6 }}>
+            {tc("legalName")}
+            <br />
+            {tc("companyCode")}
+            {vatCode ? (
+              <>
+                <br />
+                {vatCode}
+              </>
+            ) : null}
+            <br />
+            {tc("legalAddress")}
+            {legalPhone ? (
+              <>
+                <br />
+                Tel.{" "}
+                <a href={phoneHref} style={{ color: "inherit" }}>
+                  {legalPhone}
+                </a>
+              </>
+            ) : null}
+          </div>
         </div>
 
         {/* Links + social */}

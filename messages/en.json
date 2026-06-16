@@ -112,7 +112,13 @@
     "addressLine1": "Vilniaus g. 30",
     "addressLine2": "Kaunas",
     "hoursLine1": "By appointment",
-    "hoursLine2": "Mon–Fri · 11:00–18:00"
+    "hoursLine2": "Mon–Fri · 11:00–18:00",
+    "legalLabel": "Information",
+    "legalName": "Šviesos mylia, MB",
+    "companyCode": "Company code: 305571454",
+    "vatCode": "",
+    "legalAddress": "Piliakalnio g. 11A, Šėtijų k., Šakių r.",
+    "legalPhone": "+370 679 51641"
   },
   "contactPage": {
     "metaTitle": "Contact — Rima Berg",
