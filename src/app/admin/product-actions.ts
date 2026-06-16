@@ -81,7 +81,6 @@ export async function upsertProduct(formData: FormData) {
     name_lt: nameLt,
     code: String(formData.get("code") ?? "").trim(),
     category: String(formData.get("category") ?? "rings"),
-    status: String(formData.get("status") ?? "onRequest"),
     images,
     material_en: String(formData.get("material_en") ?? ""),
     material_lt: String(formData.get("material_lt") ?? ""),

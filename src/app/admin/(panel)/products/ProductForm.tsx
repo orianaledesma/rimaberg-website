@@ -6,7 +6,6 @@ import { upsertProduct, uploadImage } from "../../product-actions";
 import type { AdminProductRow } from "@/lib/admin/products";
 
 const CATEGORIES = ["earrings", "rings", "pendants", "engagement", "carrousel"] as const;
-const STATUSES = ["onRequest", "madeToOrder", "soldOut"] as const;
 
 const EMPTY: AdminProductRow = {
   id: "",
@@ -131,19 +130,11 @@ export default function ProductForm({
             <input className="adm-input" name="code" defaultValue={p.code} placeholder="Au/0133" />
           </div>
         </div>
-        <div className="adm-row2">
-          <div className="adm-field">
-            <label>Category</label>
-            <select className="adm-select" name="category" defaultValue={p.category}>
-              {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </div>
-          <div className="adm-field">
-            <label>Status</label>
-            <select className="adm-select" name="status" defaultValue={p.status}>
-              {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
-            </select>
-          </div>
+        <div className="adm-field">
+          <label>Category</label>
+          <select className="adm-select" name="category" defaultValue={p.category}>
+            {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
         </div>
       </div>
 

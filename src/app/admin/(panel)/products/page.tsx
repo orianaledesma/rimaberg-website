@@ -25,7 +25,7 @@ export default async function AdminProductsPage() {
               <th style={{ width: 56 }}></th>
               <th>Name</th>
               <th>Category</th>
-              <th>Status</th>
+              <th>Visibility</th>
               <th style={{ width: 90 }}>Order</th>
               <th style={{ width: 120 }}></th>
             </tr>
