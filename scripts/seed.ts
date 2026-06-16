@@ -6,9 +6,16 @@
  *
  * Run:  npx tsx --env-file=.env.local scripts/seed.ts
  */
+import ws from "ws";
 import { createClient } from "@supabase/supabase-js";
 import { PRODUCTS } from "../src/data/products";
 import { isPublishable } from "../src/data/products";
+
+// supabase-js eagerly builds its realtime client, which needs a global
+// WebSocket — absent on Node < 22. We don't use realtime; just provide one.
+if (!(globalThis as { WebSocket?: unknown }).WebSocket) {
+  (globalThis as { WebSocket?: unknown }).WebSocket = ws;
+}
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const service = process.env.SUPABASE_SERVICE_ROLE_KEY;
