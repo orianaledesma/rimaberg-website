@@ -2,10 +2,16 @@ import Link from "next/link";
 import { listProducts } from "@/lib/admin/products";
 import { moveProduct } from "../../product-actions";
 import DeleteButton from "./DeleteButton";
+import SavedBanner from "../SavedBanner";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminProductsPage() {
+export default async function AdminProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ saved?: string; deleted?: string }>;
+}) {
+  const { saved, deleted } = await searchParams;
   const products = await listProducts();
 
   return (
@@ -15,6 +21,8 @@ export default async function AdminProductsPage() {
         <span className="adm-spacer" />
         <Link href="/admin/products/new" className="adm-btn">+ New product</Link>
       </div>
+
+      {(saved || deleted) && <SavedBanner action={deleted ? "deleted" : "saved"} />}
 
       {products.length === 0 ? (
         <div className="adm-card">No products yet. Create the first one, or run the seed script to import the existing catalogue.</div>

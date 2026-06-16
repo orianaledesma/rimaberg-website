@@ -1,6 +1,7 @@
 import { editableLeaves } from "@/lib/admin/editable-content";
 import { loadOverrideMap } from "@/lib/admin/content-read";
 import { saveTexts } from "../../content-actions";
+import SavedBanner from "../SavedBanner";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,7 @@ export default async function AdminTextsPage({
         original text. Changes go live within a few minutes.
       </p>
 
-      {saved && <div className="adm-notice ok">Saved.</div>}
+      {saved && <SavedBanner />}
 
       {Object.entries(groups).map(([namespace, leaves]) => (
         <details key={namespace} className="adm-card" style={{ marginBottom: 14 }}>

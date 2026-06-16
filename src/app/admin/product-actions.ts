@@ -104,7 +104,7 @@ export async function upsertProduct(formData: FormData) {
 
   revalidatePublic(id);
   revalidatePath("/admin/products");
-  redirect("/admin/products");
+  redirect("/admin/products?saved=1");
 }
 
 /** Delete a product. */
@@ -116,7 +116,7 @@ export async function deleteProduct(formData: FormData) {
   if (error) throw new Error(error.message);
   revalidatePublic(id);
   revalidatePath("/admin/products");
-  redirect("/admin/products");
+  redirect("/admin/products?deleted=1");
 }
 
 /** Move a product up or down in the listing order (swaps sort_order). */
