@@ -41,7 +41,25 @@ Rama: `feature/rimaberg/admin` (NO mergeada a prod todavía).
      `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
      `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_PASSWORD` (¡uno fuerte, no el temporal!),
      `ADMIN_SESSION_SECRET`.
-  2. Abrir PR de `feature/rimaberg/admin` → `main` y mergear (Vercel deploya).
+  2. Abrir PR de `feature/rimaberg/admin` → `main` y mergear.
+  3. **Deployar a prod** (ver sección Deploy — no es automático).
+
+## 🚀 Deploy / Vercel (IMPORTANTE)
+- **El auto-deploy Git → Vercel NO está activo** en `rimaberg-website`. Mergear
+  a `main` **no** dispara deploy solo (lo descubrimos el 2026-06-16: el footer
+  estaba en `main` pero prod servía un build de 11 días atrás).
+- **Mientras el auto-deploy siga apagado**, cada release a prod es manual:
+  ```
+  git checkout main
+  mv .env.local /tmp/rb-env.bak     # sacar secretos del upload, por las dudas
+  vercel --prod --yes               # CLI ya logueado como orianaledesma
+  mv /tmp/rb-env.bak .env.local
+  git checkout feature/rimaberg/admin
+  ```
+- **Recomendado**: reconectar el repo en **Vercel → Project Settings → Git**
+  para que los merges a `main` deployen automáticamente y no haya que hacer esto.
+- Para el **admin**: antes de deployar su merge, cargar las env vars de Supabase
+  en Vercel (ver "Pendiente"), si no el build/los reads fallan en prod.
 
 ## 🔐 Seguridad
 - Secretos solo en `.env.local` (local) y Vercel env (prod). Nada en git.
