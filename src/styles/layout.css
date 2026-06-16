@@ -28,3 +28,23 @@
     display: none !important;
   }
 }
+
+/* Footer columns — keep all of them on a single row that shrinks together
+   (instead of wrapping to uneven rows), collapsing only on small screens. */
+.rb-footer-cols {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  margin-bottom: 48px;
+}
+@media (max-width: 760px) {
+  .rb-footer-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+}
+@media (max-width: 440px) {
+  .rb-footer-cols {
+    grid-template-columns: 1fr;
+  }
+}
