@@ -3,6 +3,7 @@ import { listProducts } from "@/lib/admin/products";
 import { moveProduct } from "../../product-actions";
 import DeleteButton from "./DeleteButton";
 import SavedBanner from "../SavedBanner";
+import { FormPendingOverlay } from "../PendingOverlay";
 
 export const dynamic = "force-dynamic";
 
@@ -64,11 +65,13 @@ export default async function AdminProductsPage({
                 <td>
                   <div style={{ display: "flex", gap: 4 }}>
                     <form action={moveProduct}>
+                      <FormPendingOverlay label="Reordering… · Pertvarkoma…" />
                       <input type="hidden" name="id" value={p.id} />
                       <input type="hidden" name="dir" value="up" />
                       <button className="adm-iconbtn" type="submit" disabled={i === 0} aria-label="Move up">↑</button>
                     </form>
                     <form action={moveProduct}>
+                      <FormPendingOverlay label="Reordering… · Pertvarkoma…" />
                       <input type="hidden" name="id" value={p.id} />
                       <input type="hidden" name="dir" value="down" />
                       <button className="adm-iconbtn" type="submit" disabled={i === products.length - 1} aria-label="Move down">↓</button>

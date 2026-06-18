@@ -2,6 +2,7 @@ import { editableLeaves } from "@/lib/admin/editable-content";
 import { loadOverrideMap } from "@/lib/admin/content-read";
 import { saveTexts } from "../../content-actions";
 import SavedBanner from "../SavedBanner";
+import { FormPendingOverlay } from "../PendingOverlay";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,7 @@ export default async function AdminTextsPage({
 
   return (
     <form action={saveTexts}>
+      <FormPendingOverlay label="Saving… · Išsaugoma…" />
       <div className="adm-toolbar">
         <h1 className="adm-h1" style={{ marginBottom: 0 }}>Site texts</h1>
         <span className="adm-spacer" />

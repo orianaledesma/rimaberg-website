@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { upsertProduct, uploadImage } from "../../product-actions";
+import { PendingOverlay } from "../PendingOverlay";
 import type { AdminProductRow } from "@/lib/admin/products";
 
 const CATEGORIES = ["earrings", "rings", "pendants", "engagement", "carrousel"] as const;
@@ -110,6 +111,11 @@ export default function ProductForm({
     >
       <input type="hidden" name="isNewRecord" value={isNewRecord ? "1" : "0"} />
       <input type="hidden" name="sort_order" value={p.sort_order} />
+
+      <PendingOverlay
+        show={isPending || uploading}
+        label={uploading ? "Uploading… · Įkeliama…" : "Saving… · Išsaugoma…"}
+      />
 
       {error && <div className="adm-notice error">{error}</div>}
 

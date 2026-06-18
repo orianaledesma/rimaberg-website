@@ -99,3 +99,33 @@
 
 .adm-login { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
 .adm-login .adm-card { width: 100%; max-width: 360px; }
+
+/* Blocking save overlay — freezes the page until the action finishes. */
+.adm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 8, 9, 0.72);
+  backdrop-filter: blur(2px);
+  cursor: progress;
+}
+.adm-overlay-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--adm-text);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+.adm-spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--adm-accent);
+  animation: adm-spin 0.7s linear infinite;
+}
+@keyframes adm-spin { to { transform: rotate(360deg); } }
