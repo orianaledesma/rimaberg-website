@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
     qualities: [70, 80, 90, 95],
     // Cache optimized variants for a year (filenames are stable).
     minimumCacheTTL: 31536000,
+    // Admin-uploaded images live in Supabase Storage (public bucket).
+    remotePatterns: [{ protocol: "https", hostname: "*.supabase.co" }],
   },
 };
 

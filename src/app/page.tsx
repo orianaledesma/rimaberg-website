@@ -10,16 +10,18 @@ import FeaturedCarousel, { type CarouselItem } from "@/components/catalogue/Feat
 import CategoryGrid from "@/components/catalogue/CategoryGrid";
 import AtelierSection from "@/components/sections/AtelierSection";
 import StoreSection from "@/components/sections/StoreSection";
-import { getFeatured } from "@/data/products";
+import { getFeatured } from "@/data/catalogue";
 import { MANUAL_PRODUCTS } from "@/data/products.manual";
 import { blurFor } from "@/data/blur";
 import { STORE_MAPS_URL } from "@/data/site";
+
+export const revalidate = 300;
 
 export default async function HomePage() {
   const t = await getTranslations("home");
   const locale = (await getLocale()) as Locale;
 
-  const featured = getFeatured();
+  const featured = await getFeatured();
 
   // Hero pieces — all seven Carrousel entries, in the exact order Ori
   // confirmed for the launch (Du pumpurai opens the band). Each slide drives

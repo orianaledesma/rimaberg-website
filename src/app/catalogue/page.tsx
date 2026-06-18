@@ -13,13 +13,16 @@ import {
   getNew,
   getFeatured,
   type Product,
-} from "@/data/products";
+} from "@/data/catalogue";
 import { PRODUCT_CATEGORIES, type CategorySlug } from "@/data/categories";
 import { blurFor } from "@/data/blur";
 
 export const metadata: Metadata = { title: "Catalogue" };
+// Re-read from the DB at most every few minutes; admin edits also call
+// revalidatePath("/catalogue") for an immediate refresh.
+export const revalidate = 300;
 
-function resolveItems(category: string): Product[] {
+function resolveItems(category: string): Promise<Product[]> {
   if (category === "new") return getNew();
   if (PRODUCT_CATEGORIES.includes(category as CategorySlug)) {
     return getByCategory(category as CategorySlug);
@@ -37,7 +40,7 @@ export default async function CataloguePage({
   const tCat = await getTranslations("categories");
   const locale = (await getLocale()) as Locale;
 
-  const items = resolveItems(category);
+  const items = await resolveItems(category);
   const isAll = category === "all";
   const catKey = category === "new" ? "whatsNew" : category;
   const heading = isAll ? t("allTitle") : tCat(catKey);
@@ -45,10 +48,10 @@ export default async function CataloguePage({
   // Curated strip, tied to the active category nav: on "all" it highlights the
   // featured set; on a category it highlights that category's featured pieces,
   // falling back to all pieces in scope so the strip always mirrors the grid.
-  const carouselSource = (() => {
+  const carouselSource = await (async () => {
     if (isAll) {
-      const featured = getFeatured();
-      return featured.length > 1 ? featured : getAllProducts().slice(0, 8);
+      const featured = await getFeatured();
+      return featured.length > 1 ? featured : (await getAllProducts()).slice(0, 8);
     }
     const featuredInCategory = items.filter((p) => p.featured);
     return featuredInCategory.length > 0 ? featuredInCategory : items;

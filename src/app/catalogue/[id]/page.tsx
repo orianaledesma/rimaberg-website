@@ -6,12 +6,16 @@ import CategoryNav from "@/components/layout/CategoryNav";
 import Reveal from "@/components/ui/Reveal";
 import ProductCard from "@/components/catalogue/ProductCard";
 import ProductGallery from "@/components/catalogue/ProductGallery";
-import { getAllProducts, getProductById, getRelated, isPublishable } from "@/data/products";
+import { getAllProducts, getProductById, getRelated, isPublishable } from "@/data/catalogue";
 import { blurFor } from "@/data/blur";
 import type { Locale } from "@/i18n/locales";
 
-export function generateStaticParams() {
-  return getAllProducts().map((p) => ({ id: p.id }));
+// Pieces added later in /admin aren't in the build-time param list; render them
+// on demand (dynamicParams defaults to true). Revalidate so edits surface.
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  return (await getAllProducts()).map((p) => ({ id: p.id }));
 }
 
 export async function generateMetadata({
@@ -20,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   if (!product) return { title: "Not found" };
   const locale = (await getLocale()) as Locale;
   return { title: product.name[locale] };
@@ -32,7 +36,7 @@ export default async function ProductDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   if (!product || !isPublishable(product)) notFound();
 
   const locale = (await getLocale()) as Locale;
@@ -40,7 +44,7 @@ export default async function ProductDetailPage({
   const tCat = await getTranslations("categories");
   const tAbout = await getTranslations("about");
 
-  const related = getRelated(id);
+  const related = await getRelated(id);
   // The gallery shows the piece's own photos (first is primary).
   const galleryImages = product.images;
 

@@ -4,16 +4,17 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import Carousel, { type Slide } from "@/components/ui/Carousel";
-import { getFeatured } from "@/data/products";
+import { getFeatured } from "@/data/catalogue";
 import { blurFor } from "@/data/blur";
 
 export const metadata: Metadata = { title: "About me" };
+export const revalidate = 300;
 
 /** About — artist statement written by Rimantė herself. Editorial layout
  *  with a quiet atelier carousel between the text and the signature. */
 export default async function AboutPage() {
   const t = await getTranslations("about");
-  const featured = getFeatured();
+  const featured = await getFeatured();
 
   const atelierSlides: Slide[] = featured.slice(0, 4).map((p) => ({
     src: p.images[0],
