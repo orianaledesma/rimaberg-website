@@ -122,22 +122,22 @@ export default function ProductForm({
       <div className="adm-card" style={{ marginBottom: 20 }}>
         <div className="adm-row2">
           <div className="adm-field">
-            <label>Id / slug {isNewRecord ? "" : "(careful — changing this changes the URL)"}</label>
+            <label>ID / nuoroda {isNewRecord ? "" : "(atsargiai — pakeitus pasikeičia nuoroda)"}</label>
             <input
               className="adm-input"
               name="id"
               value={idValue}
               onChange={(e) => setIdValue(e.target.value)}
-              placeholder="e.g. aurora-ring"
+              placeholder="pvz. aurora-ziedas"
             />
           </div>
           <div className="adm-field">
-            <label>Code / hallmark</label>
+            <label>Kodas / žyma</label>
             <input className="adm-input" name="code" defaultValue={p.code} placeholder="Au/0133" />
           </div>
         </div>
         <div className="adm-field">
-          <label>Category</label>
+          <label>Kategorija</label>
           <select className="adm-select" name="category" defaultValue={p.category}>
             {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
@@ -147,25 +147,25 @@ export default function ProductForm({
       {/* ── Images ──────────────────────────────────────────── */}
       <div className="adm-card" style={{ marginBottom: 20 }}>
         <label style={{ fontSize: 12, letterSpacing: "0.04em", textTransform: "uppercase", opacity: 0.6 }}>
-          Images · first is the cover
+          Nuotraukos · pirmoji yra viršelis
         </label>
         <div className="adm-imgrid" style={{ margin: "14px 0" }}>
           {images.map((src, i) => (
             <div key={src + i} className={`adm-imgcell ${i === 0 ? "primary" : ""}`}>
-              {i === 0 && <span className="adm-imgbadge">Cover</span>}
+              {i === 0 && <span className="adm-imgbadge">Viršelis</span>}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt="" />
               <div className="adm-imgbar">
-                <button type="button" className="adm-iconbtn" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move left">←</button>
-                <button type="button" className="adm-iconbtn" onClick={() => makePrimary(i)} disabled={i === 0} aria-label="Set as cover">★</button>
-                <button type="button" className="adm-iconbtn" onClick={() => move(i, 1)} disabled={i === images.length - 1} aria-label="Move right">→</button>
-                <button type="button" className="adm-iconbtn" onClick={() => remove(i)} aria-label="Remove">✕</button>
+                <button type="button" className="adm-iconbtn" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Kelti kairėn">←</button>
+                <button type="button" className="adm-iconbtn" onClick={() => makePrimary(i)} disabled={i === 0} aria-label="Nustatyti viršeliu">★</button>
+                <button type="button" className="adm-iconbtn" onClick={() => move(i, 1)} disabled={i === images.length - 1} aria-label="Kelti dešinėn">→</button>
+                <button type="button" className="adm-iconbtn" onClick={() => remove(i)} aria-label="Pašalinti">✕</button>
               </div>
             </div>
           ))}
         </div>
         <label className="adm-btn adm-btn-ghost adm-btn-sm" style={{ cursor: "pointer" }}>
-          {uploading ? "Uploading…" : "+ Add images"}
+          {uploading ? "Įkeliama…" : "+ Pridėti nuotraukų"}
           <input
             type="file"
             accept="image/*"
@@ -177,42 +177,42 @@ export default function ProductForm({
         </label>
         {!idValue && (
           <p style={{ fontSize: 12, opacity: 0.5, marginTop: 8 }}>
-            Tip: set the id/slug first so uploads are filed under it.
+            Patarimas: pirma nustatykite ID, kad nuotraukos būtų priskirtos jam.
           </p>
         )}
       </div>
 
       {/* ── Text ────────────────────────────────────────────── */}
       <div className="adm-card" style={{ marginBottom: 20 }}>
-        <LocalizedField label="Name" base="name" defaults={{ lt: p.name_lt, en: p.name_en }} />
-        <LocalizedField label="Material" base="material" defaults={{ lt: p.material_lt, en: p.material_en }} />
-        <LocalizedField label="Stones" base="stones" defaults={{ lt: p.stones_lt, en: p.stones_en }} />
-        <LocalizedField label="Sizes" base="sizes" defaults={{ lt: p.sizes_lt, en: p.sizes_en }} />
-        <LocalizedField label="Lead time" base="lead_time" defaults={{ lt: p.lead_time_lt, en: p.lead_time_en }} />
-        <LocalizedField label="Description" base="description" defaults={{ lt: p.description_lt, en: p.description_en }} textarea />
+        <LocalizedField label="Pavadinimas" base="name" defaults={{ lt: p.name_lt, en: p.name_en }} />
+        <LocalizedField label="Medžiaga" base="material" defaults={{ lt: p.material_lt, en: p.material_en }} />
+        <LocalizedField label="Akmenys" base="stones" defaults={{ lt: p.stones_lt, en: p.stones_en }} />
+        <LocalizedField label="Dydžiai" base="sizes" defaults={{ lt: p.sizes_lt, en: p.sizes_en }} />
+        <LocalizedField label="Pagaminimo laikas" base="lead_time" defaults={{ lt: p.lead_time_lt, en: p.lead_time_en }} />
+        <LocalizedField label="Aprašymas" base="description" defaults={{ lt: p.description_lt, en: p.description_en }} textarea />
       </div>
 
       {/* ── Flags ───────────────────────────────────────────── */}
       <div className="adm-card" style={{ marginBottom: 20, display: "flex", gap: 24, flexWrap: "wrap" }}>
         <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input type="checkbox" name="published" defaultChecked={p.published} /> Published (visible on site)
+          <input type="checkbox" name="published" defaultChecked={p.published} /> Paskelbta (matoma svetainėje)
         </label>
         <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input type="checkbox" name="featured" defaultChecked={p.featured} /> Featured
+          <input type="checkbox" name="featured" defaultChecked={p.featured} /> Išskirta
         </label>
         <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input type="checkbox" name="is_new" defaultChecked={p.is_new} /> New
+          <input type="checkbox" name="is_new" defaultChecked={p.is_new} /> Naujiena
         </label>
         <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <input type="checkbox" name="hide_description" defaultChecked={p.hide_description} /> Hide description
+          <input type="checkbox" name="hide_description" defaultChecked={p.hide_description} /> Slėpti aprašymą
         </label>
       </div>
 
       <div className="adm-toolbar">
         <button type="submit" className="adm-btn" disabled={isPending || uploading}>
-          {isPending ? "Saving…" : "Save product"}
+          {isPending ? "Išsaugoma…" : "Išsaugoti"}
         </button>
-        <Link href="/admin/products" className="adm-btn adm-btn-ghost">Cancel</Link>
+        <Link href="/admin/products" className="adm-btn adm-btn-ghost">Atšaukti</Link>
       </div>
     </form>
   );

@@ -11,16 +11,16 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
       <aside className="adm-side">
         <div className="adm-brand">Rima Berg</div>
         <nav className="adm-nav">
-          <Link href="/admin">Dashboard</Link>
-          <Link href="/admin/products">Products</Link>
-          <Link href="/admin/texts">Site texts</Link>
+          <Link href="/admin">Apžvalga</Link>
+          <Link href="/admin/products">Dirbiniai</Link>
+          <Link href="/admin/texts">Svetainės tekstai</Link>
         </nav>
         <div className="adm-side-footer">
           <Link href="/" className="adm-nav" style={{ opacity: 0.6, fontSize: 13 }}>
-            ↗ View site
+            ↗ Peržiūrėti svetainę
           </Link>
           <form action={logout} style={{ marginTop: 10 }}>
-            <button type="submit" className="adm-btn adm-btn-ghost adm-btn-sm">Log out</button>
+            <button type="submit" className="adm-btn adm-btn-ghost adm-btn-sm">Atsijungti</button>
           </form>
         </div>
       </aside>

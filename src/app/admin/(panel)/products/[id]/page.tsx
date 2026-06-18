@@ -29,8 +29,8 @@ export default async function ProductEditorPage({
 
   return (
     <>
-      <h1 className="adm-h1">{isNewRecord ? "New product" : product.name_lt || product.name_en || product.id}</h1>
-      <p className="adm-sub">{isNewRecord ? "Add a piece to the catalogue." : `Editing ${product.id}`}</p>
+      <h1 className="adm-h1">{isNewRecord ? "Naujas dirbinys" : product.name_lt || product.name_en || product.id}</h1>
+      <p className="adm-sub">{isNewRecord ? "Pridėkite dirbinį į katalogą." : `Redaguojama: ${product.id}`}</p>
       <ProductForm product={product} isNewRecord={isNewRecord} />
     </>
   );

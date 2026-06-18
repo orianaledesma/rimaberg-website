@@ -11,11 +11,11 @@ export default async function AdminLoginPage({
   return (
     <div className="adm-login">
       <form action={login} className="adm-card">
-        <div className="adm-brand" style={{ marginBottom: 18 }}>Rima Berg · Admin</div>
-        {error && <div className="adm-notice error">Wrong password.</div>}
+        <div className="adm-brand" style={{ marginBottom: 18 }}>Rima Berg · Administravimas</div>
+        {error && <div className="adm-notice error">Neteisingas slaptažodis.</div>}
         <input type="hidden" name="next" value={next} />
         <div className="adm-field">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Slaptažodis</label>
           <input
             id="password"
             name="password"
@@ -27,7 +27,7 @@ export default async function AdminLoginPage({
           />
         </div>
         <button type="submit" className="adm-btn" style={{ width: "100%", justifyContent: "center" }}>
-          Enter
+          Prisijungti
         </button>
       </form>
     </div>

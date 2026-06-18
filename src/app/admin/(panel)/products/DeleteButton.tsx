@@ -9,7 +9,7 @@ export default function DeleteButton({ id, name }: { id: string; name: string })
     <form
       action={deleteProduct}
       onSubmit={(e) => {
-        if (!confirm(`Delete “${name}”? This can't be undone.`)) e.preventDefault();
+        if (!confirm(`Ištrinti „${name}"? Šio veiksmo nebus galima atšaukti.`)) e.preventDefault();
       }}
     >
       <FormPendingOverlay label="Deleting… · Trinama…" />

@@ -11,27 +11,27 @@ export default async function AdminDashboard() {
 
   return (
     <>
-      <h1 className="adm-h1">Dashboard</h1>
-      <p className="adm-sub">Manage the Rima Berg catalogue and site text.</p>
+      <h1 className="adm-h1">Apžvalga</h1>
+      <p className="adm-sub">Tvarkykite Rima Berg katalogą ir svetainės tekstus.</p>
 
       {!configured && (
         <div className="adm-notice error">
-          Supabase isn’t configured yet. Set <code>NEXT_PUBLIC_SUPABASE_URL</code>,{" "}
-          <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> and <code>SUPABASE_SERVICE_ROLE_KEY</code>{" "}
-          in your environment, then run <code>supabase/schema.sql</code> and the seed script.
+          Supabase dar nesukonfigūruotas. Nustatykite <code>NEXT_PUBLIC_SUPABASE_URL</code>,{" "}
+          <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> ir <code>SUPABASE_SERVICE_ROLE_KEY</code>{" "}
+          aplinkos kintamuosius, tada paleiskite <code>supabase/schema.sql</code> ir seed skriptą.
         </div>
       )}
 
       <div className="adm-row2" style={{ marginTop: 8 }}>
         <Link href="/admin/products" className="adm-card" style={{ textDecoration: "none" }}>
           <div className="adm-h1" style={{ fontSize: 40 }}>{products.length}</div>
-          <div className="adm-sub" style={{ margin: 0 }}>Products · {live} live</div>
-          <div style={{ marginTop: 14, color: "var(--adm-accent)" }}>Manage products →</div>
+          <div className="adm-sub" style={{ margin: 0 }}>Dirbiniai · {live} paskelbta</div>
+          <div style={{ marginTop: 14, color: "var(--adm-accent)" }}>Tvarkyti dirbinius →</div>
         </Link>
         <Link href="/admin/texts" className="adm-card" style={{ textDecoration: "none" }}>
           <div className="adm-h1" style={{ fontSize: 40 }}>Aa</div>
-          <div className="adm-sub" style={{ margin: 0 }}>Edit any text on the site (EN · LT)</div>
-          <div style={{ marginTop: 14, color: "var(--adm-accent)" }}>Edit site texts →</div>
+          <div className="adm-sub" style={{ margin: 0 }}>Redaguokite bet kurį svetainės tekstą (EN · LT)</div>
+          <div style={{ marginTop: 14, color: "var(--adm-accent)" }}>Redaguoti tekstus →</div>
         </Link>
       </div>
     </>

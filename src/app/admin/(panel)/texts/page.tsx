@@ -22,13 +22,13 @@ export default async function AdminTextsPage({
     <form action={saveTexts}>
       <FormPendingOverlay label="Saving… · Išsaugoma…" />
       <div className="adm-toolbar">
-        <h1 className="adm-h1" style={{ marginBottom: 0 }}>Site texts</h1>
+        <h1 className="adm-h1" style={{ marginBottom: 0 }}>Svetainės tekstai</h1>
         <span className="adm-spacer" />
-        <button type="submit" className="adm-btn">Save all</button>
+        <button type="submit" className="adm-btn">Išsaugoti viską</button>
       </div>
       <p className="adm-sub">
-        Edit any text on the site, in Lithuanian and English. Clearing a field restores the
-        original text. Changes go live within a few minutes.
+        Redaguokite bet kurį svetainės tekstą lietuvių ir anglų kalbomis. Ištrynus lauką,
+        atstatomas originalus tekstas. Pakeitimai pasirodo per kelias minutes.
       </p>
 
       {saved && <SavedBanner />}
