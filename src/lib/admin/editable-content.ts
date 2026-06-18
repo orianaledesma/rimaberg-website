@@ -45,10 +45,18 @@ export function defaultFor(namespace: string, key: string, locale: Locale): stri
   return flat[key] ?? "";
 }
 
+/**
+ * Namespaces hidden from the texts editor — structural strings (accessibility
+ * labels, header nav) the client shouldn't edit. They still work; they're just
+ * not exposed for editing.
+ */
+const HIDDEN_NAMESPACES = new Set(["a11y", "header"]);
+
 /** All editable leaves, grouped by namespace, derived from the EN catalogue. */
 export function editableLeaves(): Record<string, ContentLeaf[]> {
   const groups: Record<string, ContentLeaf[]> = {};
   for (const [namespace, value] of Object.entries(MESSAGES.en)) {
+    if (HIDDEN_NAMESPACES.has(namespace)) continue;
     if (!value || typeof value !== "object" || Array.isArray(value)) continue;
     const flatEn = flatten(value as Record<string, unknown>);
     const flatLt = flatten((MESSAGES.lt[namespace] ?? {}) as Record<string, unknown>);
