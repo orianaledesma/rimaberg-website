@@ -401,9 +401,10 @@ html.rb-no-scroll, body.rb-no-scroll { overflow: hidden; }
   }
 }
 
-/* StoreSection — collapse to single column on mobile, swap aspect ratio. */
+/* StoreSection — collapse to single column on mobile. The photo keeps its
+   landscape 3/2 ratio (set inline) so the whole storefront shows without the
+   aggressive crop a taller box would force on this low-res image. */
 @media (max-width: 760px) {
-  .rb-store-photo { aspect-ratio: 4 / 5 !important; }
   section#atelier > .rb-collapse {
     grid-template-columns: 1fr !important;
   }
