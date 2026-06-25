@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -6,6 +7,9 @@ import Reveal from "@/components/ui/Reveal";
 import Carousel, { type Slide } from "@/components/ui/Carousel";
 import { getFeatured } from "@/data/catalogue";
 import { blurFor } from "@/data/blur";
+
+/** Dedicated portrait for the About page (vertical). Lives in /public. */
+const ABOUT_PHOTO_SRC = "/about/about.jpg";
 
 export const metadata: Metadata = { title: "About me" };
 export const revalidate = 300;
@@ -48,18 +52,47 @@ export default async function AboutPage() {
         </Reveal>
       </section>
 
-      <section
-        style={{ padding: "32px clamp(20px, 5vw, 64px) 64px", maxWidth: 720 }}
-      >
-        <Reveal delay={80}>
-          <p style={{ fontSize: 18, lineHeight: 1.7, opacity: 0.85, textWrap: "pretty" }}>
-            {t("p1")}
-          </p>
-        </Reveal>
-        <Reveal delay={160}>
-          <p style={{ fontSize: 18, lineHeight: 1.7, opacity: 0.85, marginTop: 28, textWrap: "pretty" }}>
-            {t("p2")}
-          </p>
+      <section style={{ padding: "32px clamp(20px, 5vw, 64px) 64px", maxWidth: 980 }}>
+        <Reveal
+          className="rb-collapse"
+          delay={80}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 0.8fr) 1fr",
+            gap: "clamp(28px, 5vw, 64px)",
+            alignItems: "start",
+          }}
+        >
+          {/* Dedicated portrait — vertical, sits beside the intro on desktop
+              and stacks above it on mobile (.rb-collapse). */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: 420,
+              aspectRatio: "1349 / 1800",
+              overflow: "hidden",
+              background: "var(--rb-paper-2)",
+            }}
+          >
+            <Image
+              src={ABOUT_PHOTO_SRC}
+              alt={t("photoAlt")}
+              fill
+              sizes="(max-width: 760px) 100vw, 38vw"
+              quality={90}
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
+          <div>
+            <p style={{ fontSize: 18, lineHeight: 1.7, opacity: 0.85, textWrap: "pretty" }}>
+              {t("p1")}
+            </p>
+            <p style={{ fontSize: 18, lineHeight: 1.7, opacity: 0.85, marginTop: 28, textWrap: "pretty" }}>
+              {t("p2")}
+            </p>
+          </div>
         </Reveal>
       </section>
 

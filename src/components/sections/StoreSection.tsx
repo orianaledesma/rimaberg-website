@@ -2,7 +2,9 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { STORE_MAPS_URL } from "@/data/site";
 
-const STORE_PHOTO_SRC = "/store/store.png";
+// Versioned filename so replacing the photo busts the browser / next-image
+// cache (the optimizer caches by URL, and prod keeps images for a year).
+const STORE_PHOTO_SRC = "/store/store-v2.png";
 
 /**
  * "The Atelier" — physical studio-store launch section. Sits at id="atelier"
@@ -66,7 +68,9 @@ export default async function StoreSection({
               fill
               sizes="(max-width: 760px) 100vw, 55vw"
               quality={90}
-              style={{ objectFit: "cover" }}
+              // Anchor to the top so the storefront stays visible after the
+              // "cover" crop — both on desktop (3/2) and mobile (taller 4/5).
+              style={{ objectFit: "cover", objectPosition: "top" }}
             />
           ) : (
             <div
