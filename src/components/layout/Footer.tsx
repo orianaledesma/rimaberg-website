@@ -53,7 +53,9 @@ export default async function Footer() {
           <div className="rb-eyebrow" style={{ opacity: 0.5, marginBottom: 14 }}>
             {tc("hoursLabel")}
           </div>
-          <div style={{ fontSize: 13, lineHeight: 1.6 }}>
+          {/* pre-line so multi-line opening hours typed in the admin keep their
+              line breaks instead of collapsing onto one line. */}
+          <div style={{ fontSize: 13, lineHeight: 1.7, whiteSpace: "pre-line" }}>
             {tc("hoursLine1")}
             <br />
             {tc("hoursLine2")}

@@ -118,6 +118,7 @@ export default async function StoreSection({
               gridTemplateColumns: "120px 1fr",
               rowGap: 14,
               fontSize: 13,
+              alignItems: "start",
             }}
           >
             <dt
@@ -140,7 +141,14 @@ export default async function StoreSection({
             </dt>
             <dd
               className="rb-mono"
-              style={{ margin: 0, letterSpacing: "0.04em" }}
+              style={{
+                margin: 0,
+                letterSpacing: "0.04em",
+                // Honour the line breaks the admin types (multi-line opening
+                // hours), instead of collapsing them onto one line.
+                whiteSpace: "pre-line",
+                lineHeight: 1.7,
+              }}
             >
               {t("hoursValue")}
             </dd>
